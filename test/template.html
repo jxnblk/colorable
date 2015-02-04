@@ -6,16 +6,20 @@
 </head>
 <body>
 
-<div class="flex flex-wrap">
-  <% colors.forEach(function(color) { %>
+<% colors.forEach(function(color) { %>
+  <div class="flex xflex-wrap">
     <% color.combinations.forEach(function(combo) { %>
-    <div class="p3" style="color:<%= color.hex %>;background-color:<%= combo.background.hex %>">
+    <div class="h6 flex-auto px1 py3" style="background-color:<%= color.hex %>;color:<%= combo.hex %>">
         <%= color.hex %>
-        <%= percentage(combo.contrast.ratio) %>
+        <%= Humanize.formatNumber(combo.contrast, 2) %>
+        <div>AA: <%= combo.accessibility.aa ? 'Pass' : 'Fail' %></div>
+        <div>AAA: <%= combo.accessibility.aaa ? 'Pass' : 'Fail' %></div>
+        <div>AA large text: <%= combo.accessibility.aaLarge ? 'Pass' : 'Fail' %></div>
+        <div>AAA large text: <%= combo.accessibility.aaaLarge ? 'Pass' : 'Fail' %></div>
       </div>
     <% }) %>
-  <% }) %>
-</div>
+  </div>
+<% }) %>
 
 </body>
 </html>

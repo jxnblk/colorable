@@ -1,8 +1,17 @@
 
 var _ = require('lodash');
-var tinycolor = require('tinycolor2');
+var Color = require('color');
 
-module.exports = function(arr) {
+var minimums = {
+  aa: 4.5,
+  aaLarge: 3,
+  aaa: 7,
+  aaaLarge: 4.5
+};
+
+module.exports = function(arr, options) {
+
+  var options = options || {};
 
   if (!Array.isArray(arr)) return false;
 
@@ -11,22 +20,24 @@ module.exports = function(arr) {
   var combinations = [];
 
   arr.forEach(function(color) {
-    colors.push(tinycolor(color));
+    colors.push(Color(color));
   });
 
   colors.forEach(function(color) {
-    var result = _.cloneDeep(color);
-    //result.color = color;
-    result.hex = '#' + color.toHex();
+    var result = options.compact ? {} : _.clone(color);
+    result.hex = color.hexString();
     result.combinations = [];
     colors.forEach(function(bg) {
       if (color === bg) return false;
-      var combination = {};
-      var contrast = tinycolor.readability(color, bg);
-      combination.background = bg;
-      combination.background.hex = '#' + bg.toHex();
-      combination.contrast = contrast;
-      combination.contrast.ratio = contrast.brightness / contrast.color;
+      var combination = options.compact ? {} : _.clone(bg);
+      combination.hex = bg.hexString();
+      combination.contrast = color.contrast(bg);
+      combination.accessibility = {
+        aa: combination.contrast >= minimums.aa,
+        aaLarge: combination.contrast >= minimums.aaLarge,
+        aaa: combination.contrast >= minimums.aaa,
+        aaaLarge: combination.contrast >= minimums.aaaLarge,
+      };
       result.combinations.push(combination);
     });
     results.push(result);

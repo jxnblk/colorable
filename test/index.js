@@ -18,21 +18,32 @@ pkg.percentage = function(n) {
   return Humanize.formatNumber(n*100) + '%';
 };
 
+pkg.Humanize = Humanize;
+
 template = _.template( fs.readFileSync(path.join(__dirname, './template.html')) );
 
 
 colors = [
-  '#001F3F',
-  '#0074D9',
-  '#7FDBFF',
-  '#39CCCC',
-  '#3D9970',
-  '#2ECC40',
-  '#01FF70',
-  '#FFDC00',
+  '#7fdbff',
+  '#0074d9',
+  '#001f3f',
+  '#39cccc',
+  '#2ecc40',
+  '#3d9970',
+  '#01ff70',
+  '#ffdc00',
+  '#ff851b',
+  '#ff4136',
+  '#f012be',
+  '#b10dc9',
+  '#85144b',
+  '#fff',
+  '#ddd',
+  '#aaa',
+  '#111',
 ];
 
-pkg.colors = colorcheck(colors);
+pkg.colors = colorcheck(colors, { compact: true });
 
 html = template(pkg);
 
