@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= name %></title>
+  <link rel="stylesheet" href="http://d2v52k3cl9vedd.cloudfront.net/blk/0.0.14/blk.min.css">
+</head>
+<body>
+
+<div class="flex flex-wrap">
+  <% colors.forEach(function(color) { %>
+    <% color.combinations.forEach(function(combo) { %>
+    <div class="p3" style="color:<%= color.hex %>;background-color:<%= combo.background.hex %>">
+        <%= color.hex %>
+        <%= percentage(combo.contrast.ratio) %>
+      </div>
+    <% }) %>
+  <% }) %>
+</div>
+
+</body>
+</html>
