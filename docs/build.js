@@ -3,37 +3,63 @@ var fs = require('fs');
 var path = require('path');
 var _ = require('lodash');
 var Humanize = require('humanize-plus');
-var clrs = require('colors.css/js/colors');
+var colors = require('colors.css/js/colors');
+var watch = require('watch');
 var blkfooter = require('blk-footer');
-//var autobass = require('autobass');
+var Autobass = require('autobass');
 
-var colorcheck = require('..');
+var colorable = require('..');
+var autobass = new Autobass();
+var marked = require('marked');
+var markedExample = require('marked-example');
 
-var pkg = require('../package.json');
+function build() {
 
-var template;
-var colors = [];
-var result = [];
-var html = '';
+  var data = require('../package.json');
 
-pkg.Humanize = Humanize;
+  var renderer = new marked.Renderer();
+  renderer.code = markedExample();
+  data.readme = marked(fs.readFileSync(path.join(__dirname, '../README.md'), 'utf8'), { renderer: renderer });
 
-template = _.template( fs.readFileSync(path.join(__dirname, './template.html')) );
+  var result = [];
+  var html = '';
 
-_.forIn(clrs, function(val, key) {
-  colors.push(val);
-});
+  data.source = './docs';
+  data.dest = '.';
+  data.layout = './layout.html';
 
-var options = {
-  compact: true,
-  threshold: 0
+  data.Humanize = Humanize;
+
+  var options = {
+    compact: true,
+    threshold: 0
+  };
+
+  data.colors = colorable(colors, options);
+
+  data.aaColors = colorable(colors, { threshold: 4.5 });
+
+  data.footer = blkfooter(data);
+
+  data.routes = {
+    home: {
+      path: '/'
+    }
+  };
+
+  autobass.init(data);
+  autobass.compile();
+
 };
 
-pkg.colors = colorcheck(colors, options);
+build();
 
-pkg.footer = blkfooter(pkg);
+watch.watchTree('./', function(f) {
+  if (typeof f === 'object') {
+  }
+  console.log('rebuild');
+  build();
+});
 
-html = template(pkg);
-
-fs.writeFileSync(path.join(__dirname, '../index.html'), html);
+module.exports = build;
 

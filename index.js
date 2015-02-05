@@ -9,31 +9,46 @@ var minimums = {
   aaaLarge: 4.5
 };
 
-module.exports = function(arr, options) {
+module.exports = function(colors, options) {
+
+  var arr = [];
+  var results = [];
+  var combinations = [];
 
   _.defaults(options, {
     threshold: 0,
     compact: false
   });
 
-  if (!Array.isArray(arr)) return false;
 
-  var colors = [];
-  var results = [];
-  var combinations = [];
+  if (!Array.isArray(colors)) {
+    if (typeof colors === 'object') {
+      _.forIn(colors, function(val, key) {
+        var color = Color(val);
+        color.name = key;
+        arr.push(color);
+      });
+    } else {
+      console.error('Must provide an array or object');
+      return false;
+    }
+  } else {
+    colors.forEach(function(color) {
+      arr.push(Color(color));
+    });
+  }
+
 
   arr.forEach(function(color) {
-    colors.push(Color(color));
-  });
-
-  colors.forEach(function(color) {
     var result = options.compact ? {} : _.clone(color);
     result.hex = color.hexString();
+    if (color.name) { result.name = color.name; }
     result.combinations = [];
-    colors.forEach(function(bg) {
-      if (color === bg) return false;
+    arr.forEach(function(bg) {
+      if (color === bg) { return false; }
       var combination = options.compact ? {} : _.clone(bg);
       combination.hex = bg.hexString();
+      if (bg.name) { combination.name = bg.name; }
       combination.contrast = color.contrast(bg);
       combination.accessibility = {
         aa: combination.contrast >= minimums.aa,

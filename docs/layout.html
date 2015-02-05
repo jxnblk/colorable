@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><%= name %></title>
+  <meta name="author" content="<%= obj.author ? author : '' %>">
+  <meta name="description" content="<%= obj.description ? description : '' %>">
+  <% if (obj.keywords) { %>
+    <meta name="keywords" content="<% keywords.forEach(function(keyword) { %><%= keyword %>, <% }) %>">
+  <% } %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--
+  <link rel="stylesheet" href="http://d2v52k3cl9vedd.cloudfront.net/blk/0.0.14/blk.min.css">
+  -->
+  <link rel="stylesheet" href="http://d2v52k3cl9vedd.cloudfront.net/bassdock/0.0.3/bassdock.min.css">
+</head>
+<body>
+
+  <header class="flex flex-center flex-wrap px2 py4">
+    <div class="flex-auto">
+      <h1 class="m0"><%= _.capitalize(name) %></h1>
+      <p class="m0"><%= description %></p>
+    </div>
+    <a href="<%= homepage %>" class="button">Github</a>
+    <a href="//npmjs.com/package/<%= name %>" class="button">NPM</a>
+  </header>
+
+  <%= content %>
+
+  <div class="container px2">
+    <%= footer %>
+  </div>
+
+</body>
+</html>

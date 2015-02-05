@@ -3,12 +3,11 @@ var fs = require('fs');
 var path = require('path');
 var _ = require('lodash');
 var Humanize = require('humanize-plus');
-var clrs = require('colors.css/js/colors');
+//var colors = require('colors.css/js/colors');
 
-var colorcheck = require('..');
+var colorable = require('..');
 
 var template;
-var colors;
 var result;
 var html;
 var pkg;
@@ -19,12 +18,14 @@ pkg.Humanize = Humanize;
 
 template = _.template( fs.readFileSync(path.join(__dirname, './template.html')) );
 
-_.forIn(clrs, function(val, key) {
-  colors.push(val);
-});
 
+var colors = {
+  red: 'red',
+  green: 'green',
+  blue: 'blue'
+};
 
-pkg.colors = colorcheck(colors, { compact: true });
+pkg.colors = colorable(colors, { compact: true });
 
 html = template(pkg);
 
