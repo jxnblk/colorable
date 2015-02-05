@@ -6,20 +6,32 @@
 </head>
 <body>
 
-<% colors.forEach(function(color) { %>
-  <div class="flex xflex-wrap">
-    <% color.combinations.forEach(function(combo) { %>
-    <div class="h6 flex-auto px1 py3" style="background-color:<%= color.hex %>;color:<%= combo.hex %>">
-        <%= color.hex %>
-        <%= Humanize.formatNumber(combo.contrast, 2) %>
-        <div>AA: <%= combo.accessibility.aa ? 'Pass' : 'Fail' %></div>
-        <div>AAA: <%= combo.accessibility.aaa ? 'Pass' : 'Fail' %></div>
-        <div>AA large text: <%= combo.accessibility.aaLarge ? 'Pass' : 'Fail' %></div>
-        <div>AAA large text: <%= combo.accessibility.aaaLarge ? 'Pass' : 'Fail' %></div>
-      </div>
-    <% }) %>
-  </div>
-<% }) %>
+<div class="overflow-auto">
+  <% colors.forEach(function(color) { %>
+    <div class="flex">
+      <% color.combinations.forEach(function(combo) { %>
+        <div class="h6 flex-auto px1 py3" style="background-color:<%= color.hex %>;color:<%= combo.hex %>">
+          <div class="h4 bold"><%= combo.hex %></div>
+          <div>
+            <%= Humanize.formatNumber(combo.contrast, 2) %>
+          </div>
+          <% if (combo.accessibility.aa) { %>
+            <div class="inline-block px1 border rounded">AA</div>
+          <% } %>
+          <% if (combo.accessibility.aaa) { %>
+            <div class="inline-block px1 border rounded">AAA</div>
+          <% } %>
+          <% if (combo.accessibility.aaLarge) { %>
+            <div class="inline-block bold px1 border rounded">AA</div>
+          <% } %>
+          <% if (combo.accessibility.aaaLarge) { %>
+            <div class="inline-block bold px1 border rounded">AAA</div>
+          <% } %>
+        </div>
+      <% }) %>
+    </div>
+  <% }) %>
+</div>
 
 </body>
 </html>

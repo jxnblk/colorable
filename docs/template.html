@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><%= name %></title>
+  <meta name="author" content="<%= obj.author ? author : '' %>">
+  <meta name="description" content="<%= obj.description ? description : '' %>">
+  <% if (obj.keywords) { %>
+    <meta name="keywords" content="<% keywords.forEach(function(keyword) { %><%= keyword %>, <% }) %>">
+  <% } %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--
+  <link rel="stylesheet" href="http://d2v52k3cl9vedd.cloudfront.net/blk/0.0.14/blk.min.css">
+  -->
+  <link rel="stylesheet" href="http://d2v52k3cl9vedd.cloudfront.net/bassdock/0.0.3/bassdock.min.css">
+</head>
+<body>
+
+  <header class="flex flex-center flex-wrap px2 py3">
+    <div class="flex-auto">
+      <h1 class="m0"><%= _.capitalize(name) %></h1>
+      <p><%= description %></p>
+    </div>
+    <a href="<%= homepage %>" class="button">Github</a>
+    <a href="//npmjs.com/package/<%= name %>" class="button">NPM</a>
+  </header>
+
+
+  <div class="sm-flex flex-wrap">
+    <% colors.forEach(function(color) { %>
+      <% color.combinations.forEach(function(combo) { %>
+        <div class="bold flex-auto p2" style="background-color:<%= color.hex %>;color:<%= combo.hex %>">
+          <div class="h4 inline-block"><%= combo.hex %></div>
+          <br class="sm-show">
+          <div class="inline-block">
+            <%= Humanize.formatNumber(combo.contrast, 2) %>
+          </div>
+          <% if (combo.accessibility.aa) { %>
+            <div class="h6 inline-block px1 rounded" style="color:<%= color.hex %>;background-color:<%= combo.hex %>">AA</div>
+          <% } %>
+          <% if (combo.accessibility.aaa) { %>
+            <div class="h6 inline-block px1 rounded" style="color:<%= color.hex %>;background-color:<%= combo.hex %>">AAA</div>
+          <% } %>
+        </div>
+      <% }) %>
+    <% }) %>
+  </div>
+
+  <section class="container px2 py3">
+    <h1>About</h1>
+  </section>
+
+  <div class="container px2">
+    <%= footer %>
+  </div>
+
+</body>
+</html>

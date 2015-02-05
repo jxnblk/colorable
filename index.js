@@ -11,7 +11,10 @@ var minimums = {
 
 module.exports = function(arr, options) {
 
-  var options = options || {};
+  _.defaults(options, {
+    threshold: 0,
+    compact: false
+  });
 
   if (!Array.isArray(arr)) return false;
 
@@ -38,7 +41,9 @@ module.exports = function(arr, options) {
         aaa: combination.contrast >= minimums.aaa,
         aaaLarge: combination.contrast >= minimums.aaaLarge,
       };
-      result.combinations.push(combination);
+      if (combination.contrast > options.threshold) {
+        result.combinations.push(combination);
+      }
     });
     results.push(result);
   });

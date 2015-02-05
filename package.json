@@ -1,10 +1,11 @@
 {
   "name": "colorcheck",
   "version": "1.0.0",
-  "description": "",
+  "description": "Color combination contrast tester",
   "main": "index.js",
   "scripts": {
-    "test": "node test"
+    "test": "node test",
+    "start": "node docs/build"
   },
   "author": "",
   "license": "ISC",
@@ -13,7 +14,10 @@
     "lodash": "^3.1.0"
   },
   "devDependencies": {
+    "autobass": "^1.0.3",
+    "blk-footer": "^1.0.0",
     "colors.css": "^2.0.4",
     "humanize-plus": "^1.5.0"
-  }
+  },
+  "homepage": "jxnblk.com"
 }
