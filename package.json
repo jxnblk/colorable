@@ -7,8 +7,8 @@
     "test": "node test",
     "start": "node docs/build"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Brent Jackson",
+  "license": "MIT",
   "dependencies": {
     "color": "^0.7.3",
     "lodash": "^3.1.0"
@@ -20,5 +20,23 @@
     "colors.css": "^2.0.4",
     "marked": "^0.3.3",
     "marked-example": "^1.0.4"
-  }
+  },
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jxnblk/colorable.git"
+  },
+  "keywords": [
+    "color",
+    "contrast",
+    "wcag",
+    "accessibility"
+  ],
+  "bugs": {
+    "url": "https://github.com/jxnblk/colorable/issues"
+  },
+  "homepage": "https://github.com/jxnblk/colorable"
 }

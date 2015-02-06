@@ -87,5 +87,5 @@ When set to `false`, the result also includes the entire [color](https://www.npm
 
 _Type: Number (default: `0`)_
 
-When set, the colorable only returns combinations that have a contrast above this value. This is useful for only seeing combinations that pass a minimum contrast.
+When set, the colorable function only returns combinations that have a contrast above this value. This is useful for only seeing combinations that pass a minimum contrast level.
 
