@@ -1,19 +1,24 @@
 
 <div class="overflow-auto">
   <% colors.forEach(function(color) { %>
-    <div class="flex">
+    <div class="flex flex-stretch">
       <% color.combinations.forEach(function(combo) { %>
-        <div class="bold flex-none col-8r p2" style="background-color:<%= color.hex %>;color:<%= combo.hex %>">
-          <div class="inline-block"><%= combo.hex %></div>
-          <br class="sm-show">
-          <% if (combo.accessibility.aaa) { %>
-            <div class="h6 inline-block px1 rounded" style="color:<%= color.hex %>;background-color:<%= combo.hex %>">AAA</div>
-          <% } else if (combo.accessibility.aa) { %>
-            <div class="h6 inline-block px1 rounded" style="color:<%= color.hex %>;background-color:<%= combo.hex %>">AA</div>
-          <% } %>
-          <div class="h6 inline-block">
-            <%= combo.contrast.toFixed(2) %>
-          </div>
+        <div class="bold center flex-none col-8r px1 py2"
+          style="color:<%= color.hex %>;background-color:<%= combo.hex %>">
+            <div class="h4 lh1">
+              <%= combo.contrast.toFixed(2) %>
+            </div>
+            <div class="h6"><%= combo.hex %></div>
+            <% if (combo.accessibility.aaa || combo.accessibility.aa) { %>
+              <div class="h6 inline-block px1 rounded"
+                style="color:<%= combo.hex %>;background-color:<%= color.hex %>">
+                <% if (combo.accessibility.aaa) { %>
+                  AAA
+                <% } else if (combo.accessibility.aa) { %>
+                  AA
+                <% } %>
+              </div>
+            <% } %>
         </div>
       <% }) %>
     </div>
@@ -27,21 +32,29 @@
 </section>
 
 <section id="examples" class="container px2 py3">
-  <h2>Threshold: 4.5 (Level AA)</h2>
-  <div class="flex flex-wrap">
+  <h2>
+    Threshold: 4.5
+    <span class="h4">(Level AA)</span>
+  </h2>
+  <div class="flex flex-wrap flex-stretch">
     <% aaColors.forEach(function(color) { %>
       <% color.combinations.forEach(function(combo) { %>
-        <div class="bold flex-auto col-8r p2" style="background-color:<%= color.hex %>;color:<%= combo.hex %>">
-          <div class="inline-block"><%= combo.hex %></div>
-          <br class="sm-show">
-          <% if (combo.accessibility.aaa) { %>
-            <div class="h6 inline-block px1 rounded" style="color:<%= color.hex %>;background-color:<%= combo.hex %>">AAA</div>
-          <% } else if (combo.accessibility.aa) { %>
-            <div class="h6 inline-block px1 rounded" style="color:<%= color.hex %>;background-color:<%= combo.hex %>">AA</div>
-          <% } %>
-          <div class="h6 inline-block">
-            <%= combo.contrast.toFixed(2) %>
-          </div>
+        <div class="bold center flex-none col-8r px1 py2"
+          style="color:<%= color.hex %>;background-color:<%= combo.hex %>">
+            <div class="h4 lh1">
+              <%= combo.contrast.toFixed(2) %>
+            </div>
+            <div class="h6"><%= combo.hex %></div>
+            <% if (combo.accessibility.aaa || combo.accessibility.aa) { %>
+              <div class="h6 inline-block px1 rounded"
+                style="color:<%= combo.hex %>;background-color:<%= color.hex %>">
+                <% if (combo.accessibility.aaa) { %>
+                  AAA
+                <% } else if (combo.accessibility.aa) { %>
+                  AA
+                <% } %>
+              </div>
+            <% } %>
         </div>
       <% }) %>
     <% }) %>
@@ -50,7 +63,7 @@
 
 <section id="credits" class="container px2 py3">
   <p>
-    Built using <a href="https://www.npmjs.com/package/color">color</a>. Demo colors from <a href="//clrs.cc">Colors</a>.
+    Built using <a href="https://www.npmjs.com/package/color">harthur/color</a>. Demo colors from <a href="//clrs.cc">mrmrs/colors</a>.
   </p>
 </section>
 

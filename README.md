@@ -5,7 +5,7 @@ Color combination contrast tester
 ## Getting Started
 
 ```bash
-npm install colorable
+npm install --save colorable
 ```
 
 ## Usage
@@ -67,10 +67,10 @@ values.
 ### Accessibility object
 
 Each key is a boolean value indicating if the color contrast meets the following criteria:
-- `aa` - contrast is a minimum of 4.5 (for normal sized text)
-- `aaLarge` - contrast is a minimum of 3 ([for bold text or text larger than 24px](http://www.w3.org/TR/WCAG20/#larger-scaledef))
-- `aaa` - contrast is a minimum of 7 
-- `aaaLarge` - contrast is a minimum of 4.5 
+- `aa` - greater than 4.5 (for normal sized text)
+- `aaLarge` - greater than 3 ([for bold text or text larger than 24px](http://www.w3.org/TR/WCAG20/#larger-scaledef))
+- `aaa` - greater than 7 
+- `aaaLarge` - greater than 4.5 
 
 ---
 
@@ -80,8 +80,8 @@ Each key is a boolean value indicating if the color contrast meets the following
 
 _Type: Boolean (default: `false`)_
 
-If set to `true`, the result will only include hex value color strings, a name for each color (if an object is passed to the function), contrast, and accessibility values.
-When set to `false`, the result also includes the entire [color](https://www.npmjs.com/package/color) object for each color.
+If set to `true`, the result will be a smaller object that only includes hex value color strings, a name for each color (if an object is passed to the function), contrast, and accessibility values.
+When set to `false`, the result also includes the entire [harthur/color](https://www.npmjs.com/package/color) object for each color, which includes other properties and methods for color manipulation.
 
 ### `threshold`
 
