@@ -1,6 +1,6 @@
 {
   "name": "colorable",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Color combination contrast tester",
   "main": "index.js",
   "scripts": {
