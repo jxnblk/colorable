@@ -19,13 +19,15 @@
 </head>
 <body>
 
-  <header class="flex flex-center flex-wrap px2 py3">
-    <div class="flex-auto">
-      <h1 class="m0"><%= _.capitalize(name) %></h1>
-      <p class="m0"><%= description %></p>
+  <header class="container px2 py3">
+    <div class="sm-flex flex-center flex-wrap mxn2">
+      <div class="flex-auto px2">
+        <h1 class="m0"><%= _.capitalize(name) %></h1>
+        <p class="m0"><%= description %></p>
+      </div>
+      <a href="<%= homepage %>" class="button">Github</a>
+      <a href="//npmjs.com/package/<%= name %>" class="button">NPM</a>
     </div>
-    <a href="<%= homepage %>" class="button">Github</a>
-    <a href="//npmjs.com/package/<%= name %>" class="button">NPM</a>
   </header>
 
   <%= content %>

@@ -3,9 +3,9 @@
   <% colors.forEach(function(color) { %>
     <div class="flex flex-stretch">
       <% color.combinations.forEach(function(combo) { %>
-        <div class="bold center flex-none col-8r px1 py2"
+        <div class="bold center flex-none col-8r px1 py1"
           style="color:<%= color.hex %>;background-color:<%= combo.hex %>">
-            <div class="h4 lh1">
+            <div class="h4 lh1 mt1">
               <%= combo.contrast.toFixed(2) %>
             </div>
             <div class="h6"><%= combo.hex %></div>
@@ -39,7 +39,7 @@
   <div class="flex flex-wrap flex-stretch">
     <% aaColors.forEach(function(color) { %>
       <% color.combinations.forEach(function(combo) { %>
-        <div class="bold center flex-none col-8r px1 py2"
+        <div class="bold center flex-auto col-8r px1 py2"
           style="color:<%= color.hex %>;background-color:<%= combo.hex %>">
             <div class="h4 lh1">
               <%= combo.contrast.toFixed(2) %>
