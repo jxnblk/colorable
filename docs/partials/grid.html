@@ -1,0 +1,24 @@
+<div class="flex flex-wrap flex-stretch">
+  <% colors.forEach(function(color) { %>
+    <% color.combinations.forEach(function(combo) { %>
+      <div class="bold center flex-auto col-8r px1 py2"
+        title="<%= color.hex %> on <%= combo.hex %>"
+        style="color:<%= color.hex %>;background-color:<%= combo.hex %>">
+          <div class="h4 lh1">
+            <%= combo.contrast.toFixed(2) %>
+          </div>
+          <% if (combo.accessibility.aaa || combo.accessibility.aa) { %>
+            <div class="h6 inline-block px1 rounded"
+              style="color:<%= combo.hex %>;background-color:<%= color.hex %>">
+              <% if (combo.accessibility.aaa) { %>
+                AAA
+              <% } else if (combo.accessibility.aa) { %>
+                AA
+              <% } %>
+            </div>
+          <% } %>
+      </div>
+    <% }) %>
+  <% }) %>
+</div>
+

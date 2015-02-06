@@ -6,32 +6,118 @@
 </head>
 <body>
 
-<div class="overflow-auto">
-  <% colors.forEach(function(color) { %>
-    <div class="flex">
-      <% color.combinations.forEach(function(combo) { %>
-        <div class="h6 flex-auto px1 py3" style="background-color:<%= color.hex %>;color:<%= combo.hex %>">
-          <div class="h4 bold"><%= combo.hex %></div>
-          <div>
-            <%= combo.contrast.toFixed(2) %>
-          </div>
-          <% if (combo.accessibility.aa) { %>
-            <div class="inline-block px1 border rounded">AA</div>
-          <% } %>
-          <% if (combo.accessibility.aaa) { %>
-            <div class="inline-block px1 border rounded">AAA</div>
-          <% } %>
-          <% if (combo.accessibility.aaLarge) { %>
-            <div class="inline-block bold px1 border rounded">AA</div>
-          <% } %>
-          <% if (combo.accessibility.aaaLarge) { %>
-            <div class="inline-block bold px1 border rounded">AAA</div>
-          <% } %>
+
+<div class="flex flex-wrap py3">
+  <% primaryColors.forEach(function(color) { %>
+    <% color.combinations.forEach(function(combo) { %>
+      <div class="h6 flex-auto p2" style="color:<%= color.hex %>;background-color:<%= combo.hex %>">
+        <div class="h4 bold"><%= combo.contrast.toFixed(2) %></div>
+        <div>
+          <%= color.hex %>
         </div>
-      <% }) %>
-    </div>
+        <% if (combo.accessibility.aaa || combo.accessibility.aa || combo.accessibility.aaLarge) { %>
+          <div class="h6 inline-block px1 rounded"
+            style="color:<%= combo.hex %>;background-color:<%= color.hex %>">
+            <% if (combo.accessibility.aaa) { %>
+              AAA
+            <% } else if (combo.accessibility.aa) { %>
+              AA
+            <% } else if (combo.accessibility.aaLarge) { %>
+              Large
+            <% } %>
+          </div>
+        <% } else { %>
+          <div class="h6">Fail</div>
+        <% } %>
+      </div>
+    <% }) %>
   <% }) %>
 </div>
+
+
+<div class="flex flex-wrap py3">
+  <% bassColors.forEach(function(color) { %>
+    <% color.combinations.forEach(function(combo) { %>
+      <div class="h6 flex-auto p2" style="color:<%= color.hex %>;background-color:<%= combo.hex %>">
+        <div class="h4 bold"><%= combo.contrast.toFixed(2) %></div>
+        <div>
+          <%= color.hex %>
+        </div>
+        <% if (combo.accessibility.aaa || combo.accessibility.aa || combo.accessibility.aaLarge) { %>
+          <div class="h6 inline-block px1 rounded"
+            style="color:<%= combo.hex %>;background-color:<%= color.hex %>">
+            <% if (combo.accessibility.aaa) { %>
+              AAA
+            <% } else if (combo.accessibility.aa) { %>
+              AA
+            <% } else if (combo.accessibility.aaLarge) { %>
+              Large
+            <% } %>
+          </div>
+        <% } else { %>
+          <div class="h6">Fail</div>
+        <% } %>
+      </div>
+    <% }) %>
+  <% }) %>
+</div>
+
+
+<div class="flex flex-wrap py3">
+  <% bassdockColors.forEach(function(color) { %>
+    <% color.combinations.forEach(function(combo) { %>
+      <div class="h6 flex-auto p2" style="color:<%= color.hex %>;background-color:<%= combo.hex %>">
+        <div class="h4 bold"><%= combo.contrast.toFixed(2) %></div>
+        <div>
+          <%= color.hex %>
+        </div>
+        <% if (combo.accessibility.aaa || combo.accessibility.aa || combo.accessibility.aaLarge) { %>
+          <div class="h6 inline-block px1 rounded"
+            style="color:<%= combo.hex %>;background-color:<%= color.hex %>">
+            <% if (combo.accessibility.aaa) { %>
+              AAA
+            <% } else if (combo.accessibility.aa) { %>
+              AA
+            <% } else if (combo.accessibility.aaLarge) { %>
+              Large
+            <% } %>
+          </div>
+        <% } else { %>
+          <div class="h6">Fail</div>
+        <% } %>
+      </div>
+    <% }) %>
+  <% }) %>
+</div>
+
+
+<div class="flex flex-wrap py3">
+  <% colors.forEach(function(color) { %>
+    <% color.combinations.forEach(function(combo) { %>
+      <div class="h6 flex-auto p2" style="color:<%= color.hex %>;background-color:<%= combo.hex %>">
+        <div class="h4 bold"><%= combo.contrast.toFixed(2) %></div>
+        <div>
+          <%= color.hex %>
+        </div>
+        <% if (combo.accessibility.aaa || combo.accessibility.aa || combo.accessibility.aaLarge) { %>
+          <div class="h6 inline-block px1 rounded"
+            style="color:<%= combo.hex %>;background-color:<%= color.hex %>">
+            <% if (combo.accessibility.aaa) { %>
+              AAA
+            <% } else if (combo.accessibility.aa) { %>
+              AA
+            <% } else if (combo.accessibility.aaLarge) { %>
+              Large
+            <% } %>
+          </div>
+        <% } else { %>
+          <div class="h6">Fail</div>
+        <% } %>
+      </div>
+    <% }) %>
+  <% }) %>
+</div>
+
 
 </body>
 </html>

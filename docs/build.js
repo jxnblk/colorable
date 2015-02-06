@@ -41,6 +41,9 @@ function build() {
   data.dest = '.';
   data.layout = './layout.html';
 
+  data.grid = require('./partials/grid');
+  data.matrix = require('./partials/matrix');
+
   var options = {
     compact: true,
     threshold: 0
