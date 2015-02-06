@@ -9,14 +9,15 @@
     <meta name="keywords" content="<% keywords.forEach(function(keyword) { %><%= keyword %>, <% }) %>">
   <% } %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--
-  <link rel="stylesheet" href="http://d2v52k3cl9vedd.cloudfront.net/blk/0.0.14/blk.min.css">
-  -->
   <link rel="stylesheet" href="http://d2v52k3cl9vedd.cloudfront.net/bassdock/0.0.3/bassdock.min.css">
+  <style>
+    .col-8r{width:8rem}
+    .package-name, .package-name-redundant, .package-description, .package-description-redundant { display:none }
+  </style>
 </head>
 <body>
 
-  <header class="flex flex-center flex-wrap px2 py4">
+  <header class="flex flex-center flex-wrap px2 py3">
     <div class="flex-auto">
       <h1 class="m0"><%= _.capitalize(name) %></h1>
       <p class="m0"><%= description %></p>

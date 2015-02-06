@@ -2,8 +2,6 @@
 var fs = require('fs');
 var path = require('path');
 var _ = require('lodash');
-var Humanize = require('humanize-plus');
-//var colors = require('colors.css/js/colors');
 
 var colorable = require('..');
 
@@ -14,10 +12,7 @@ var pkg;
 
 pkg = require('../package.json');
 
-pkg.Humanize = Humanize;
-
 template = _.template( fs.readFileSync(path.join(__dirname, './template.html')) );
-
 
 var colors = {
   red: 'red',

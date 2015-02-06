@@ -1,20 +1,22 @@
 
-<div class="flex flex-wrap">
+<div class="overflow-auto">
   <% colors.forEach(function(color) { %>
-    <% color.combinations.forEach(function(combo) { %>
-      <div class="bold flex-auto col-4 sm-col-2 md-col-1 p2" style="background-color:<%= color.hex %>;color:<%= combo.hex %>">
-        <div class="inline-block"><%= combo.hex %></div>
-        <br class="sm-show">
-        <% if (combo.accessibility.aaa) { %>
-          <div class="h6 inline-block px1 rounded" style="color:<%= color.hex %>;background-color:<%= combo.hex %>">AAA</div>
-        <% } else if (combo.accessibility.aa) { %>
-          <div class="h6 inline-block px1 rounded" style="color:<%= color.hex %>;background-color:<%= combo.hex %>">AA</div>
-        <% } %>
-        <div class="h6 inline-block">
-          <%= Humanize.formatNumber(combo.contrast, 2) %>
+    <div class="flex">
+      <% color.combinations.forEach(function(combo) { %>
+        <div class="bold flex-none col-8r p2" style="background-color:<%= color.hex %>;color:<%= combo.hex %>">
+          <div class="inline-block"><%= combo.hex %></div>
+          <br class="sm-show">
+          <% if (combo.accessibility.aaa) { %>
+            <div class="h6 inline-block px1 rounded" style="color:<%= color.hex %>;background-color:<%= combo.hex %>">AAA</div>
+          <% } else if (combo.accessibility.aa) { %>
+            <div class="h6 inline-block px1 rounded" style="color:<%= color.hex %>;background-color:<%= combo.hex %>">AA</div>
+          <% } %>
+          <div class="h6 inline-block">
+            <%= combo.contrast.toFixed(2) %>
+          </div>
         </div>
-      </div>
-    <% }) %>
+      <% }) %>
+    </div>
   <% }) %>
 </div>
 
@@ -25,11 +27,11 @@
 </section>
 
 <section id="examples" class="container px2 py3">
-  <h1>Threshold: 4.5 (Level AA)</h1>
+  <h2>Threshold: 4.5 (Level AA)</h2>
   <div class="flex flex-wrap">
     <% aaColors.forEach(function(color) { %>
       <% color.combinations.forEach(function(combo) { %>
-        <div class="bold col-3 sm-col-2 md-col-1 p2" style="background-color:<%= color.hex %>;color:<%= combo.hex %>">
+        <div class="bold flex-auto col-8r p2" style="background-color:<%= color.hex %>;color:<%= combo.hex %>">
           <div class="inline-block"><%= combo.hex %></div>
           <br class="sm-show">
           <% if (combo.accessibility.aaa) { %>
@@ -38,11 +40,17 @@
             <div class="h6 inline-block px1 rounded" style="color:<%= color.hex %>;background-color:<%= combo.hex %>">AA</div>
           <% } %>
           <div class="h6 inline-block">
-            <%= Humanize.formatNumber(combo.contrast, 2) %>
+            <%= combo.contrast.toFixed(2) %>
           </div>
         </div>
       <% }) %>
     <% }) %>
   </div>
+</section>
+
+<section id="credits" class="container px2 py3">
+  <p>
+    Built using <a href="https://www.npmjs.com/package/color">color</a>. Demo colors from <a href="//clrs.cc">Colors</a>.
+  </p>
 </section>
 

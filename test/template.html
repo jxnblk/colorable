@@ -13,7 +13,7 @@
         <div class="h6 flex-auto px1 py3" style="background-color:<%= color.hex %>;color:<%= combo.hex %>">
           <div class="h4 bold"><%= combo.hex %></div>
           <div>
-            <%= Humanize.formatNumber(combo.contrast, 2) %>
+            <%= combo.contrast.toFixed(2) %>
           </div>
           <% if (combo.accessibility.aa) { %>
             <div class="inline-block px1 border rounded">AA</div>
