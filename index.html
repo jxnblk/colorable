@@ -15,6 +15,7 @@
     .sq-6 { box-sizing: border-box; width: 6rem; height: 6rem; }
     .sq-8 { box-sizing: border-box; width: 8rem; height: 8rem; }
     .lh1 { line-height: 1 }
+    .shadow-top { box-shadow: 0 -.5rem 1rem rgba(0,0,0,.125); }
   </style>
 </head>
 <body>
@@ -3670,16 +3671,18 @@
 
 </div>
 
-<div class="relative bg-white " style="margin-top:60vh">
+<div class="relative bg-white shadow-top" style="margin-top:60vh">
 
-  <header class="container px2 py4">
-    <div class="sm-flex flex-center flex-wrap mxn2">
-      <div class="flex-auto px2">
-        <h1 class="m0">Colorable</h1>
-        <p class="m0">Color combination contrast tester</p>
+  <header class="container px2 py2">
+    <div class="border-bottom py3">
+      <div class="sm-flex flex-center flex-wrap mxn2">
+        <div class="flex-auto px2">
+          <h1 class="m0">Colorable</h1>
+          <p class="m0">Color combination contrast tester</p>
+        </div>
+        <a href="https://github.com/jxnblk/colorable" class="button">Github</a>
+        <a href="//npmjs.com/package/colorable" class="button">NPM</a>
       </div>
-      <a href="https://github.com/jxnblk/colorable" class="button">Github</a>
-      <a href="//npmjs.com/package/colorable" class="button">NPM</a>
     </div>
   </header>
 
@@ -4799,13 +4802,9 @@ When set to <code>false</code>, the result also includes the entire <a href="htt
       <a href="//github.com/mrmrs/colors">mrmrs/colors</a>
     </p>
   </section>
-</div>
 
-
-
-  <div class="relative bg-white">
-    <div class="container px2">
-      <footer class="py2 border-top overflow-hidden">
+  <div class="container px2">
+    <footer class="py2 border-top overflow-hidden">
   <div class="flex flex-wrap flex-center py1 mxn2">
     <h1 class="h4 m0 px2">
       Colorable
@@ -4825,8 +4824,11 @@ When set to <code>false</code>, the result also includes the entire <a href="htt
   </div>
 </footer>
 
-    </div>
   </div>
+
+</div>
+
+
 
 </body>
 </html>
