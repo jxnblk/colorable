@@ -15,6 +15,8 @@ module.exports = function(colors, options) {
   var results = [];
   var combinations = [];
 
+  var options = options || {};
+
   _.defaults(options, {
     threshold: 0,
     compact: false
