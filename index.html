@@ -19,19 +19,9 @@
 </head>
 <body>
 
-  <header class="container px2 py3">
-    <div class="sm-flex flex-center flex-wrap mxn2">
-      <div class="flex-auto px2">
-        <h1 class="m0">Colorable</h1>
-        <p class="m0">Color combination contrast tester</p>
-      </div>
-      <a href="https://github.com/jxnblk/colorable" class="button">Github</a>
-      <a href="//npmjs.com/package/colorable" class="button">NPM</a>
-    </div>
-  </header>
-
   
-
+<div class="fixed top-0 right-0 bottom-0 left-0">
+  
 <div class="overflow-auto">
   
     <div class="flex flex-stretch">
@@ -3678,15 +3668,24 @@
   
 </div>
 
+</div>
 
-<p class="h5 right-align px2 py1">
-  Colors from
-  <a href="//github.com/mrmrs/colors">mrmrs/colors</a>
-</p>
+<div class="relative bg-white " style="margin-top:60vh">
 
-<section class="container px2 py4">
-  
+  <header class="container px2 py4">
+    <div class="sm-flex flex-center flex-wrap mxn2">
+      <div class="flex-auto px2">
+        <h1 class="m0">Colorable</h1>
+        <p class="m0">Color combination contrast tester</p>
+      </div>
+      <a href="https://github.com/jxnblk/colorable" class="button">Github</a>
+      <a href="//npmjs.com/package/colorable" class="button">NPM</a>
+    </div>
+  </header>
+
+  <section class="container px2 py3">
     
+      
 
 <p>Takes a set color palette and shows contrast values for every possible combination.
 This is useful for finding safe color combinations with predefined colors
@@ -3756,15 +3755,15 @@ When set to <code>false</code>, the result also includes the entire <a href="htt
 <p><em>Type: Number (default: <code>0</code>)</em></p>
 <p>When set, the colorable function only returns combinations that have a contrast above this value. This is useful for only seeing combinations that pass a minimum contrast level.</p>
 
-  
-</section>
+    
+  </section>
 
-<section id="examples" class="container px2 py3">
-  <h2>
-    Example: 4.5 Threshold
-    <span class="h4">(Level AA)</span>
-  </h2>
-  <div class="flex flex-wrap flex-stretch">
+  <section id="examples" class="container px2 py3">
+    <h2>
+      Example: 4.5 Threshold
+      <span class="h4">(Level AA)</span>
+    </h2>
+    <div class="flex flex-wrap flex-stretch">
   
     
       <div class="bold center flex-auto col-8r px1 py2"
@@ -4795,12 +4794,18 @@ When set to <code>false</code>, the result also includes the entire <a href="htt
 </div>
 
 
-</section>
+    <p class="h5 right-align mt1">
+      Colors from
+      <a href="//github.com/mrmrs/colors">mrmrs/colors</a>
+    </p>
+  </section>
+</div>
 
 
 
-  <div class="container px2">
-    <footer class="py2 border-top overflow-hidden">
+  <div class="relative bg-white">
+    <div class="container px2">
+      <footer class="py2 border-top overflow-hidden">
   <div class="flex flex-wrap flex-center py1 mxn2">
     <h1 class="h4 m0 px2">
       Colorable
@@ -4820,6 +4825,7 @@ When set to <code>false</code>, the result also includes the entire <a href="htt
   </div>
 </footer>
 
+    </div>
   </div>
 
 </body>
