@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><%= name %></title>
+  <meta name="author" content="<%= obj.author ? author : '' %>">
+  <meta name="description" content="<%= obj.description ? description : '' %>">
+  <% if (obj.keywords) { %>
+    <meta name="keywords" content="<% keywords.forEach(function(keyword) { %><%= keyword %>, <% }) %>">
+  <% } %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://d2v52k3cl9vedd.cloudfront.net/bassdock/0.1.0/bassdock.min.css">
+  <style>
+    .bg-darken-5 { background-color: #333; background-color: rgba(0,0,0,.8) }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <%= app %>
+</div>
+
+<footer class="container px2">
+  <div class="flex flex-center flex-wrap py3 border-top">
+    <h4 class="m0">
+      <%= name %>
+      <span class="h5">v<%= version %></span>
+    </h4>
+    <a href="//npmjs.com/package/<%= name %>" class="button">NPM</a>
+    <a href="<%= homepage %>" class="button">Github</a>
+    <div class="flex-auto"></div>
+    <p class="h5 m0">
+      Made by <a href="//jxnblk.com">Jxnblk</a>
+    </p>
+  </div>
+</footer>
+
+<script src="app.min.js"></script>
+
+</body>
+</html>
