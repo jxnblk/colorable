@@ -10,7 +10,8 @@ module.exports = React.createClass({
   getInitialState: function() {
     return {
       colors: this.props.colors,
-      matrix: colorable(this.props.colors)
+      matrix: colorable(this.props.colors),
+      isEditing: false
     }
   },
 
@@ -24,11 +25,14 @@ module.exports = React.createClass({
     this.setState({ matrix: matrix });
   },
 
+  toggleEdit: function() {
+    var isEditing = !this.state.isEditing;
+    this.setState({ isEditing: isEditing });
+  },
+
   renderRow: function(color) {
     return (
-      <div>
-        <Row {...color} />
-      </div>
+      <Row {...color} />
     )
   },
 
@@ -37,15 +41,36 @@ module.exports = React.createClass({
     var style = {
       height: '80vh'
     };
+    var listStyle = {
+      width: '16rem',
+      marginRight: this.state.isEditing ? '0' : '-16rem',
+      transition: 'margin .2s ease-out'
+    };
+    var toggleButtonStyle = {
+      display: this.state.isEditing ? 'none' : 'inline-block'
+    };
     return (
-      <div className="flex" style={style}>
-        <div className="col-9 overflow-auto">
+      <div className="relative flex overflow-hidden mb4 border-bottom" style={style}>
+        <div className="flex-auto overflow-auto">
           {matrix.map(this.renderRow)}
         </div>
-        <div className="p2 col-3 overflow-auto white bg-mid-gray">
-          <h2>Color List</h2>
+        <div className="flex-none p2 overflow-auto white bg-dark-gray"
+          style={listStyle}>
+          <div className="flex flex-center mb2">
+            <h3 className="flex-auto m0">Edit Colors</h3>
+            <button className="h3 button button-nav-dark"
+              title="Close edit panel"
+              onClick={this.toggleEdit}>
+              &times;
+            </button>
+          </div>
           <List {...this.props} handleChange={this.updateColors} />
         </div>
+        <button className="absolute top-0 right-0 m2 button button-small button-gray"
+          style={toggleButtonStyle}
+          onClick={this.toggleEdit}>
+          Edit Colors
+        </button>
       </div>
     )
   }

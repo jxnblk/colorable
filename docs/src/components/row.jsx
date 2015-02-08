@@ -15,7 +15,7 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <div className="flex">
+      <div className="flex flex-stretch">
         {this.props.combinations.map(this.renderChip)}
       </div>
     )
