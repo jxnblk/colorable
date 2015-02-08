@@ -20,9 +20,12 @@
   <%= app %>
 </div>
 
-<footer class="px2 ">
+<footer class="container px2">
   <div class="flex flex-center flex-wrap py3 border-top">
-    <h4 class="m0"><%= name %></h4>
+    <h4 class="m0">
+      <%= name %>
+      <span class="h5">v<%= version %></span>
+    </h4>
     <a href="//npmjs.com/package/<%= name %>" class="button">NPM</a>
     <a href="<%= homepage %>" class="button">Github</a>
     <div class="flex-auto"></div>

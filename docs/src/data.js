@@ -9,7 +9,8 @@ var readme = fs.readFileSync(path.join(__dirname, '../../README.md'), 'utf8');
 data.readme = marked(readme);
 
 data.colors = require('colors.css/js/colors');
-//data.matrix = colorable(data.colors, { compact: true });
+
+data.thresholdExample = colorable(data.colors, { compact: true, threshold: 4.5 });
 
 module.exports = data;
 

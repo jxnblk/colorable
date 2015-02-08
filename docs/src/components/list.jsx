@@ -22,8 +22,18 @@ module.exports = React.createClass({
   removeColor: function(e) {
     var key = e.target.dataset.key;
     var colors = this.state.colors;
-    console.log('remove', key);
     delete colors[key];
+    this.setState({ colors: colors });
+    this.props.handleChange(this.state.colors);
+  },
+
+  addColor: function(e) {
+    e.preventDefault();
+    var value = e.target[0].value;
+    e.target[0].value = '';
+    var key = 'new-color-' + Math.floor(Math.random()*90000);
+    var colors = this.state.colors;
+    colors[key] = value;
     this.setState({ colors: colors });
     this.props.handleChange(this.state.colors);
   },
@@ -53,6 +63,17 @@ module.exports = React.createClass({
     return (
       <ul className="list-reset">
         {Object.keys(colors).map(this.renderItem)}
+        <li className="mt3">
+          <form onSubmit={this.addColor}>
+            <label className="h5 bold block">Add Color</label>
+            <div className="flex">
+              <input type="text" className="flex-auto mb0 mr1 field-dark"/>
+              <button className="flex-none button button-blue">
+                Add
+              </button>
+            </div>
+          </form>
+        </li>
       </ul>
     )
   }

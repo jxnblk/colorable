@@ -39,7 +39,11 @@ module.exports = React.createClass({
   render: function() {
     var matrix = this.state.matrix;
     var style = {
-      height: '80vh'
+      height: this.state.isEditing ? '100vh' : '60vh',
+      transition: 'height .3s ease-out'
+    };
+    var gridStyle = {
+      overflow: this.state.isEditing ? 'auto' : 'hidden'
     };
     var listStyle = {
       width: '16rem',
@@ -50,27 +54,33 @@ module.exports = React.createClass({
       display: this.state.isEditing ? 'none' : 'inline-block'
     };
     return (
-      <div className="relative flex overflow-hidden mb4 border-bottom" style={style}>
-        <div className="flex-auto overflow-auto">
-          {matrix.map(this.renderRow)}
-        </div>
-        <div className="flex-none p2 overflow-auto white bg-dark-gray"
-          style={listStyle}>
-          <div className="flex flex-center mb2">
-            <h3 className="flex-auto m0">Edit Colors</h3>
-            <button className="h3 button button-nav-dark"
-              title="Close edit panel"
-              onClick={this.toggleEdit}>
-              &times;
-            </button>
+      <div className="mb3">
+        <div className="relative flex overflow-hidden" style={style}>
+          <div className="flex-auto" style={gridStyle}>
+            {matrix.map(this.renderRow)}
           </div>
-          <List {...this.props} handleChange={this.updateColors} />
+          <div className="flex-none p2 overflow-auto white bg-dark-gray"
+            style={listStyle}>
+            <div className="flex flex-center mb2">
+              <h3 className="flex-auto m0">Edit Colors</h3>
+              <button className="h3 button button-nav-dark"
+                title="Close edit panel"
+                onClick={this.toggleEdit}>
+                &times;
+              </button>
+            </div>
+            <List {...this.props} handleChange={this.updateColors} />
+          </div>
+          <button className="absolute top-0 right-0 m2 button button-small button-nav-dark rounded bg-dark-gray"
+            style={toggleButtonStyle}
+            onClick={this.toggleEdit}>
+            Edit Colors
+          </button>
         </div>
-        <button className="absolute top-0 right-0 m2 button button-small button-gray"
-          style={toggleButtonStyle}
-          onClick={this.toggleEdit}>
-          Edit Colors
-        </button>
+        <p className="right-align h5 px2 mt1">
+          Colors from
+          <a href="//clrs.cc">mrmrs/colors</a>
+        </p>
       </div>
     )
   }
