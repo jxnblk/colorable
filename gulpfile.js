@@ -6,10 +6,10 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var webserver = require('gulp-webserver');
 
-var build = require('./docs/src/build');
+var build = require('./docs/build');
 
 gulp.task('build', function() {
-  var data = require('./docs/src/data');
+  var data = require('./docs/data');
   build(data);
 });
 
@@ -18,11 +18,11 @@ gulp.task('js', function() {
     var b = browserify(filename);
     return b.bundle();
   });
-  gulp.src('./docs/src/app.js')
+  gulp.src('./docs/app.js')
     .pipe(browserified)
-    //.pipe(uglify())
+    .pipe(uglify())
     .pipe(rename({ extname: '.min.js' }))
-    .pipe(gulp.dest('./docs'));
+    .pipe(gulp.dest('.'));
 });
 
 gulp.task('serve', function() {
@@ -31,6 +31,6 @@ gulp.task('serve', function() {
 });
 
 gulp.task('default', ['build', 'js', 'serve'], function() {
-  gulp.watch(['./docs/src/**/*'], ['build', 'js']);
+  gulp.watch(['./docs/**/*'], ['build', 'js']);
 });
 

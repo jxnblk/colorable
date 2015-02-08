@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var colorable = require('../../..');
+var colorable = require('../..');
 var Row = require('./row.jsx');
 var List = require('./list.jsx');
 
