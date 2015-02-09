@@ -26,7 +26,7 @@ var colors = {
 };
 var options = {
   compact: true,
-  threshold: 4.5
+  threshold: 0 
 };
 var result = colorable(colors, options);
 ```

@@ -71,7 +71,7 @@ module.exports = React.createClass({
             </div>
             <List {...this.props} handleChange={this.updateColors} />
           </div>
-          <button className="absolute top-0 right-0 m2 button button-small button-nav-dark rounded bg-dark-gray"
+          <button className="absolute bottom-0 right-0 m2 button button-small button-nav-dark rounded bg-dark-gray"
             style={toggleButtonStyle}
             onClick={this.toggleEdit}>
             Edit Colors
