@@ -53,15 +53,17 @@ module.exports = React.createClass({
 
   render: function() {
     var colors = this.state.colors;
+    var formClass = this.props.className += ' flex flex-center';
     return (
       <form onSubmit={this.getCss} className={this.props.className}>
-        <label className="h5 bold block">CORS-Enabled CSS Link</label>
-        <div className="flex">
-          <input type="text" ref="url" className="flex-auto mb0 mr1 field-dark"/>
-          <button className="flex-none button button-blue">
-            Get
-          </button>
-        </div>
+        <label className="h5 bold mr1">CSS</label>
+        <input type="text"
+          ref="url"
+          placeholder="CORS-Enabled CSS Link"
+          className="flex-auto mb0 mr1 field-dark"/>
+        <button className="flex-none button button-blue">
+          Get
+        </button>
       </form>
     )
   }

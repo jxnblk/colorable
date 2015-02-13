@@ -21,15 +21,6 @@ module.exports = React.createClass({
     this.props.handleChange(colors);
   },
 
-  addColor: function(e) {
-    e.preventDefault();
-    var value = e.target[0].value;
-    e.target[0].value = '';
-    var colors = this.props.colors;
-    colors[colors.length] = value;
-    this.props.handleChange(colors);
-  },
-
   renderItem: function(key, i) {
     var color = this.props.colors[i];
     var light = Color(color).light();
@@ -62,21 +53,11 @@ module.exports = React.createClass({
 
   render: function() {
     var colors = this.props.colors;
-    console.log('list', colors[0]);
     return (
       <div>
-        <ul className="list-reset">
+        <ul className="list-reset mb0">
           {colors.map(this.renderItem)}
         </ul>
-        <form className="p2" onSubmit={this.addColor}>
-          <label className="h5 bold block">Add Color</label>
-          <div className="flex">
-            <input type="text" className="flex-auto mb0 mr1 field-dark"/>
-            <button className="flex-none button button-blue">
-              Add
-            </button>
-          </div>
-        </form>
       </div>
     )
   }

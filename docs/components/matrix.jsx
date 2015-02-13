@@ -6,6 +6,7 @@ var Row = require('./row.jsx');
 var List = require('./list.jsx');
 
 var CssLinkForm = require('./css-link-form.jsx');
+var AddColorForm = require('./add-color-form.jsx');
 
 module.exports = React.createClass({
 
@@ -42,47 +43,47 @@ module.exports = React.createClass({
     var matrix = this.state.matrix;
     var colors = this.state.colors;
     var isEditing = this.state.isEditing;
-    console.log('matrix', colors[0]);
     var style = {
       height: isEditing ? '100vh' : '60vh',
       position: isEditing ? 'fixed' : '',
-      top: isEditing ? '1rem' : '',
+      //top: isEditing ? '1rem' : '',
       transition: 'height .3s ease-out',
-      paddingTop: '3rem',
+      //paddingTop: '3rem',
       boxSizing: 'border-box'
     };
     var gridStyle = {
-      //overflow: this.state.isEditing ? 'auto' : 'hidden'
+      marginTop: isEditing ? '3.25rem' : '',
     };
     var listStyle = {
       width: '16rem',
-      marginLeft: this.state.isEditing ? '0' : '-16rem',
+      marginTop: isEditing ? '3.25rem' : '',
+      marginLeft: isEditing ? '0' : '-16rem',
       transition: 'margin .2s ease-out'
     };
     var toggleButtonStyle = {
-      //display: this.state.isEditing ? 'none' : 'inline-block'
+      display: isEditing ? 'none' : 'block',
     };
     var toolbarStyle = {
-      top: isEditing ? '' : '-3rem',
+      top: isEditing ? '' : '-3.5rem',
+      transition: 'top .2s ease-out',
     };
     return (
       <div className="mb3">
-        <div className="fixed top-0 left-0 right-0 flex flex-stretch white bg-dark-gray" style={toolbarStyle}>
-          <div className="flex-auto px2 py2">Colorable</div>
-          <div className="px2 py1">
-            <button className="button button-small button-nav-dark"
-              style={toggleButtonStyle}
+        <div className="fixed top-0 left-0 right-0 z1 flex flex-stretch flex-wrap white bg-dark-gray" style={toolbarStyle}>
+          <div className="button py2 flex-auto px2 py2">Colorable</div>
+          <AddColorForm {...this.props} handleChange={this.updateColors} className="py1 mr2" />
+          <CssLinkForm {...this.props} handleChange={this.updateColors} className="py1 mr2" />
+          <div className="p1">
+            <button className="button py1 button-gray"
               onClick={this.toggleEdit}>
-              Close App
+              Done
             </button>
           </div>
         </div>
-        <div className="relative overflow-y-auto top-0 right-0 bottom-0 left-0 white bg-darken-4" style={style}>
+        <div className="relative overflow-y-auto top-0 right-0 bottom-0 left-0 white bg-dark-gray" style={style}>
           <div className="flex">
             <div className="flex-none" style={listStyle}>
               <List {...this.props} colors={colors} handleChange={this.updateColors} />
-              <hr />
-              <CssLinkForm {...this.props} className="mt4" handleChange={this.updateColors} />
             </div>
             <div className="flex-auto overflow-x-auto" style={gridStyle}>
               {matrix.map(this.renderRow)}
