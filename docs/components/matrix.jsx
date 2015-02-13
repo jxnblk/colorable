@@ -46,8 +46,10 @@ module.exports = React.createClass({
     var style = {
       height: isEditing ? '100vh' : '60vh',
       position: isEditing ? 'fixed' : '',
-      top: isEditing ? '3rem' : '',
-      transition: 'height .3s ease-out'
+      top: isEditing ? '1rem' : '',
+      transition: 'height .3s ease-out',
+      paddingTop: '3rem',
+      boxSizing: 'border-box'
     };
     var gridStyle = {
       //overflow: this.state.isEditing ? 'auto' : 'hidden'
@@ -60,9 +62,22 @@ module.exports = React.createClass({
     var toggleButtonStyle = {
       //display: this.state.isEditing ? 'none' : 'inline-block'
     };
+    var toolbarStyle = {
+      top: isEditing ? '' : '-3rem',
+    };
     return (
       <div className="mb3">
-        <div className="relative overflow-y-auto top-0 right-0 bottom-0 left-0 white bg-dark-gray" style={style}>
+        <div className="fixed top-0 left-0 right-0 flex flex-stretch white bg-dark-gray" style={toolbarStyle}>
+          <div className="flex-auto px2 py2">Colorable</div>
+          <div className="px2 py1">
+            <button className="button button-small button-nav-dark"
+              style={toggleButtonStyle}
+              onClick={this.toggleEdit}>
+              Close App
+            </button>
+          </div>
+        </div>
+        <div className="relative overflow-y-auto top-0 right-0 bottom-0 left-0 white bg-darken-4" style={style}>
           <div className="flex">
             <div className="flex-none" style={listStyle}>
               <List {...this.props} colors={colors} handleChange={this.updateColors} />
