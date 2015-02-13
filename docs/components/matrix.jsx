@@ -5,15 +5,15 @@ var colorable = require('../..');
 var Row = require('./row.jsx');
 var List = require('./list.jsx');
 
-var CssLinkForm = require('./css-link-form.jsx');
-var AddColorForm = require('./add-color-form.jsx');
+var Toolbar = require('./toolbar.jsx');
 
 module.exports = React.createClass({
 
   getInitialState: function() {
     return {
       colors: this.props.colors,
-      matrix: colorable(this.props.colors)
+      matrix: colorable(this.props.colors),
+      threshold: 0
     }
   },
 
@@ -22,8 +22,14 @@ module.exports = React.createClass({
     this.updateMatrix();
   },
 
+  updateThreshold: function(threshold) {
+    this.setState({ threshold: threshold }, function() {
+      this.updateMatrix();
+    });
+  },
+
   updateMatrix: function() {
-    var matrix = colorable(this.state.colors);
+    var matrix = colorable(this.state.colors, { threshold: this.state.threshold });
     this.setState({ matrix: matrix });
   },
 
@@ -37,6 +43,7 @@ module.exports = React.createClass({
     var matrix = this.state.matrix;
     var colors = this.state.colors;
     var isEditing = this.props.isEditing;
+    var threshold = this.state.threshold;
     var style = {
       height: isEditing ? '100vh' : '60vh',
       position: isEditing ? 'fixed' : '',
@@ -57,24 +64,14 @@ module.exports = React.createClass({
     var toggleButtonStyle = {
       display: isEditing ? 'none' : 'block',
     };
-    var toolbarStyle = {
-      top: isEditing ? '' : '-3.5rem',
-      transition: 'top .2s ease-out',
-    };
     return (
       <div className="mb3">
-        <div className="fixed top-0 left-0 right-0 z2 flex flex-stretch flex-wrap white bg-dark-gray" style={toolbarStyle}>
-          <div className="p2">Colorable</div>
-          <div className="flex-auto" />
-          <AddColorForm {...this.props} handleChange={this.updateColors} className="py1 mr2" />
-          <CssLinkForm {...this.props} handleChange={this.updateColors} className="py1 mr2" />
-          <div className="p1">
-            <button className="button py1 button-gray"
-              onClick={this.props.toggleEdit}>
-              Done
-            </button>
-          </div>
-        </div>
+        <Toolbar {...this.props}
+          isEditing={isEditing}
+          threshold={threshold}
+          updateThreshold={this.updateThreshold}
+          handleChange={this.updateColors}
+          />
         <div className="relative overflow-y-auto top-0 right-0 bottom-0 left-0 z1 white bg-dark-gray" style={style}>
           <div className="flex">
             <div className="flex-none" style={listStyle}>

@@ -17,7 +17,8 @@ module.exports = React.createClass({
 
   getInitialState: function() {
     return {
-      colors: this.props.colors
+      colors: this.props.colors,
+      isOpen: false
     }
   },
 
@@ -35,7 +36,7 @@ module.exports = React.createClass({
       }
     });
     colors = _.uniq(colors);
-    this.setState({ colors: colors });
+    this.setState({ colors: colors, isOpen: false });
     this.props.handleChange(this.state.colors);
   },
 
@@ -51,20 +52,38 @@ module.exports = React.createClass({
       });
   },
 
+  toggleForm: function() {
+    var isOpen = !this.state.isOpen;
+    this.setState({ isOpen: isOpen });
+  },
+
   render: function() {
     var colors = this.state.colors;
     var formClass = this.props.className += ' flex flex-center';
+    var formStyle = {
+      display: this.state.isOpen ? '' : 'none',
+    };
+    var toggleStyle = {
+      display: this.state.isOpen ? 'none' : '',
+    };
     return (
-      <form onSubmit={this.getCss} className={this.props.className}>
-        <label className="h5 bold mr1">CSS</label>
-        <input type="text"
-          ref="url"
-          placeholder="CORS-Enabled CSS Link"
-          className="flex-auto mb0 mr1 field-dark"/>
-        <button className="flex-none button button-blue">
-          Get
+      <div>
+        <button className="button-nav-dark" style={toggleStyle} onClick={this.toggleForm}>
+          CSS
         </button>
-      </form>
+        <form onSubmit={this.getCss}
+          style={formStyle}
+          className={this.props.className}>
+          <label className="hide h5 bold mr1">CSS</label>
+          <input type="text"
+            ref="url"
+            placeholder="CORS-Enabled CSS Link"
+            className="flex-auto mb0 mr1 field-dark"/>
+          <button className="flex-none button button-blue">
+            Get
+          </button>
+        </form>
+      </div>
     )
   }
 
