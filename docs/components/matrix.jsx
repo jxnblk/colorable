@@ -13,8 +13,7 @@ module.exports = React.createClass({
   getInitialState: function() {
     return {
       colors: this.props.colors,
-      matrix: colorable(this.props.colors),
-      isEditing: true
+      matrix: colorable(this.props.colors)
     }
   },
 
@@ -28,11 +27,6 @@ module.exports = React.createClass({
     this.setState({ matrix: matrix });
   },
 
-  toggleEdit: function() {
-    var isEditing = !this.state.isEditing;
-    this.setState({ isEditing: isEditing });
-  },
-
   renderRow: function(color) {
     return (
       <Row {...color} />
@@ -42,7 +36,7 @@ module.exports = React.createClass({
   render: function() {
     var matrix = this.state.matrix;
     var colors = this.state.colors;
-    var isEditing = this.state.isEditing;
+    var isEditing = this.props.isEditing;
     var style = {
       height: isEditing ? '100vh' : '60vh',
       position: isEditing ? 'fixed' : '',
@@ -69,18 +63,19 @@ module.exports = React.createClass({
     };
     return (
       <div className="mb3">
-        <div className="fixed top-0 left-0 right-0 z1 flex flex-stretch flex-wrap white bg-dark-gray" style={toolbarStyle}>
-          <div className="button py2 flex-auto px2 py2">Colorable</div>
+        <div className="fixed top-0 left-0 right-0 z2 flex flex-stretch flex-wrap white bg-dark-gray" style={toolbarStyle}>
+          <div className="p2">Colorable</div>
+          <div className="flex-auto" />
           <AddColorForm {...this.props} handleChange={this.updateColors} className="py1 mr2" />
           <CssLinkForm {...this.props} handleChange={this.updateColors} className="py1 mr2" />
           <div className="p1">
             <button className="button py1 button-gray"
-              onClick={this.toggleEdit}>
+              onClick={this.props.toggleEdit}>
               Done
             </button>
           </div>
         </div>
-        <div className="relative overflow-y-auto top-0 right-0 bottom-0 left-0 white bg-dark-gray" style={style}>
+        <div className="relative overflow-y-auto top-0 right-0 bottom-0 left-0 z1 white bg-dark-gray" style={style}>
           <div className="flex">
             <div className="flex-none" style={listStyle}>
               <List {...this.props} colors={colors} handleChange={this.updateColors} />
@@ -91,7 +86,7 @@ module.exports = React.createClass({
           </div>
           <button className="absolute top-0 right-0 m2 button button-small button-nav-dark rounded bg-dark-gray"
             style={toggleButtonStyle}
-            onClick={this.toggleEdit}>
+            onClick={this.props.toggleEdit}>
             Toggle App
           </button>
         </div>
