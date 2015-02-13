@@ -11,6 +11,8 @@
   "license": "MIT",
   "dependencies": {
     "color": "^0.7.3",
+    "cssstats": "^1.2.1",
+    "get-css": "^0.2.0",
     "lodash": "^3.1.0"
   },
   "devDependencies": {
@@ -25,8 +27,10 @@
     "marked": "^0.3.3",
     "marked-example": "^1.0.4",
     "node-jsx": "^0.12.4",
+    "postcss": "^4.0.3",
     "react": "^0.12.2",
     "reactify": "^1.0.0",
+    "superagent": "^0.21.0",
     "vinyl-transform": "^1.0.0"
   },
   "directories": {

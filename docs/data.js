@@ -2,15 +2,20 @@
 var fs = require('fs');
 var path = require('path');
 var marked = require('marked');
-//var colorable = require('..');
+var colors = require('colors.css/js/colors');
 
 var data = require('../package.json');
 var readme = fs.readFileSync(path.join(__dirname, '../README.md'), 'utf8');
 data.readme = marked(readme);
 
-data.colors = require('colors.css/js/colors');
+data.colors = [];
 
-//data.thresholdExample = colorable(data.colors, { compact: true, threshold: 4.5 });
+Object.keys(colors).forEach(function(key) {
+  data.colors.push(colors[key]);
+});
+
+//data.colors = require('colors.css/js/colors');
+
 
 module.exports = data;
 

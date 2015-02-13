@@ -1,80 +1,83 @@
 /** @jsx React.DOM */
 
 var React = require('react');
+var Color = require('color');
 
 module.exports = React.createClass({
 
-  getInitialState: function() {
-    return {
-      colors: this.props.colors
-    }
-  },
-
   updateColor: function(e) {
-    var colors = this.state.colors;
+    var colors = this.props.colors;
     var color = e.target.value;
-    var key = e.target.id;
-    colors[key] = color;
-    this.setState({ colors: colors });
-    this.props.handleChange(this.state.colors);
+    var i = e.target.id;
+    colors[i] = color;
+    //this.setState({ colors: colors });
+    this.props.handleChange(colors);
   },
 
   removeColor: function(e) {
-    var key = e.target.dataset.key;
-    var colors = this.state.colors;
-    delete colors[key];
-    this.setState({ colors: colors });
-    this.props.handleChange(this.state.colors);
+    var i = e.target.dataset.index;
+    var colors = this.props.colors;
+    colors.splice(i, 1);
+    this.props.handleChange(colors);
   },
 
   addColor: function(e) {
     e.preventDefault();
     var value = e.target[0].value;
     e.target[0].value = '';
-    var key = 'new-color-' + Math.floor(Math.random()*90000);
-    var colors = this.state.colors;
-    colors[key] = value;
-    this.setState({ colors: colors });
-    this.props.handleChange(this.state.colors);
+    var colors = this.props.colors;
+    colors[colors.length] = value;
+    this.props.handleChange(colors);
   },
 
-  renderItem: function(key) {
-    var color = this.state.colors[key];
+  renderItem: function(key, i) {
+    var color = this.props.colors[i];
+    var light = Color(color).light();
+    var style = {
+      height: '5rem',
+      color: light ? '#111' : 'white',
+      backgroundColor: color
+    };
+    var inputClass = 'bold full-width m0 not-rounded field-transparent ' + (light ? 'black' : 'white');
+    var buttonClass = 'h3 button button-narrow button-muted ' + (light ? 'black' : 'white');
     return (
-      <li className="flex flex-stretch">
-        <input type="text"
-          id={key}
-          className="full-width m0 not-rounded field-dark"
-          value={color}
-          onChange={this.updateColor} />
-        <a href="#!"
-          data-key={key}
-          onClick={this.removeColor}
-          className="h3 button button-narrow button-nav-dark"
-          title="Remove color">
-            &times;
-        </a>
+      <li className="" style={style}>
+        <div className="flex flex-stretch">
+          <input type="text"
+            id={i}
+            className={inputClass}
+            value={color}
+            onChange={this.updateColor} />
+          <a href="#!"
+            data-index={i}
+            onClick={this.removeColor}
+            className={buttonClass}
+            title="Remove color">
+              &times;
+          </a>
+        </div>
       </li>
     )
   },
 
   render: function() {
-    var colors = this.state.colors;
+    var colors = this.props.colors;
+    console.log('list', colors[0]);
     return (
-      <ul className="list-reset">
-        {Object.keys(colors).map(this.renderItem)}
-        <li className="mt3">
-          <form onSubmit={this.addColor}>
-            <label className="h5 bold block">Add Color</label>
-            <div className="flex">
-              <input type="text" className="flex-auto mb0 mr1 field-dark"/>
-              <button className="flex-none button button-blue">
-                Add
-              </button>
-            </div>
-          </form>
-        </li>
-      </ul>
+      <div>
+        <ul className="list-reset">
+          {colors.map(this.renderItem)}
+        </ul>
+        <form className="p2" onSubmit={this.addColor}>
+          <label className="h5 bold block">Add Color</label>
+          <div className="flex">
+            <input type="text" className="flex-auto mb0 mr1 field-dark"/>
+            <button className="flex-none button button-blue">
+              Add
+            </button>
+          </div>
+        </form>
+      </div>
     )
   }
 
