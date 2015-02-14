@@ -55,17 +55,19 @@ module.exports = React.createClass({
               {this.renderBadge()}
             </div>
           </div>
-          <h2 className="h1">Perception of Hues</h2>
+          <h2 className="h1">Contrast</h2>
           <p className="">Contrast is the difference in luminance or color that makes an object (or its representation in an image or display) distinguishable. In visual perception of the real world, contrast is determined by the difference in the color and brightness of the object and other objects within the same field of view. Because the human visual system is more sensitive to contrast than absolute luminance, we can perceive the world similarly regardless of the huge changes in illumination over the day or from place to place. The maximum contrast of an image is the contrast ratio or dynamic range.</p>
         </div>
-        <div className="">
+        <div className="p3">
           <label>Foreground</label>
           <input type="text"
             className="block full-width field-light"
+            readOnly
             value={color} />
           <label>Background</label>
           <input type="text"
             className="block full-width field-light"
+            readOnly
             value={backgroundColor} />
         </div>
       </div>

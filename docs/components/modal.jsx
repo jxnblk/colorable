@@ -10,6 +10,12 @@ var React = require('react');
 
 module.exports = React.createClass({
 
+  getDefaultProps: function() {
+    return {
+      flush: false
+    }
+  },
+
   close: function(e) {
     this.props.onDismiss(e);
   },
@@ -26,6 +32,7 @@ module.exports = React.createClass({
       margin: 'auto',
       boxShadow: '0 4px 4px rgba(0,0,0,.1)',
     };
+    var bodyClass = this.props.flush ? '' : 'p2';
     return (
       <div className="fixed top-0 right-0 bottom-0 left-0 z4 flex flex-center p2 overflow-auto bg-darken-4"
         style={containerStyle}>
@@ -40,7 +47,7 @@ module.exports = React.createClass({
               &times;
             </button>
           </div>
-          <div className="p2">
+          <div className={bodyClass}>
             {this.props.children}
           </div>
         </div>

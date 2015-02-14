@@ -3,7 +3,6 @@
 var React = require('react');
 
   //var CssLinkForm = require('./css-link-form.jsx');
-var AddColorForm = require('./add-color-form.jsx');
 var ThresholdToggle = require('./threshold-toggle.jsx');
 
 module.exports = React.createClass({
@@ -20,9 +19,6 @@ module.exports = React.createClass({
         <div className="flex-auto" />
         <ThresholdToggle {...this.props}
           updateThreshold={this.props.updateThreshold}
-          className="py1 mr2" />
-        <AddColorForm {...this.props}
-          handleChange={this.props.handleChange}
           className="py1 mr2" />
         {/*
         <CssLinkForm {...this.props}

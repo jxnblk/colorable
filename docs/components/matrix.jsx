@@ -5,8 +5,9 @@ var colorable = require('../..');
 
 var Modal = require('./modal.jsx');
 
-var Row = require('./row.jsx');
-var List = require('./list.jsx');
+var MatrixRow = require('./matrix-row.jsx');
+var AddColorForm = require('./add-color-form.jsx');
+var ColorList = require('./color-list.jsx');
 var Toolbar = require('./toolbar.jsx');
 var ColorPreview = require('./color-preview.jsx');
 
@@ -45,9 +46,15 @@ module.exports = React.createClass({
     this.setState({ modalColor: false });
   },
 
+  addColor: function(color) {
+    var colors = this.state.colors;
+    colors.push('#000');
+    this.updateColors(colors);
+  },
+
   renderRow: function(color) {
     return (
-      <Row {...color} openModal={this.openModal} />
+      <MatrixRow {...color} openModal={this.openModal} />
     )
   },
 
@@ -68,14 +75,15 @@ module.exports = React.createClass({
       marginTop: isEditing ? '3.25rem' : '',
     };
     var listStyle = {
-      width: '16rem',
+      width: '10rem',
       marginTop: isEditing ? '3.25rem' : '',
-      marginLeft: isEditing ? '0' : '-16rem',
+      marginLeft: isEditing ? '0' : '-10rem',
       transition: 'margin .2s ease-out'
     };
     var toggleButtonStyle = {
       display: isEditing ? 'none' : 'block',
     };
+    var modalHeader = modalColor ? modalColor.hex + ' on ' + modalColor.combo.hex : 'Blank';
     return (
       <div className="mb3">
         <Toolbar {...this.props}
@@ -87,7 +95,13 @@ module.exports = React.createClass({
         <div className="relative overflow-y-auto top-0 right-0 bottom-0 left-0 z1 white bg-dark-gray" style={style}>
           <div className="flex">
             <div className="flex-none" style={listStyle}>
-              <List {...this.props} colors={colors} handleChange={this.updateColors} />
+              <ColorList {...this.props} colors={colors} handleChange={this.updateColors} />
+              <div className="center p2">
+                <button className="button-blue"
+                  onClick={this.addColor}>
+                  Add Color
+                </button>
+              </div>
             </div>
             <div className="flex-auto overflow-x-auto" style={gridStyle}>
               {matrix.map(this.renderRow)}
@@ -100,8 +114,9 @@ module.exports = React.createClass({
           </button>
         </div>
         <Modal
-          header="Preview"
+          header={modalHeader}
           onDismiss={this.closeModal}
+          flush={true}
           isOpen={modalIsOpen}>
             <ColorPreview {...modalColor} />
         </Modal>
