@@ -13,6 +13,7 @@ module.exports = React.createClass({
     var self = this;
     var buttons = [
       { text: 'None', value: 0 },
+      { text: 'AA Large', value: 3 },
       { text: 'AA', value: 4.5 },
       { text: 'AAA', value: 7 },
     ];
@@ -40,8 +41,10 @@ module.exports = React.createClass({
         </label>
       );
     };
+    var formClass = 'flex flex-center ';
+    formClass += this.props.className;
     return (
-      <form className="flex flex-center">
+      <form className={formClass}>
         <label className="h5 bold mr1">Minimum Level</label>
         {buttons.map(renderButton)}
       </form>

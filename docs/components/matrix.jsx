@@ -4,6 +4,7 @@ var React = require('react');
 var colorable = require('../..');
 var Row = require('./row.jsx');
 var List = require('./list.jsx');
+var Modal = require('./modal.jsx');
 
 var Toolbar = require('./toolbar.jsx');
 
@@ -87,6 +88,13 @@ module.exports = React.createClass({
             Toggle App
           </button>
         </div>
+        {/*
+        <Modal
+          header="Modal"
+          isOpen={true}>
+          Modal test
+        </Modal>
+        */}
         <p className="right-align h5 px2 mt1">
           Colors from
           <a href="//clrs.cc">mrmrs/colors</a>

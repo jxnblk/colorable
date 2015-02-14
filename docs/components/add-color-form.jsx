@@ -3,6 +3,8 @@
 var React = require('react');
 var Color = require('color');
 
+var Modal = require('./modal.jsx');
+
 module.exports = React.createClass({
 
   getInitialState: function() {
@@ -27,30 +29,28 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var formClass = 'flex flex-center';
     var isOpen = this.state.isOpen;
     var wrapperClass = this.props.className + ' ';
-    wrapperClass += isOpen ? 'flex-auto' : '';
-    var toggleStyle = {
-      display: isOpen ? 'none' : ''
-    };
-    var formStyle = {
-      display: isOpen ? '' : 'none'
-    };
+    //wrapperClass += isOpen ? 'flex-auto' : '';
+    console.log('color form', isOpen);
     return (
       <div className={wrapperClass}>
-        <button className="button-nav-dark" style={toggleStyle} onClick={this.toggleForm}>
+        <button className="button-nav-dark"
+          onClick={this.toggleForm}>
           Add Color
         </button>
-        <form className={formClass}
-          style={formStyle}
-          onSubmit={this.addColor}>
-          <label className="hide h5 bold mr1">Add Color</label>
-          <input type="text" className="flex-auto mb0 mr1 field-dark"/>
-          <button className="flex-none button button-blue">
-            Add
-          </button>
-        </form>
+        <Modal isOpen={isOpen}
+          onDismiss={this.toggleForm}
+          header="Add Color">
+          <form className=""
+            onSubmit={this.addColor}>
+            <label className="h5 bold block">Add Color</label>
+            <input type="text" className="block full-width field-light"/>
+            <button className="flex-none button button-blue">
+              Add
+            </button>
+          </form>
+        </Modal>
       </div>
     )
   }
