@@ -12,7 +12,7 @@ module.exports = React.createClass({
   render: function() {
     var self = this;
     var buttons = [
-      { text: 'All', value: 0 },
+      { text: 'None', value: 0 },
       { text: 'AA', value: 4.5 },
       { text: 'AAA', value: 7 },
     ];
@@ -42,7 +42,7 @@ module.exports = React.createClass({
     };
     return (
       <form className="flex flex-center">
-        <label className="h5 bold mr1">Minimum Contrast</label>
+        <label className="h5 bold mr1">Minimum Level</label>
         {buttons.map(renderButton)}
       </form>
     )

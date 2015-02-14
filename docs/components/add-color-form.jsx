@@ -27,8 +27,10 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var formClass = this.props.className += ' flex flex-center';
+    var formClass = 'flex flex-center';
     var isOpen = this.state.isOpen;
+    var wrapperClass = this.props.className + ' ';
+    wrapperClass += isOpen ? 'flex-auto' : '';
     var toggleStyle = {
       display: isOpen ? 'none' : ''
     };
@@ -36,7 +38,7 @@ module.exports = React.createClass({
       display: isOpen ? '' : 'none'
     };
     return (
-      <div>
+      <div className={wrapperClass}>
         <button className="button-nav-dark" style={toggleStyle} onClick={this.toggleForm}>
           Add Color
         </button>

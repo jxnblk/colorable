@@ -59,21 +59,24 @@ module.exports = React.createClass({
 
   render: function() {
     var colors = this.state.colors;
-    var formClass = this.props.className += ' flex flex-center';
+    var isOpen = this.state.isOpen;
+    var wrapperClass = this.props.className + ' ';
+    wrapperClass += isOpen ? 'flex-auto' : '';
+    var formClass = 'flex flex-center';
     var formStyle = {
-      display: this.state.isOpen ? '' : 'none',
+      display: isOpen ? '' : 'none',
     };
     var toggleStyle = {
-      display: this.state.isOpen ? 'none' : '',
+      display: isOpen ? 'none' : '',
     };
     return (
-      <div>
+      <div className={wrapperClass}>
         <button className="button-nav-dark" style={toggleStyle} onClick={this.toggleForm}>
           CSS
         </button>
         <form onSubmit={this.getCss}
           style={formStyle}
-          className={this.props.className}>
+          className={formClass}>
           <label className="hide h5 bold mr1">CSS</label>
           <input type="text"
             ref="url"
