@@ -20,7 +20,7 @@ gulp.task('js', function() {
   });
   gulp.src('./docs/app.js')
     .pipe(browserified)
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(rename({ extname: '.min.js' }))
     .pipe(gulp.dest('.'));
 });

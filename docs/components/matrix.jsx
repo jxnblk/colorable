@@ -2,11 +2,13 @@
 
 var React = require('react');
 var colorable = require('../..');
-var Row = require('./row.jsx');
-var List = require('./list.jsx');
+
 var Modal = require('./modal.jsx');
 
+var Row = require('./row.jsx');
+var List = require('./list.jsx');
 var Toolbar = require('./toolbar.jsx');
+var ColorPreview = require('./color-preview.jsx');
 
 module.exports = React.createClass({
 
@@ -14,7 +16,8 @@ module.exports = React.createClass({
     return {
       colors: this.props.colors,
       matrix: colorable(this.props.colors),
-      threshold: 0
+      threshold: 0,
+      modalColor: false
     }
   },
 
@@ -34,9 +37,17 @@ module.exports = React.createClass({
     this.setState({ matrix: matrix });
   },
 
+  openModal: function(color) {
+    this.setState({ modalColor: color });
+  },
+
+  closeModal: function() {
+    this.setState({ modalColor: false });
+  },
+
   renderRow: function(color) {
     return (
-      <Row {...color} />
+      <Row {...color} openModal={this.openModal} />
     )
   },
 
@@ -45,12 +56,12 @@ module.exports = React.createClass({
     var colors = this.state.colors;
     var isEditing = this.props.isEditing;
     var threshold = this.state.threshold;
+    var modalIsOpen = !!this.state.modalColor;
+    var modalColor = this.state.modalColor;
     var style = {
       height: isEditing ? '100vh' : '60vh',
       position: isEditing ? 'fixed' : '',
-      //top: isEditing ? '1rem' : '',
       transition: 'height .3s ease-out',
-      //paddingTop: '3rem',
       boxSizing: 'border-box'
     };
     var gridStyle = {
@@ -88,13 +99,12 @@ module.exports = React.createClass({
             Toggle App
           </button>
         </div>
-        {/*
         <Modal
-          header="Modal"
-          isOpen={true}>
-          Modal test
+          header="Preview"
+          onDismiss={this.closeModal}
+          isOpen={modalIsOpen}>
+            <ColorPreview {...modalColor} />
         </Modal>
-        */}
         <p className="right-align h5 px2 mt1">
           Colors from
           <a href="//clrs.cc">mrmrs/colors</a>

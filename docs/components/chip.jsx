@@ -21,6 +21,11 @@ module.exports = React.createClass({
     }
   },
 
+  openModal: function() {
+    console.log('openmodal', this.props);
+    this.props.openModal(this.props);
+  },
+
   render: function() {
     var style = {
       width: '8rem',
@@ -31,6 +36,7 @@ module.exports = React.createClass({
     var title = this.props.hex + ' on ' + this.props.combo.hex;
     return (
       <div className="center bold flex-none p2"
+        onClick={this.openModal}
         title={title}
         style={style}>
         <div>{contrast}</div>

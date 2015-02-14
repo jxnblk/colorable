@@ -31,8 +31,6 @@ module.exports = React.createClass({
   render: function() {
     var isOpen = this.state.isOpen;
     var wrapperClass = this.props.className + ' ';
-    //wrapperClass += isOpen ? 'flex-auto' : '';
-    console.log('color form', isOpen);
     return (
       <div className={wrapperClass}>
         <button className="button-nav-dark"

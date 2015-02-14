@@ -45,7 +45,7 @@ module.exports = React.createClass({
     formClass += this.props.className;
     return (
       <form className={formClass}>
-        <label className="h5 bold mr1">Minimum Level</label>
+        <label className="h5 bold mr1">Threshold</label>
         {buttons.map(renderButton)}
       </form>
     )

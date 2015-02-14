@@ -30,7 +30,7 @@ module.exports = React.createClass({
           className="py1 mr2" />
         */}
         <div className="p1">
-          <button className="button py1 button-nav-dark bg-darken-4"
+          <button className="button py1 button-nav-dark"
             onClick={this.props.toggleEdit}>
             Done
           </button>

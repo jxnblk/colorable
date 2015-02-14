@@ -2,31 +2,15 @@
 
 var React = require('react');
 
+/*
+ * To do:
+ * - Esc keyboard shortcut
+ * - transition/animation
+ */
+
 module.exports = React.createClass({
 
-  //getDefaultProps: function() {
-  //  return {
-  //    //isOpen: false,
-  //    //onDismiss: function() {},
-  //  }
-  //},
-
-  /*
-  getInitialState: function() {
-    console.log('initial state');
-    return {
-      isOpen: this.props.isOpen,
-    }
-  },
-
-  open: function() {
-    this.setState({ isOpen: true });
-  },
-  */
-
   close: function(e) {
-    //this.setState({ isOpen: false });
-    e.stopPropagation();
     this.props.onDismiss(e);
   },
 
@@ -43,7 +27,7 @@ module.exports = React.createClass({
       boxShadow: '0 4px 4px rgba(0,0,0,.1)',
     };
     return (
-      <div className="fixed top-0 right-0 bottom-0 left-0 z4 flex flex-center p2 overflow-auto"
+      <div className="fixed top-0 right-0 bottom-0 left-0 z4 flex flex-center p2 overflow-auto bg-darken-4"
         style={containerStyle}>
         <div className="absolute top-0 right-0 bottom-0 left-0"
           onClick={this.close}/>
