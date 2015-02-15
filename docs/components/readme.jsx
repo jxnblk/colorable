@@ -7,7 +7,7 @@ module.exports = React.createClass({
   render: function() {
     var html = this.props.readme;
     var style = {
-      position: this.props.isEditing ? 'fixed' : ''
+      position: this.props.isApp ? 'fixed' : ''
     };
     return (
       <div style={style}>

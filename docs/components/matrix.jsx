@@ -61,33 +61,36 @@ module.exports = React.createClass({
   render: function() {
     var matrix = this.state.matrix;
     var colors = this.state.colors;
-    var isEditing = this.props.isEditing;
+    var isApp = this.props.isApp;
     var threshold = this.state.threshold;
     var modalIsOpen = !!this.state.modalColor;
     var modalColor = this.state.modalColor;
     var style = {
-      height: isEditing ? '100vh' : '60vh',
-      position: isEditing ? 'fixed' : '',
+      height: isApp ? '100vh' : '60vh',
+      position: isApp ? 'fixed' : '',
       transition: 'height .3s ease-out',
       boxSizing: 'border-box'
     };
     var gridStyle = {
-      marginTop: isEditing ? '3.25rem' : '',
+      marginTop: isApp ? '3.25rem' : '',
     };
     var listStyle = {
       width: '10rem',
-      marginTop: isEditing ? '3.25rem' : '',
-      marginLeft: isEditing ? '0' : '-10rem',
+      marginTop: isApp ? '3.25rem' : '',
+      marginLeft: isApp ? '0' : '-10rem',
       transition: 'margin .2s ease-out'
     };
     var toggleButtonStyle = {
-      display: isEditing ? 'none' : 'block',
+      display: isApp ? 'none' : 'block',
+    };
+    var bottomBarStyle = {
+      display: isApp ? '' : 'none'
     };
     var modalHeader = modalColor ? modalColor.hex + ' on ' + modalColor.combo.hex : 'Blank';
     return (
       <div className="mb3">
         <Toolbar {...this.props}
-          isEditing={isEditing}
+          isApp={isApp}
           threshold={threshold}
           updateThreshold={this.updateThreshold}
           handleChange={this.updateColors}
@@ -96,7 +99,7 @@ module.exports = React.createClass({
           <div className="flex">
             <div className="flex-none" style={listStyle}>
               <ColorList {...this.props} colors={colors} handleChange={this.updateColors} />
-              <div className="center p2">
+              <div className="center p2" style={bottomBarStyle}>
                 <button className="button-blue"
                   onClick={this.addColor}>
                   Add Color
@@ -109,7 +112,7 @@ module.exports = React.createClass({
           </div>
           <button className="absolute top-0 right-0 m2 button button-small button-nav-dark rounded bg-dark-gray"
             style={toggleButtonStyle}
-            onClick={this.props.toggleEdit}>
+            onClick={this.props.toggleApp}>
             Toggle App
           </button>
         </div>

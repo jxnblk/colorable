@@ -9,20 +9,20 @@ module.exports = React.createClass({
 
   getInitialState: function() {
     return {
-      isEditing: true
+      isApp: true
     }
   },
 
-  toggleEdit: function() {
-    var isEditing = !this.state.isEditing;
-    this.setState({ isEditing: isEditing });
+  toggleApp: function() {
+    var isApp = !this.state.isApp;
+    this.setState({ isApp: isApp });
   },
 
   render: function() {
     return (
       <div>
-        <Matrix {...this.props} isEditing={this.state.isEditing} toggleEdit={this.toggleEdit} />
-        <Readme {...this.props} isEditing={this.state.isEditing} />
+        <Matrix {...this.props} isApp={this.state.isApp} toggleApp={this.toggleApp} />
+        <Readme {...this.props} isApp={this.state.isApp} />
       </div>
     )
   }

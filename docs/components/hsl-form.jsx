@@ -20,7 +20,9 @@ module.exports = React.createClass({
       s: this.state.saturation,
       l: this.state.lightness
     }).hexString();
-    this.props.updateHex(hex);
+    if (hex != this.props.color) {
+      this.props.updateHex(hex);
+    }
   },
 
   updateHue: function(e) {
