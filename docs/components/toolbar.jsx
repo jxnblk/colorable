@@ -15,7 +15,7 @@ module.exports = React.createClass({
     };
     return (
       <div className="fixed top-0 left-0 right-0 z2 flex flex-center flex-wrap white bg-dark-gray" style={toolbarStyle}>
-        <div className="bold p2">Colorable</div>
+        <a href="#!" className="button py2 button-nav-light white" onClick={this.props.toggleEdit}>Colorable</a>
         <div className="flex-auto" />
         <ThresholdToggle {...this.props}
           updateThreshold={this.props.updateThreshold}
@@ -26,9 +26,10 @@ module.exports = React.createClass({
           className="py1 mr2" />
         */}
         <div className="p1">
-          <button className="button py1 button-nav-dark"
+          <button className="h3 button py1 button-muted white"
+            title="Exit app mode"
             onClick={this.props.toggleEdit}>
-            Done
+            &times;
           </button>
         </div>
       </div>
