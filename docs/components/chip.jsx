@@ -22,7 +22,6 @@ module.exports = React.createClass({
   },
 
   openModal: function() {
-    console.log('openmodal', this.props);
     this.props.openModal(this.props);
   },
 
@@ -30,7 +29,8 @@ module.exports = React.createClass({
     var style = {
       width: '8rem',
       color: this.props.hex,
-      backgroundColor: this.props.combo.hex
+      backgroundColor: this.props.combo.hex,
+      cursor: 'pointer'
     };
     var contrast = this.props.combo.contrast.toFixed(2);
     var title = this.props.hex + ' on ' + this.props.combo.hex;

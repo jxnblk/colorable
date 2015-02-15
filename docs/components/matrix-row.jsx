@@ -15,7 +15,7 @@ module.exports = React.createClass({
 
   render: function() {
     var style = {
-      height: '5rem'
+      height: '6rem'
     };
     return (
       <div className="flex flex-stretch" style={style}>

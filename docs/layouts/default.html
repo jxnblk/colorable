@@ -11,6 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://d2v52k3cl9vedd.cloudfront.net/bassdock/0.1.0/bassdock.min.css">
   <style>
+    .lh1 { line-height: 1 }
     .overflow-y-auto { overflow-y: auto }
     .overflow-y-visible { overflow-y: visible }
     .overflow-x-auto { overflow-x: auto }
@@ -19,19 +20,34 @@
     .black { color: #111 }
     .border-black { border-color: #111 }
     .field-transparent {
+      color: inherit;
       background-color: transparent;
       border: none;
     }
     .field-transparent:focus {
       outline: none;
-      background-color: rgba(0,0,0,.5);
+      background-color: rgba(0,0,0,.25);
+      border: 1px solid rgba(255,255,255,.25);
     }
     .button-muted { 
+      color: inherit;
       background-color: transparent;
       opacity: 0.5;
     }
     .button-muted:hover {
       opacity: 1;
+    }
+    .button-muted:focus {
+      opacity: 1;
+      outline: none;
+      border: 1px solid;
+    }
+    /* Edit in Bassdock/Blk etc */
+    .range-light {
+      color: inherit;
+    }
+    .range-light::-webkit-slider-runnable-track {
+      background-color: rgba(0,0,0,.25);
     }
   </style>
 </head>

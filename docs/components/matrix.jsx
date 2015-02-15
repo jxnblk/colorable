@@ -6,7 +6,6 @@ var colorable = require('../..');
 var Modal = require('./modal.jsx');
 
 var MatrixRow = require('./matrix-row.jsx');
-var AddColorForm = require('./add-color-form.jsx');
 var ColorList = require('./color-list.jsx');
 var Toolbar = require('./toolbar.jsx');
 var ColorPreview = require('./color-preview.jsx');
@@ -18,7 +17,7 @@ module.exports = React.createClass({
       colors: this.props.colors,
       matrix: colorable(this.props.colors),
       threshold: 0,
-      modalColor: false
+      modalColor: false,
     }
   },
 
@@ -34,8 +33,11 @@ module.exports = React.createClass({
   },
 
   updateMatrix: function() {
-    var matrix = colorable(this.state.colors, { threshold: this.state.threshold });
-    this.setState({ matrix: matrix });
+    try {
+      var matrix = colorable(this.state.colors, { threshold: this.state.threshold });
+      this.setState({ matrix: matrix });
+    } catch(e) {
+    }
   },
 
   openModal: function(color) {
@@ -44,12 +46,6 @@ module.exports = React.createClass({
 
   closeModal: function() {
     this.setState({ modalColor: false });
-  },
-
-  addColor: function(color) {
-    var colors = this.state.colors;
-    colors.push('#000');
-    this.updateColors(colors);
   },
 
   renderRow: function(color) {
@@ -65,6 +61,7 @@ module.exports = React.createClass({
     var threshold = this.state.threshold;
     var modalIsOpen = !!this.state.modalColor;
     var modalColor = this.state.modalColor;
+
     var style = {
       height: isApp ? '100vh' : '60vh',
       position: isApp ? 'fixed' : '',
@@ -73,11 +70,11 @@ module.exports = React.createClass({
     };
     var gridStyle = {
       marginTop: isApp ? '3.25rem' : '',
+      transition: 'margin .2s ease-out'
     };
     var listStyle = {
-      width: '10rem',
       marginTop: isApp ? '3.25rem' : '',
-      marginLeft: isApp ? '0' : '-10rem',
+      marginLeft: isApp ? '0' : '-6rem',
       transition: 'margin .2s ease-out'
     };
     var toggleButtonStyle = {
@@ -86,9 +83,11 @@ module.exports = React.createClass({
     var bottomBarStyle = {
       display: isApp ? '' : 'none'
     };
+
     var modalHeader = modalColor ? modalColor.hex + ' on ' + modalColor.combo.hex : 'Blank';
+
     return (
-      <div className="mb3">
+      <div className="relative mb3">
         <Toolbar {...this.props}
           isApp={isApp}
           threshold={threshold}
@@ -98,37 +97,38 @@ module.exports = React.createClass({
         <div className="relative overflow-y-auto top-0 right-0 bottom-0 left-0 z1 white bg-dark-gray" style={style}>
           <div className="flex">
             <div className="flex-none" style={listStyle}>
-              <ColorList {...this.props} colors={colors} handleChange={this.updateColors} />
-              <div className="center p2" style={bottomBarStyle}>
-                <button className="button-blue"
-                  onClick={this.addColor}>
-                  Add Color
-                </button>
-              </div>
+              <ColorList {...this.props}
+                colors={colors}
+                updateColors={this.updateColors} />
             </div>
             <div className="flex-auto overflow-x-auto" style={gridStyle}>
               {matrix.map(this.renderRow)}
             </div>
           </div>
-          <button className="absolute top-0 right-0 m2 button button-small button-nav-dark rounded bg-dark-gray"
-            style={toggleButtonStyle}
-            onClick={this.props.toggleApp}>
-            Toggle App
-          </button>
         </div>
         <Modal
           header={modalHeader}
           onDismiss={this.closeModal}
           flush={true}
           isOpen={modalIsOpen}>
-            <ColorPreview {...modalColor} />
+          <ColorPreview {...modalColor} />
         </Modal>
-        <p className="right-align h5 px2 mt1">
-          Colors from
-          <a href="//clrs.cc">mrmrs/colors</a>
-        </p>
+        <div className="flex flex-center py1">
+          <div className="flex-auto px2">
+            <button className="button button-small button-light-gray"
+              style={toggleButtonStyle}
+              onClick={this.props.toggleApp}>
+              View Demo
+            </button>
+          </div>
+          <p className="h5 px2">
+            Colors from
+            <a href="//clrs.cc">mrmrs/colors</a>
+          </p>
+        </div>
       </div>
     )
+
   }
 
 });

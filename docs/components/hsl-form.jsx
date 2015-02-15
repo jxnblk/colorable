@@ -21,7 +21,7 @@ module.exports = React.createClass({
       l: this.state.lightness
     }).hexString();
     if (hex != this.props.color) {
-      this.props.updateHex(hex);
+      this.props.updateColor(hex);
     }
   },
 
@@ -45,10 +45,12 @@ module.exports = React.createClass({
 
   renderSlider: function(facet) {
     return (
-      <div className="col-4 px1">
-        <label>{facet.label}</label>
+      <div className="px1">
+        <label className="h5 bold block">
+          {facet.label}
+        </label>
         <input type="range"
-          className="full-width black range-light"
+          className="full-width m0 range-light"
           value={facet.value}
           onChange={facet.onChange}
           min={facet.min}
@@ -59,12 +61,15 @@ module.exports = React.createClass({
   },
 
   componentWillReceiveProps: function(nextProps) {
-    var hsl = Color(nextProps.color).hsl();
-    this.setState({
-      hue: hsl.h,
-      saturation: hsl.s,
-      lightness: hsl.l,
-    });
+    try {
+      var hsl = Color(nextProps.color).hsl();
+      this.setState({
+        hue: hsl.h,
+        saturation: hsl.s,
+        lightness: hsl.l,
+      });
+    } catch(e) {
+    }
   },
 
   render: function() {
@@ -92,7 +97,7 @@ module.exports = React.createClass({
       },
     ];
     return (
-      <form className="flex flex-center flex-wrap mxn1">
+      <form className="flex flex-center">
         {hslArray.map(this.renderSlider)}
       </form>
     )

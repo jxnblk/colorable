@@ -3,57 +3,58 @@
 var React = require('react');
 var Color = require('color');
 
+var HslForm = require('./hsl-form.jsx');
+
 module.exports = React.createClass({
 
-  handleColorChange: function(e) {
+  handleChange: function(e) {
     var hex = e.target.value;
-    this.props.updateColor(hex, this.props.index);
+    this.props.updateColor(hex);
   },
 
-  removeColor: function(e) {
-    e.stopPropagation();
-    this.props.removeColor(this.props.index);
+  edit: function() {
+    if (this.props.isEditing == false) {
+      this.props.toggleEdit();
+    }
   },
 
   render: function() {
-    var self = this;
     var color = this.props.color;
-    var light = Color(color).light();
+    try {
+      var light = Color(color).light();
+    } catch(e) {
+      var light = true; 
+    }
+    var isEditing = this.props.isEditing;
     var style = {
-      height: '5rem',
+      height: '6rem',
       color: light ? '#111' : 'white',
-      backgroundColor: color
+      backgroundColor: color,
     };
-    var inputClass = 'bold full-width m0 not-rounded field-transparent ' + (light ? 'black' : 'white');
-    var labelClass = 'h5 bold flex-auto ' + (light ? 'black' : 'white');
-    var buttonClass = 'button button-narrow button-muted ' + (light ? 'black' : 'white');
-
-    var handleClick = function(e) {
-      self.props.openModal(color, self.props.index);
+    var disclosureStyle = {
+      display: isEditing ? '' : 'none'
     };
-
     return (
-      <div className="flex flex-center px1"
+      <div className="flex flex-column px1"
         style={style}>
-        {/*
-        <input type="text"
-          className={inputClass}
-          value={color}
-          onChange={this.handleColorChange} />
-        */}
-        <div className={labelClass}>{color}</div>
-        <a href="#!" className={buttonClass}
-          onClick={handleClick}>
-          Edit
-        </a>
-        {/*
-        <a href="#!"
-          onClick={this.removeColor}
-          className={buttonClass}
-          title="Remove color">
-            &times;
-        </a>
-        */}
+        <div className="flex-auto flex flex-center">
+          <input type="text"
+            className="h5 bold block full-width m0 field-transparent"
+            value={color}
+            onChange={this.handleChange}
+            onFocus={this.edit}/>
+          <div style={disclosureStyle}>
+            <button className="h3 button-muted"
+              title="Remove Color"
+              tabIndex="-1"
+              onClick={this.props.removeColor}>
+              &times;
+            </button>
+          </div>
+        </div>
+        <div className="flex-auto" style={disclosureStyle}>
+          <HslForm color={color} updateColor={this.props.updateColor} />
+        </div>
       </div>
     )
   }

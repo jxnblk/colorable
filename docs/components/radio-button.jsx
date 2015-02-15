@@ -18,7 +18,6 @@ module.exports = React.createClass({
   },
 
   handleChange: function(e) {
-    console.log(e)
     this.props.onChange(value);
   },
 
