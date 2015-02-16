@@ -4,8 +4,8 @@ var path = require('path');
 var marked = require('marked');
 var colors = require('colors.css/js/colors');
 
-var data = require('../package.json');
-var readme = fs.readFileSync(path.join(__dirname, '../README.md'), 'utf8');
+var data = require('../../package.json');
+var readme = fs.readFileSync(path.join(__dirname, '../../README.md'), 'utf8');
 data.readme = marked(readme);
 
 data.colors = [];

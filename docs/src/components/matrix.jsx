@@ -2,7 +2,7 @@
 
 var React = require('react');
 var qs = require('query-string');
-var colorable = require('../..');
+var colorable = require('../../..');
 
 var Modal = require('./modal.jsx');
 var SuperModal = require('./super-modal.jsx');
@@ -37,7 +37,7 @@ module.exports = React.createClass({
     var colorString = this.state.colors.join('.');
     var params = {
       mode: this.props.isApp ? 'app' : '',
-      colors: colorString,
+      colors: this.props.isApp ? colorString : '',
     };
     var query = '?' + qs.stringify(params);
     window.history.pushState(params, 'Colorable', query);

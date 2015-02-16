@@ -20,6 +20,7 @@ module.exports = React.createClass({
     var header = this.props.header;
     var containerStyle = this.props.style;
     containerStyle.display = isOpen ? '' : 'none';
+    containerStyle.cursor = 'pointer';
     var modalStyle = {
       minWidth: '16rem',
       maxWidth: '48rem',
