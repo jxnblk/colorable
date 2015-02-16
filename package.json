@@ -28,6 +28,7 @@
     "marked-example": "^1.0.4",
     "node-jsx": "^0.12.4",
     "postcss": "^4.0.3",
+    "query-string": "^1.0.0",
     "react": "^0.12.2",
     "reactify": "^1.0.0",
     "superagent": "^0.21.0",

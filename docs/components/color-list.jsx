@@ -92,10 +92,15 @@ module.exports = React.createClass({
         <ul className="relative z1 list-reset mb0" style={style}>
           {colors.map(this.renderItem)}
         </ul>
-        <div className="relative z1 p1 white bg-dark-gray" style={footerStyle}>
-          <button className="button-small button-light-gray"
+        <div className="relative z1 flex flex-center p1 white bg-dark-gray" style={footerStyle}>
+          <button className="button-small button-gray"
             onClick={this.addColor}>
             Add Color
+          </button>
+          <div className="flex-auto" />
+          <button className="button-small button-gray"
+            onClick={this.toggleEdit}>
+            Done
           </button>
         </div>
       </div>

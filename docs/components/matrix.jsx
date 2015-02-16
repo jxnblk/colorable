@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 
 var React = require('react');
+var qs = require('query-string');
 var colorable = require('../..');
 
 var Modal = require('./modal.jsx');
@@ -14,12 +15,32 @@ var ColorPreview = require('./color-preview.jsx');
 module.exports = React.createClass({
 
   getInitialState: function() {
+    var params = {};
+    if (typeof window !== 'undefined') {
+      params = qs.parse(window.location.search);
+    }
+    if (params.colors) {
+      var colors = params.colors.split('.');
+    } else {
+      var colors = this.props.colors
+    }
     return {
-      colors: this.props.colors,
-      matrix: colorable(this.props.colors),
+      colors: colors,
+      matrix: colorable(colors),
       threshold: 0,
       modalColor: false,
     }
+  },
+
+  pushState: function() {
+    if (!window) return false;
+    var colorString = this.state.colors.join('.');
+    var params = {
+      mode: this.props.isApp ? 'app' : '',
+      colors: colorString,
+    };
+    var query = '?' + qs.stringify(params);
+    window.history.pushState(params, 'Colorable', query);
   },
 
   updateColors: function(colors) {
@@ -47,6 +68,14 @@ module.exports = React.createClass({
 
   closeModal: function() {
     this.setState({ modalColor: false });
+  },
+
+  componentDidMount: function() {
+    //this.pushState();
+  },
+
+  componentDidUpdate: function() {
+    this.pushState();
   },
 
   renderRow: function(color) {
