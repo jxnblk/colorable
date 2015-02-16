@@ -70,10 +70,6 @@ module.exports = React.createClass({
     this.setState({ modalColor: false });
   },
 
-  componentDidMount: function() {
-    //this.pushState();
-  },
-
   componentDidUpdate: function() {
     this.pushState();
   },
