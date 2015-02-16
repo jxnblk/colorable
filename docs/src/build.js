@@ -12,6 +12,6 @@ var App = React.createFactory(require('./components/app.jsx'));
 module.exports = function(data) {
   data.app = React.renderToString(App(data));
   var html = template(data);
-  fs.writeFileSync(path.join(__dirname, '../index.html'), html);
+  fs.writeFileSync(path.join(__dirname, '../../index.html'), html);
 };
 

@@ -11,7 +11,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://d2v52k3cl9vedd.cloudfront.net/bassdock/0.1.0/bassdock.min.css">
   <style>
+    .lh1 { line-height: 1 }
+    .overflow-y-auto { overflow-y: auto }
+    .overflow-y-visible { overflow-y: visible }
+    .overflow-x-auto { overflow-x: auto }
     .bg-darken-5 { background-color: #333; background-color: rgba(0,0,0,.8) }
+    .border-dark-gray { border-color: #304650 }
+    .black { color: #111 }
+    .border-black { border-color: #111 }
+    .field-transparent {
+      color: inherit;
+      background-color: transparent;
+      border: none;
+      opacity: 0.75;
+    }
+    .field-transparent:focus {
+      outline: none;
+      opacity: 1;
+    }
+    .button-muted { 
+      color: inherit;
+      background-color: transparent;
+      opacity: 0.5;
+    }
+    .button-muted:hover {
+      opacity: 1;
+    }
+    .button-muted:focus {
+      opacity: 1;
+      outline: none;
+      border: 1px solid;
+    }
+    /* Edit in Bassdock/Blk etc */
+    .range-light {
+      color: inherit;
+    }
+    .range-light::-webkit-slider-runnable-track {
+      background-color: rgba(0,0,0,.25);
+    }
+    @-webkit-keyframes popin {
+      from { opacity: 0; -webkit-transform: scale(.875); }
+        to { opacity: 1; -webkit-transform: scale(1); }
+    }
+    @keyframes popin {
+      from { opacity: 0; transform: scale(.875); }
+        to { opacity: 1; transform: scale(1); }
+    }
+    .popin {
+      -webkit-animation: popin .125s ease-out forwards;
+      animation: popin .125s ease-out forwards;
+    }
   </style>
 </head>
 <body>
@@ -35,7 +84,7 @@
   </div>
 </footer>
 
-<script src="app.min.js"></script>
+<script src="docs/app.min.js"></script>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

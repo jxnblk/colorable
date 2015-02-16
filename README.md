@@ -94,3 +94,14 @@ _Type: Number (default: `0`)_
 
 When set, the colorable function only returns combinations that have a contrast above this value. This is useful for only seeing combinations that pass a minimum contrast level.
 
+### `uniq`
+
+_Type: Boolean (default: true)_
+
+When set to `true`, the array of colors is passed through lodash.uniq to remove duplicates.
+
+
+---
+
+MIT License
+
