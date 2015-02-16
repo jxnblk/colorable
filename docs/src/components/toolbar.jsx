@@ -2,7 +2,6 @@
 
 var React = require('react');
 
-  //var CssLinkForm = require('./css-link-form.jsx');
 var ThresholdToggle = require('./threshold-toggle.jsx');
 
 module.exports = React.createClass({

@@ -14,8 +14,5 @@ Object.keys(colors).forEach(function(key) {
   data.colors.push(colors[key]);
 });
 
-//data.colors = require('colors.css/js/colors');
-
-
 module.exports = data;
 
