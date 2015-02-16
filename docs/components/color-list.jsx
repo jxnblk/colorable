@@ -34,10 +34,11 @@ module.exports = React.createClass({
       colors.splice(i, 1);
       self.updateColors(colors);
     };
+    var isEditing = this.props.isApp ? this.state.isEditing : false;
     return (
       <li>
         <ColorListItem color={color}
-          isEditing={this.state.isEditing}
+          isEditing={isEditing}
           removeColor={removeColor}
           updateColor={updateColor}
           toggleEdit={this.toggleEdit} />

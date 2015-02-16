@@ -46,7 +46,7 @@ module.exports = React.createClass({
   renderSlider: function(facet) {
     return (
       <div className="px1">
-        <label className="h5 bold block">
+        <label className="h5 bold lh1 block">
           {facet.label}
         </label>
         <input type="range"
@@ -55,6 +55,7 @@ module.exports = React.createClass({
           onChange={facet.onChange}
           min={facet.min}
           max={facet.max}
+          tabIndex={this.props.tabIndex}
           />
       </div>
     )
