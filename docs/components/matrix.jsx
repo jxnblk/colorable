@@ -4,6 +4,7 @@ var React = require('react');
 var colorable = require('../..');
 
 var Modal = require('./modal.jsx');
+var SuperModal = require('./super-modal.jsx');
 
 var MatrixRow = require('./matrix-row.jsx');
 var ColorList = require('./color-list.jsx');
@@ -61,6 +62,10 @@ module.exports = React.createClass({
     var threshold = this.state.threshold;
     var modalIsOpen = !!this.state.modalColor;
     var modalColor = this.state.modalColor;
+    var modalStyle = {
+      color: this.state.modalColor ? this.state.modalColor.hex : '#111',
+      backgroundColor: this.state.modalColor ? this.state.modalColor.combo.hex : 'white',
+    };
 
     var style = {
       height: isApp ? '100vh' : '60vh',
@@ -106,13 +111,13 @@ module.exports = React.createClass({
             </div>
           </div>
         </div>
-        <Modal
+        <SuperModal
           header={modalHeader}
           onDismiss={this.closeModal}
-          flush={true}
+          style={modalStyle}
           isOpen={modalIsOpen}>
           <ColorPreview {...modalColor} />
-        </Modal>
+        </SuperModal>
         <div className="flex flex-center py1">
           <div className="flex-auto px2">
             <button className="button button-small button-light-gray"

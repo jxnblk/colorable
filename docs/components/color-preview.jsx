@@ -45,31 +45,17 @@ module.exports = React.createClass({
     };
     var contrast = this.props.combo.contrast.toFixed(2);
     return (
-      <div>
-        <div className="p3 mb2"
-          style={previewStyle}>
-          <div className="flex flex-center flex-wrap mxn2">
-            <h1 className="h00 h00-responsive flex-auto px2 m0">Aa</h1>
-            <div className="bold px2">{contrast}</div>
-            <div className="px2">
-              {this.renderBadge()}
-            </div>
+      <div className="mb2"
+        style={previewStyle}>
+        <div className="flex flex-center flex-wrap mxn2">
+          <h1 className="h00 h00-responsive flex-auto px2 m0">Aa</h1>
+          <div className="bold px2">{contrast}</div>
+          <div className="px2">
+            {this.renderBadge()}
           </div>
-          <h2 className="h1">Contrast</h2>
-          <p className="">Contrast is the difference in luminance or color that makes an object (or its representation in an image or display) distinguishable. In visual perception of the real world, contrast is determined by the difference in the color and brightness of the object and other objects within the same field of view. Because the human visual system is more sensitive to contrast than absolute luminance, we can perceive the world similarly regardless of the huge changes in illumination over the day or from place to place. The maximum contrast of an image is the contrast ratio or dynamic range.</p>
         </div>
-        <div className="p3">
-          <label>Foreground</label>
-          <input type="text"
-            className="block full-width field-light"
-            readOnly
-            value={color} />
-          <label>Background</label>
-          <input type="text"
-            className="block full-width field-light"
-            readOnly
-            value={backgroundColor} />
-        </div>
+        <h2 className="h1 mt0">Contrast</h2>
+        <p className="">Contrast is the difference in luminance or color that makes an object (or its representation in an image or display) distinguishable. In visual perception of the real world, contrast is determined by the difference in the color and brightness of the object and other objects within the same field of view. Because the human visual system is more sensitive to contrast than absolute luminance, we can perceive the world similarly regardless of the huge changes in illumination over the day or from place to place. The maximum contrast of an image is the contrast ratio or dynamic range.</p>
       </div>
     )
   }
