@@ -33,18 +33,6 @@ module.exports = React.createClass({
     }
   },
 
-  /*
-    updateUrl: _.debounce(function() {
-      var qs = this.queryString({
-        base: this.state.base,
-      hueShift: this.state.hueShift,
-      saturate: this.state.saturate,
-      lighten: this.state.lighten
-      });
-      window.history.pushState(this.state , '', '?' + qs);
-    }, 200),
-  */
-
   pushState: _.debounce(function() {
     if (!window) return false;
     var colorString = this.state.colors.join('.');
@@ -106,12 +94,14 @@ module.exports = React.createClass({
     };
 
     var style = {
+      overflowY: isApp ? 'auto' : 'hidden',
       height: isApp ? '100vh' : '60vh',
       position: isApp ? 'fixed' : '',
       transition: 'height .3s ease-out',
       boxSizing: 'border-box'
     };
     var gridStyle = {
+      overflowX: 'auto',
       marginTop: isApp ? '3.25rem' : '',
       transition: 'margin .2s ease-out'
     };
@@ -130,21 +120,21 @@ module.exports = React.createClass({
     var modalHeader = modalColor ? modalColor.hex + ' on ' + modalColor.combo.hex : 'Blank';
 
     return (
-      <div className="relative mb3">
+      <div className="relative mb4">
         <Toolbar {...this.props}
           isApp={isApp}
           threshold={threshold}
           updateThreshold={this.updateThreshold}
           handleChange={this.updateColors}
           />
-        <div className="relative overflow-y-auto top-0 right-0 bottom-0 left-0 z1 white bg-dark-gray" style={style}>
+        <div className="relative top-0 right-0 bottom-0 left-0 z1 white bg-dark-gray" style={style}>
           <div className="flex">
             <div className="flex-none" style={listStyle}>
               <ColorList {...this.props}
                 colors={colors}
                 updateColors={this.updateColors} />
             </div>
-            <div className="flex-auto overflow-x-auto" style={gridStyle}>
+            <div className="flex-auto" style={gridStyle}>
               {matrix.map(this.renderRow)}
             </div>
           </div>
@@ -157,17 +147,18 @@ module.exports = React.createClass({
           <ColorPreview {...modalColor} />
         </SuperModal>
         <div className="flex flex-center py1">
-          <div className="flex-auto px2">
-            <button className="button button-small button-light-gray"
-              style={toggleButtonStyle}
-              onClick={this.props.toggleApp}>
-              View Demo
-            </button>
-          </div>
-          <p className="h5 px2">
+          <div className="flex-auto" />
+          <p className="h5 m0 px2">
             Colors from
             <a href="//clrs.cc">mrmrs/colors</a>
           </p>
+          <div className="px2">
+            <button className="button button-small button-light-gray"
+              style={toggleButtonStyle}
+              onClick={this.props.toggleApp}>
+              View Demo App
+            </button>
+          </div>
         </div>
       </div>
     )
