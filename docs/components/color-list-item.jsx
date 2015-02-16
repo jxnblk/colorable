@@ -20,6 +20,10 @@ module.exports = React.createClass({
 
   render: function() {
     var color = this.props.color;
+    if (!color.match(/^\#/)) {
+      console.log('no #');
+      color = '#' + color;
+    }
     try {
       var light = Color(color).light();
     } catch(e) {
