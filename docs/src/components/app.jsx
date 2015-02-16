@@ -9,7 +9,7 @@ module.exports = React.createClass({
 
   getInitialState: function() {
     return {
-      //isApp: false
+      isApp: false
     }
   },
 

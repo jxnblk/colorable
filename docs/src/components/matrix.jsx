@@ -2,6 +2,7 @@
 
 var React = require('react');
 var qs = require('query-string');
+var _ = require('lodash');
 var colorable = require('../../..');
 
 var Modal = require('./modal.jsx');
@@ -32,7 +33,19 @@ module.exports = React.createClass({
     }
   },
 
-  pushState: function() {
+  /*
+    updateUrl: _.debounce(function() {
+      var qs = this.queryString({
+        base: this.state.base,
+      hueShift: this.state.hueShift,
+      saturate: this.state.saturate,
+      lighten: this.state.lighten
+      });
+      window.history.pushState(this.state , '', '?' + qs);
+    }, 200),
+  */
+
+  pushState: _.debounce(function() {
     if (!window) return false;
     var colorString = this.state.colors.join('.');
     var params = {
@@ -41,7 +54,7 @@ module.exports = React.createClass({
     };
     var query = '?' + qs.stringify(params);
     window.history.pushState(params, 'Colorable', query);
-  },
+  }, 200),
 
   updateColors: function(colors) {
     this.setState({ colors: colors });
