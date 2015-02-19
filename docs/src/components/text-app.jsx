@@ -5,7 +5,7 @@ var qs = require('query-string');
 var colorable = require('../../..');
 
 var ColorPreview = require('./color-preview.jsx');
-var HslForm = require('./hsl-form.jsx');
+var ForegroundBackgroundForm = require('./foreground-background-form.jsx');
 
 module.exports = React.createClass({
 
@@ -45,13 +45,6 @@ module.exports = React.createClass({
         }
       };
     }
-
-    var handleForegroundChange = function(e) {
-      self.setForeground(e.target.value);
-    };
-    var handleBackgroundChange = function(e) {
-      self.setBackground(e.target.value);
-    };
     var style = {
       color: foreground,
       backgroundColor: background,
@@ -62,25 +55,16 @@ module.exports = React.createClass({
       marginLeft: 'auto',
       marginRight: 'auto',
     };
-
-    console.log('render');
-
     return (
       <div className="px2" style={style}>
         <div className="py3" style={innerStyle}>
           <ColorPreview {...color} />
-          <h1>TextApp</h1>
-          <div>{color.hex} on {color.combo.hex}</div>
-          <div>{color.combo.contrast}</div>
-          <form className="sm-flex flex-center mxn2">
-            <div className="sm-col-6 px2">
-              <label className="h5 bold">Foreground</label>
-              <input type="text"
-                value={foreground}
-                onChange={handleForegroundChange}
-                className="block full-width field-dark" />
-            </div>
-          </form>
+          <ForegroundBackgroundForm
+            {...this.props}
+            {...this.state}
+            setForeground={this.setForeground}
+            setBackground={this.setBackground}
+            />
         </div>
       </div>
     )
