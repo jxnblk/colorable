@@ -4,6 +4,7 @@ var React = require('react');
 var qs = require('query-string');
 var Matrix = require('./matrix.jsx');
 var Readme = require('./readme.jsx');
+var Footer = require('./footer.jsx');
 
 module.exports = React.createClass({
 
@@ -32,6 +33,7 @@ module.exports = React.createClass({
       <div>
         <Matrix {...this.props} isApp={this.state.isApp} toggleApp={this.toggleApp} />
         <Readme {...this.props} isApp={this.state.isApp} />
+        <Footer {...this.props} />
       </div>
     )
   }

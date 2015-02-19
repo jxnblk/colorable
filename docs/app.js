@@ -1,72 +1,1037 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/jackson/Repos/colorable/docs/src/app.js":[function(require,module,exports){
-var React=require("react"),data=require("./data"),App=React.createFactory(require("./components/app.jsx"));React.render(App(data),document.getElementById("app"));
+// App
+
+var React = require('react');
+var data = require('./data');
+
+var App = React.createFactory(require('./components/app.jsx'));
+
+React.render(
+  App(data),
+  document.getElementById('app')
+);
+
+
 
 
 },{"./components/app.jsx":"/Users/jackson/Repos/colorable/docs/src/components/app.jsx","./data":"/Users/jackson/Repos/colorable/docs/src/data.js","react":"/Users/jackson/Repos/colorable/node_modules/react/react.js"}],"/Users/jackson/Repos/colorable/docs/src/components/app.jsx":[function(require,module,exports){
-var React=require("react"),qs=require("query-string"),Matrix=require("./matrix.jsx"),Readme=require("./readme.jsx"),Footer=require("./footer.jsx");module.exports=React.createClass({displayName:"exports",getInitialState:function(){return{isApp:!1}},toggleApp:function(){var e=!this.state.isApp;this.setState({isApp:e})},componentDidMount:function(){if(window){var e=qs.parse(window.location.search);"app"==e.mode&&this.setState({isApp:!0})}},render:function(){return React.createElement("div",null,React.createElement(Matrix,React.__spread({},this.props,{isApp:this.state.isApp,toggleApp:this.toggleApp})),React.createElement(Readme,React.__spread({},this.props,{isApp:this.state.isApp})),React.createElement(Footer,React.__spread({},this.props)))}});
+/** @jsx React.DOM */
+
+var React = require('react');
+var qs = require('query-string');
+var Matrix = require('./matrix.jsx');
+var Readme = require('./readme.jsx');
+
+module.exports = React.createClass({displayName: "exports",
+
+  getInitialState: function() {
+    return {
+      isApp: false
+    }
+  },
+
+  toggleApp: function() {
+    var isApp = !this.state.isApp;
+    this.setState({ isApp: isApp });
+  },
+
+  componentDidMount: function() {
+    if (window) {
+      var params = qs.parse(window.location.search);
+      if (params.mode == 'app') {
+        this.setState({ isApp: true });
+      }
+    }
+  },
+
+  render: function() {
+    return (
+      React.createElement("div", null, 
+        React.createElement(Matrix, React.__spread({},  this.props, {isApp: this.state.isApp, toggleApp: this.toggleApp})), 
+        React.createElement(Readme, React.__spread({},  this.props, {isApp: this.state.isApp}))
+      )
+    )
+  }
+
+});
 
 
-},{"./footer.jsx":"/Users/jackson/Repos/colorable/docs/src/components/footer.jsx","./matrix.jsx":"/Users/jackson/Repos/colorable/docs/src/components/matrix.jsx","./readme.jsx":"/Users/jackson/Repos/colorable/docs/src/components/readme.jsx","query-string":"/Users/jackson/Repos/colorable/node_modules/query-string/query-string.js","react":"/Users/jackson/Repos/colorable/node_modules/react/react.js"}],"/Users/jackson/Repos/colorable/docs/src/components/chip.jsx":[function(require,module,exports){
-var React=require("react");module.exports=React.createClass({displayName:"exports",renderBadge:function(){var e=this.props.combo.accessibility,o={color:this.props.combo.hex,backgroundColor:this.props.hex};return e.aaa?React.createElement("div",{className:"h6 inline-block px1 rounded",style:o},"AAA"):e.aa?React.createElement("div",{className:"h6 inline-block px1 rounded",style:o},"AA"):e.aaLarge?React.createElement("div",{className:"h6 inline-block px1 rounded",style:o},"AA Large"):React.createElement("div",{className:"h6 inline-block"},"Fail")},openModal:function(){this.props.openModal(this.props)},render:function(){var e={width:"8rem",color:this.props.hex,backgroundColor:this.props.combo.hex,boxSizing:"border-box",textDecoration:"none",cursor:"pointer"},o=this.props.combo.contrast.toFixed(2),t="Preview "+this.props.hex+" on "+this.props.combo.hex;return React.createElement("a",{className:"center bold flex-none p2",onClick:this.openModal,title:t,style:e},React.createElement("div",null,o),this.renderBadge())}});
+
+},{"./matrix.jsx":"/Users/jackson/Repos/colorable/docs/src/components/matrix.jsx","./readme.jsx":"/Users/jackson/Repos/colorable/docs/src/components/readme.jsx","query-string":"/Users/jackson/Repos/colorable/node_modules/query-string/query-string.js","react":"/Users/jackson/Repos/colorable/node_modules/react/react.js"}],"/Users/jackson/Repos/colorable/docs/src/components/chip.jsx":[function(require,module,exports){
+/** @jsx React.DOM */
+
+var React = require('react');
+
+module.exports = React.createClass({displayName: "exports",
+
+  renderBadge: function() {
+    var level = this.props.combo.accessibility;
+    var style = {
+      color: this.props.combo.hex,
+      backgroundColor: this.props.hex
+    };
+    if (level.aaa) {
+      return (React.createElement("div", {className: "h6 inline-block px1 rounded", style: style}, "AAA"))
+    } else if (level.aa) {
+      return (React.createElement("div", {className: "h6 inline-block px1 rounded", style: style}, "AA"))
+    } else if (level.aaLarge) {
+      return (React.createElement("div", {className: "h6 inline-block px1 rounded", style: style}, "AA Large"))
+    } else {
+      return (React.createElement("div", {className: "h6 inline-block"}, "Fail"))
+    }
+  },
+
+  openModal: function() {
+    this.props.openModal(this.props);
+  },
+
+  render: function() {
+    var style = {
+      width: '8rem',
+      color: this.props.hex,
+      backgroundColor: this.props.combo.hex,
+      boxSizing: 'border-box',
+      textDecoration: 'none',
+      cursor: 'pointer'
+    };
+    var contrast = this.props.combo.contrast.toFixed(2);
+    var title = 'Preview ' + this.props.hex + ' on ' + this.props.combo.hex;
+    return (
+      React.createElement("a", {className: "center bold flex-none p2", 
+        onClick: this.openModal, 
+        title: title, 
+        style: style}, 
+        React.createElement("div", null, contrast), 
+        this.renderBadge()
+      )
+    )
+  }
+
+});
+
 
 
 },{"react":"/Users/jackson/Repos/colorable/node_modules/react/react.js"}],"/Users/jackson/Repos/colorable/docs/src/components/color-list-item.jsx":[function(require,module,exports){
-var React=require("react"),Color=require("color"),HslForm=require("./hsl-form.jsx");module.exports=React.createClass({displayName:"exports",handleChange:function(e){var t=e.target.value;this.props.updateColor(t)},edit:function(){0==this.props.isEditing&&this.props.toggleEdit()},render:function(){var e=this.props.color;e.match(/^\#/)||(console.log("no #"),e="#"+e);try{var t=Color(e).light()}catch(o){var t=!0}var l=this.props.isEditing,a={height:"5rem",color:t?"#111":"white",backgroundColor:e},r={display:l?"":"none"},s={height:"1.75rem"},c=s;return React.createElement("div",{className:"flex flex-column px1",style:a},React.createElement("div",{className:"flex-auto flex flex-center"},React.createElement("input",{type:"text",className:"h5 bold block full-width m0 field-transparent",style:s,value:e,onChange:this.handleChange,onFocus:this.edit}),React.createElement("div",{style:r},React.createElement("button",{className:"h3 button-small button-muted",style:c,title:"Remove Color",tabIndex:"-1",onClick:this.props.removeColor},"×"))),React.createElement("div",{className:"flex-auto",style:r},React.createElement(HslForm,{color:e,tabIndex:"-1",updateColor:this.props.updateColor})))}});
+/** @jsx React.DOM */
+
+var React = require('react');
+var Color = require('color');
+
+var HslForm = require('./hsl-form.jsx');
+
+module.exports = React.createClass({displayName: "exports",
+
+  handleChange: function(e) {
+    var hex = e.target.value;
+    this.props.updateColor(hex);
+  },
+
+  edit: function() {
+    if (this.props.isEditing == false) {
+      this.props.toggleEdit();
+    }
+  },
+
+  render: function() {
+    var color = this.props.color;
+    if (!color.match(/^\#/)) {
+      console.log('no #');
+      color = '#' + color;
+    }
+    try {
+      var light = Color(color).light();
+    } catch(e) {
+      var light = true; 
+    }
+    var isEditing = this.props.isEditing;
+    var style = {
+      height: '5rem',
+      color: light ? '#111' : 'white',
+      backgroundColor: color,
+    };
+    var disclosureStyle = {
+      display: isEditing ? '' : 'none'
+    };
+    var inputStyle = {
+      height: '1.75rem'
+    };
+    var buttonStyle = inputStyle;
+    return (
+      React.createElement("div", {className: "flex flex-column px1", 
+        style: style}, 
+        React.createElement("div", {className: "flex-auto flex flex-center"}, 
+          React.createElement("input", {type: "text", 
+            className: "h5 bold block full-width m0 field-transparent", 
+            style: inputStyle, 
+            value: color, 
+            onChange: this.handleChange, 
+            onFocus: this.edit}), 
+          React.createElement("div", {style: disclosureStyle}, 
+            React.createElement("button", {className: "h3 button-small button-muted", 
+              style: buttonStyle, 
+              title: "Remove Color", 
+              tabIndex: "-1", 
+              onClick: this.props.removeColor}, 
+              "×"
+            )
+          )
+        ), 
+        React.createElement("div", {className: "flex-auto", style: disclosureStyle}, 
+          React.createElement(HslForm, {color: color, 
+            tabIndex: "-1", 
+            updateColor: this.props.updateColor})
+        )
+      )
+    )
+  }
+
+});
 
 
 },{"./hsl-form.jsx":"/Users/jackson/Repos/colorable/docs/src/components/hsl-form.jsx","color":"/Users/jackson/Repos/colorable/node_modules/color/color.js","react":"/Users/jackson/Repos/colorable/node_modules/react/react.js"}],"/Users/jackson/Repos/colorable/docs/src/components/color-list.jsx":[function(require,module,exports){
-var React=require("react"),ColorListItem=require("./color-list-item.jsx");module.exports=React.createClass({displayName:"exports",getInitialState:function(){return{isEditing:!1,colors:this.props.colors,focus:!1}},toggleEdit:function(){var t=!this.state.isEditing;this.setState({isEditing:t})},updateColors:function(t){this.props.updateColors(t)},addColor:function(){var t=this.state.colors;t.push("#444"),this.props.updateColors(t),this.setState({focus:this.state.colors.length-1})},renderItem:function(t,e){var s=this,o=this.state.colors[e],i=function(t){var o=s.state.colors;o[e]=t,s.updateColors(o)},a=function(){var t=s.state.colors;t.splice(e,1),s.updateColors(t)},r=this.props.isApp?this.state.isEditing:!1,l="color-"+e,c=o;return React.createElement("li",{ref:l,id:c},React.createElement(ColorListItem,{color:o,isEditing:r,removeColor:a,updateColor:i,toggleEdit:this.toggleEdit}))},focusInput:function(t){var e=this.refs["color-"+t].getDOMNode(),s=e.querySelector("input");s.focus(),s.select()},componentDidUpdate:function(){this.state.focus&&(this.focusInput(this.state.focus),this.setState({focus:!1}))},render:function(){var t=this.state.colors,e=this.props.isApp?this.state.isEditing:!1,s={width:e?"20rem":"6rem",transition:"width .2s ease-out"},o={display:e?"":"none"},i={display:e?"":"none"};return React.createElement("div",null,React.createElement("div",{className:"fixed top-0 right-0 bottom-0 left-0 z1",style:o,onClick:this.toggleEdit}),React.createElement("ul",{className:"relative z1 list-reset mb0",style:s},t.map(this.renderItem)),React.createElement("div",{className:"relative z1 flex flex-center p1 white bg-dark-gray",style:i},React.createElement("button",{className:"button-small button-gray",onClick:this.addColor},"Add Color"),React.createElement("div",{className:"flex-auto"}),React.createElement("button",{className:"button-small button-gray",onClick:this.toggleEdit},"Done")))}});
+/** @jsx React.DOM */
+
+var React = require('react');
+
+var ColorListItem = require('./color-list-item.jsx');
+
+module.exports = React.createClass({displayName: "exports",
+
+  getInitialState: function() {
+    return {
+      isEditing: false,
+      colors: this.props.colors,
+      focus: false
+    }
+  },
+
+  toggleEdit: function() {
+    var isEditing = !this.state.isEditing;
+    this.setState({ isEditing: isEditing });
+  },
+
+  updateColors: function(colors) {
+    this.props.updateColors(colors);
+  },
+
+  addColor: function(e) {
+    var colors = this.state.colors;
+    colors.push('#444');
+    this.props.updateColors(colors);
+    this.setState({ focus: this.state.colors.length - 1 });
+  },
+
+  renderItem: function(key, i) {
+    var self = this;
+    var color = this.state.colors[i];
+    var updateColor = function(hex) {
+      var colors = self.state.colors;
+      colors[i] = hex;
+      self.updateColors(colors);
+    };
+    var removeColor = function() {
+      var colors = self.state.colors;
+      colors.splice(i, 1);
+      self.updateColors(colors);
+    };
+    var isEditing = this.props.isApp ? this.state.isEditing : false;
+    var ref = 'color-' + i;
+    var id = color;
+    return (
+      React.createElement("li", {ref: ref, id: id}, 
+        React.createElement(ColorListItem, {color: color, 
+          isEditing: isEditing, 
+          removeColor: removeColor, 
+          updateColor: updateColor, 
+          toggleEdit: this.toggleEdit})
+      )
+    )
+  },
+
+  focusInput: function(i) {
+    var li = this.refs['color-' + i].getDOMNode();
+    var input = li.querySelector('input');
+    input.focus();
+    input.select();
+  },
+
+  componentDidUpdate: function() {
+    if (this.state.focus) {
+      this.focusInput(this.state.focus);
+      this.setState({ focus: false });
+    }
+  },
+
+  render: function() {
+    var colors = this.state.colors;
+    var isEditing = this.props.isApp ? this.state.isEditing : false;
+    var style = {
+      width: isEditing ? '20rem' : '6rem',
+      transition: 'width .2s ease-out',
+    }
+    var overlayStyle = {
+      display: isEditing ? '' : 'none'
+    };
+    var footerStyle = {
+      display: isEditing ? '' : 'none'
+    };
+    return (
+      React.createElement("div", null, 
+        React.createElement("div", {className: "fixed top-0 right-0 bottom-0 left-0 z1", 
+          style: overlayStyle, 
+          onClick: this.toggleEdit}), 
+        React.createElement("ul", {className: "relative z1 list-reset mb0", style: style}, 
+          colors.map(this.renderItem)
+        ), 
+        React.createElement("div", {className: "relative z1 flex flex-center p1 white bg-dark-gray", style: footerStyle}, 
+          React.createElement("button", {className: "button-small button-gray", 
+            onClick: this.addColor}, 
+            "Add Color"
+          ), 
+          React.createElement("div", {className: "flex-auto"}), 
+          React.createElement("button", {className: "button-small button-gray", 
+            onClick: this.toggleEdit}, 
+            "Done"
+          )
+        )
+      )
+    )
+  }
+
+});
+
 
 
 },{"./color-list-item.jsx":"/Users/jackson/Repos/colorable/docs/src/components/color-list-item.jsx","react":"/Users/jackson/Repos/colorable/node_modules/react/react.js"}],"/Users/jackson/Repos/colorable/docs/src/components/color-preview.jsx":[function(require,module,exports){
-var React=require("react");module.exports=React.createClass({displayName:"exports",getDefaultProps:function(){return{color:{hex:""},combo:{hex:"",contrast:0}}},renderBadge:function(){if(!this.props.combo.accessibility)return!1;var e=this.props.combo.accessibility,a={color:this.props.combo.hex,backgroundColor:this.props.hex};return e.aaa?React.createElement("div",{className:"h6 bold inline-block px1 rounded",style:a},"AAA"):e.aa?React.createElement("div",{className:"h6 bold inline-block px1 rounded",style:a},"AA"):e.aaLarge?React.createElement("div",{className:"h6 bold inline-block px1 rounded",style:a},"AA Large"):React.createElement("div",{className:"h6 bold inline-block"},"Fail")},render:function(){var e=this.props.hex,a=this.props.combo.hex,t={color:e,backgroundColor:a},r=this.props.combo.contrast.toFixed(2);return React.createElement("div",{className:"mb2",style:t},React.createElement("div",{className:"flex flex-center flex-wrap mxn2"},React.createElement("h1",{className:"h00 h00-responsive flex-auto px2 m0"},"Aa"),React.createElement("div",{className:"bold px2"},r),React.createElement("div",{className:"px2"},this.renderBadge())),React.createElement("h2",{className:"h1 mt0"},"Contrast"),React.createElement("p",{className:""},"Contrast is the difference in luminance or color that makes an object (or its representation in an image or display) distinguishable. In visual perception of the real world, contrast is determined by the difference in the color and brightness of the object and other objects within the same field of view. Because the human visual system is more sensitive to contrast than absolute luminance, we can perceive the world similarly regardless of the huge changes in illumination over the day or from place to place. The maximum contrast of an image is the contrast ratio or dynamic range."))}});
+/** @jsx React.DOM */
 
+var React = require('react');
 
-},{"react":"/Users/jackson/Repos/colorable/node_modules/react/react.js"}],"/Users/jackson/Repos/colorable/docs/src/components/footer.jsx":[function(require,module,exports){
-var React=require("react");module.exports=React.createClass({displayName:"exports",render:function(){var e="//npmjs.com/package/"+this.props.name;return React.createElement("footer",{className:"container px2 mt4"},React.createElement("div",{className:"flex flex-center flex-wrap py3 border-top"},React.createElement("h4",{className:"m0"},this.props.name,React.createElement("span",{className:"h5"},"v",this.propsversion)),React.createElement("a",{href:e,className:"button"},"NPM"),React.createElement("a",{href:this.props.homepage,className:"button"},"Github"),React.createElement("div",{className:"flex-auto"}),React.createElement("p",{className:"h5 m0"},"Made by ",React.createElement("a",{href:"//jxnblk.com"},"Jxnblk"))))}});
+module.exports = React.createClass({displayName: "exports",
+
+  getDefaultProps: function() {
+    return {
+      color: {
+        hex: '',
+      },
+      combo: {
+        hex: '',
+        contrast: 0
+      }
+    }
+  },
+
+  renderBadge: function() {
+    if (!this.props.combo.accessibility) {
+      return false;
+    }
+    var level = this.props.combo.accessibility;
+    var style = {
+      color: this.props.combo.hex,
+      backgroundColor: this.props.hex
+    };
+    if (level.aaa) {
+      return (React.createElement("div", {className: "h6 bold inline-block px1 rounded", style: style}, "AAA"))
+    } else if (level.aa) {
+      return (React.createElement("div", {className: "h6 bold inline-block px1 rounded", style: style}, "AA"))
+    } else if (level.aaLarge) {
+      return (React.createElement("div", {className: "h6 bold inline-block px1 rounded", style: style}, "AA Large"))
+    } else {
+      return (React.createElement("div", {className: "h6 bold inline-block"}, "Fail"))
+    }
+  },
+
+  render: function() {
+    var color = this.props.hex;
+    var backgroundColor = this.props.combo.hex;
+    var previewStyle = {
+      color: color,
+      backgroundColor: backgroundColor
+    };
+    var contrast = this.props.combo.contrast.toFixed(2);
+    return (
+      React.createElement("div", {className: "mb2", 
+        style: previewStyle}, 
+        React.createElement("div", {className: "flex flex-center flex-wrap mxn2"}, 
+          React.createElement("h1", {className: "h00 h00-responsive flex-auto px2 m0"}, "Aa"), 
+          React.createElement("div", {className: "bold px2"}, contrast), 
+          React.createElement("div", {className: "px2"}, 
+            this.renderBadge()
+          )
+        ), 
+        React.createElement("h2", {className: "h1 mt0"}, "Contrast"), 
+        React.createElement("p", {className: ""}, "Contrast is the difference in luminance or color that makes an object (or its representation in an image or display) distinguishable. In visual perception of the real world, contrast is determined by the difference in the color and brightness of the object and other objects within the same field of view. Because the human visual system is more sensitive to contrast than absolute luminance, we can perceive the world similarly regardless of the huge changes in illumination over the day or from place to place. The maximum contrast of an image is the contrast ratio or dynamic range.")
+      )
+    )
+  }
+
+});
+
 
 
 },{"react":"/Users/jackson/Repos/colorable/node_modules/react/react.js"}],"/Users/jackson/Repos/colorable/docs/src/components/hsl-form.jsx":[function(require,module,exports){
-var React=require("react"),Color=require("color");module.exports=React.createClass({displayName:"exports",getInitialState:function(){var t=Color(this.props.color).hsl();return{hue:t.h,saturation:t.s,lightness:t.l}},updateColor:function(){var t=Color({h:this.state.hue,s:this.state.saturation,l:this.state.lightness}).hexString();t!=this.props.color&&this.props.updateColor(t)},updateHue:function(t){this.setState({hue:t.target.value},function(){this.updateColor()})},updateSaturation:function(t){this.setState({saturation:t.target.value},function(){this.updateColor()})},updateLightness:function(t){this.setState({lightness:t.target.value},function(){this.updateColor()})},renderSlider:function(t){return React.createElement("div",{className:"px1"},React.createElement("label",{className:"h5 bold lh1 block"},t.label),React.createElement("input",{type:"range",className:"full-width m0 range-light",value:t.value,onChange:t.onChange,min:t.min,max:t.max,tabIndex:this.props.tabIndex}))},componentWillReceiveProps:function(t){try{var e=Color(t.color).hsl();this.setState({hue:e.h,saturation:e.s,lightness:e.l})}catch(a){}},render:function(){var t=[{label:"Hue",value:this.state.hue,onChange:this.updateHue,min:0,max:360},{label:"Saturation",value:this.state.saturation,onChange:this.updateSaturation,min:0,max:100},{label:"Lightness",value:this.state.lightness,onChange:this.updateLightness,min:0,max:100}];return React.createElement("form",{className:"flex flex-center"},t.map(this.renderSlider))}});
+/** @jsx React.DOM */
+
+var React = require('react');
+var Color = require('color');
+
+module.exports = React.createClass({displayName: "exports",
+
+  getInitialState: function() {
+    var hsl = Color(this.props.color).hsl();
+    return {
+      hue: hsl.h,
+      saturation: hsl.s,
+      lightness: hsl.l,
+    }
+  },
+
+  updateColor: function() {
+    var hex = Color({
+      h: this.state.hue,
+      s: this.state.saturation,
+      l: this.state.lightness
+    }).hexString();
+    if (hex != this.props.color) {
+      this.props.updateColor(hex);
+    }
+  },
+
+  updateHue: function(e) {
+    this.setState({ hue: e.target.value }, function() {
+      this.updateColor();
+    });
+  },
+
+  updateSaturation: function(e) {
+    this.setState({ saturation: e.target.value }, function() {
+      this.updateColor();
+    });
+  },
+
+  updateLightness: function(e) {
+    this.setState({ lightness: e.target.value }, function() {
+      this.updateColor();
+    });
+  },
+
+  renderSlider: function(facet) {
+    return (
+      React.createElement("div", {className: "px1"}, 
+        React.createElement("label", {className: "h5 bold lh1 block"}, 
+          facet.label
+        ), 
+        React.createElement("input", {type: "range", 
+          className: "full-width m0 range-light", 
+          value: facet.value, 
+          onChange: facet.onChange, 
+          min: facet.min, 
+          max: facet.max, 
+          tabIndex: this.props.tabIndex}
+          )
+      )
+    )
+  },
+
+  componentWillReceiveProps: function(nextProps) {
+    try {
+      var hsl = Color(nextProps.color).hsl();
+      this.setState({
+        hue: hsl.h,
+        saturation: hsl.s,
+        lightness: hsl.l,
+      });
+    } catch(e) {
+    }
+  },
+
+  render: function() {
+    var hslArray = [
+      {
+        label: 'Hue',
+        value: this.state.hue,
+        onChange: this.updateHue,
+        min: 0,
+        max: 360
+      },
+      {
+        label: 'Saturation',
+        value: this.state.saturation,
+        onChange: this.updateSaturation,
+        min: 0,
+        max: 100
+      },
+      {
+        label: 'Lightness',
+        value: this.state.lightness,
+        onChange: this.updateLightness,
+        min: 0,
+        max: 100
+      },
+    ];
+    return (
+      React.createElement("form", {className: "flex flex-center"}, 
+        hslArray.map(this.renderSlider)
+      )
+    )
+  }
+
+});
+
 
 
 },{"color":"/Users/jackson/Repos/colorable/node_modules/color/color.js","react":"/Users/jackson/Repos/colorable/node_modules/react/react.js"}],"/Users/jackson/Repos/colorable/docs/src/components/matrix-row.jsx":[function(require,module,exports){
-var React=require("react"),Chip=require("./chip.jsx");module.exports=React.createClass({displayName:"exports",renderChip:function(e){var r=this.props;return r.combo=e,React.createElement(Chip,React.__spread({},r))},render:function(){var e={height:"5rem"};return React.createElement("div",{className:"flex flex-stretch",style:e},this.props.combinations.map(this.renderChip))}});
+/** @jsx React.DOM */
+
+var React = require('react');
+var Chip = require('./chip.jsx');
+
+module.exports = React.createClass({displayName: "exports",
+
+  renderChip: function(combo) {
+    var props = this.props;
+    props.combo = combo;
+    return (
+      React.createElement(Chip, React.__spread({},  props))
+    )
+  },
+
+  render: function() {
+    var style = {
+      height: '5rem'
+    };
+    return (
+      React.createElement("div", {className: "flex flex-stretch", style: style}, 
+        this.props.combinations.map(this.renderChip)
+      )
+    )
+  }
+
+});
+
 
 
 },{"./chip.jsx":"/Users/jackson/Repos/colorable/docs/src/components/chip.jsx","react":"/Users/jackson/Repos/colorable/node_modules/react/react.js"}],"/Users/jackson/Repos/colorable/docs/src/components/matrix.jsx":[function(require,module,exports){
-var React=require("react"),qs=require("query-string"),_=require("lodash"),colorable=require("../../.."),Modal=require("./modal.jsx"),SuperModal=require("./super-modal.jsx"),MatrixRow=require("./matrix-row.jsx"),ColorList=require("./color-list.jsx"),Toolbar=require("./toolbar.jsx"),ColorPreview=require("./color-preview.jsx");module.exports=React.createClass({displayName:"exports",getInitialState:function(){var e={};if("undefined"!=typeof window&&(e=qs.parse(window.location.search)),e.colors)var t=e.colors.split(".");else var t=this.props.colors;return{colors:t,matrix:colorable(t),threshold:0,modalColor:!1}},pushState:_.debounce(function(){if(!window)return!1;var e=this.state.colors.join("."),t={mode:this.props.isApp?"app":"",colors:this.props.isApp?e:""},o="?"+qs.stringify(t);window.history.pushState(t,"Colorable",o)},200),updateColors:function(e){this.setState({colors:e}),this.updateMatrix()},updateThreshold:function(e){this.setState({threshold:e},function(){this.updateMatrix()})},updateMatrix:function(){try{var e=colorable(this.state.colors,{threshold:this.state.threshold});this.setState({matrix:e})}catch(t){}},openModal:function(e){this.setState({modalColor:e})},closeModal:function(){this.setState({modalColor:!1})},componentDidUpdate:function(){this.pushState()},renderRow:function(e){return React.createElement(MatrixRow,React.__spread({},e,{openModal:this.openModal}))},render:function(){var e=this.state.matrix,t=this.state.colors,o=this.props.isApp,a=this.state.threshold,r=!!this.state.modalColor,s=this.state.modalColor,l={color:this.state.modalColor?this.state.modalColor.hex:"#111",backgroundColor:this.state.modalColor?this.state.modalColor.combo.hex:"white"},i={overflowY:o?"auto":"hidden",height:o?"100vh":"60vh",position:o?"fixed":"",transition:"height .3s ease-out",boxSizing:"border-box"},c={overflowX:"auto",marginTop:o?"3.25rem":"",transition:"margin .2s ease-out"},n={marginTop:o?"3.25rem":"",marginLeft:o?"0":"-6rem",transition:"margin .2s ease-out"},h={display:o?"none":"block"},d=s?s.hex+" on "+s.combo.hex:"Blank";return React.createElement("div",{className:"relative mb4"},React.createElement(Toolbar,React.__spread({},this.props,{isApp:o,threshold:a,updateThreshold:this.updateThreshold,handleChange:this.updateColors})),React.createElement("div",{className:"relative top-0 right-0 bottom-0 left-0 z1 white bg-dark-gray",style:i},React.createElement("div",{className:"flex"},React.createElement("div",{className:"flex-none",style:n},React.createElement(ColorList,React.__spread({},this.props,{colors:t,updateColors:this.updateColors}))),React.createElement("div",{className:"flex-auto",style:c},e.map(this.renderRow)))),React.createElement(SuperModal,{header:d,onDismiss:this.closeModal,style:l,isOpen:r},React.createElement(ColorPreview,React.__spread({},s))),React.createElement("div",{className:"flex flex-center py1"},React.createElement("div",{className:"flex-auto"}),React.createElement("p",{className:"h5 m0 px2"},"Colors from",React.createElement("a",{href:"//clrs.cc"},"mrmrs/colors")),React.createElement("div",{className:"px2"},React.createElement("button",{className:"button button-small button-light-gray",style:h,onClick:this.props.toggleApp},"View Demo App"))))}});
+/** @jsx React.DOM */
+
+var React = require('react');
+var qs = require('query-string');
+var _ = require('lodash');
+var colorable = require('../../..');
+
+var Modal = require('./modal.jsx');
+var SuperModal = require('./super-modal.jsx');
+
+var MatrixRow = require('./matrix-row.jsx');
+var ColorList = require('./color-list.jsx');
+var Toolbar = require('./toolbar.jsx');
+var ColorPreview = require('./color-preview.jsx');
+
+module.exports = React.createClass({displayName: "exports",
+
+  getInitialState: function() {
+    var params = {};
+    if (typeof window !== 'undefined') {
+      params = qs.parse(window.location.search);
+    }
+    if (params.colors) {
+      var colors = params.colors.split('.');
+    } else {
+      var colors = this.props.colors
+    }
+    return {
+      colors: colors,
+      matrix: colorable(colors),
+      threshold: 0,
+      modalColor: false,
+    }
+  },
+
+  pushState: _.debounce(function() {
+    if (!window) return false;
+    var colorString = this.state.colors.join('.');
+    var params = {
+      mode: this.props.isApp ? 'app' : '',
+      colors: this.props.isApp ? colorString : '',
+    };
+    var query = '?' + qs.stringify(params);
+    window.history.pushState(params, 'Colorable', query);
+  }, 200),
+
+  updateColors: function(colors) {
+    this.setState({ colors: colors });
+    this.updateMatrix();
+  },
+
+  updateThreshold: function(threshold) {
+    this.setState({ threshold: threshold }, function() {
+      this.updateMatrix();
+    });
+  },
+
+  updateMatrix: function() {
+    try {
+      var matrix = colorable(this.state.colors, { threshold: this.state.threshold });
+      this.setState({ matrix: matrix });
+    } catch(e) {
+    }
+  },
+
+  openModal: function(color) {
+    this.setState({ modalColor: color });
+  },
+
+  closeModal: function() {
+    this.setState({ modalColor: false });
+  },
+
+  componentDidUpdate: function() {
+    this.pushState();
+  },
+
+  renderRow: function(color) {
+    return (
+      React.createElement(MatrixRow, React.__spread({},  color, {openModal: this.openModal}))
+    )
+  },
+
+  render: function() {
+    var matrix = this.state.matrix;
+    var colors = this.state.colors;
+    var isApp = this.props.isApp;
+    var threshold = this.state.threshold;
+    var modalIsOpen = !!this.state.modalColor;
+    var modalColor = this.state.modalColor;
+    var modalStyle = {
+      color: this.state.modalColor ? this.state.modalColor.hex : '#111',
+      backgroundColor: this.state.modalColor ? this.state.modalColor.combo.hex : 'white',
+    };
+
+    var style = {
+      overflowY: isApp ? 'auto' : 'hidden',
+      height: isApp ? '100vh' : '60vh',
+      position: isApp ? 'fixed' : '',
+      transition: 'height .3s ease-out',
+      boxSizing: 'border-box'
+    };
+    var gridStyle = {
+      overflowX: 'auto',
+      marginTop: isApp ? '3.25rem' : '',
+      transition: 'margin .2s ease-out'
+    };
+    var listStyle = {
+      marginTop: isApp ? '3.25rem' : '',
+      marginLeft: isApp ? '0' : '-6rem',
+      transition: 'margin .2s ease-out'
+    };
+    var toggleButtonStyle = {
+      display: isApp ? 'none' : 'block',
+    };
+    var bottomBarStyle = {
+      display: isApp ? '' : 'none'
+    };
+
+    var modalHeader = modalColor ? modalColor.hex + ' on ' + modalColor.combo.hex : 'Blank';
+
+    return (
+      React.createElement("div", {className: "relative mb4"}, 
+        React.createElement(Toolbar, React.__spread({},  this.props, 
+          {isApp: isApp, 
+          threshold: threshold, 
+          updateThreshold: this.updateThreshold, 
+          handleChange: this.updateColors})
+          ), 
+        React.createElement("div", {className: "relative top-0 right-0 bottom-0 left-0 z1 white bg-dark-gray", style: style}, 
+          React.createElement("div", {className: "flex"}, 
+            React.createElement("div", {className: "flex-none", style: listStyle}, 
+              React.createElement(ColorList, React.__spread({},  this.props, 
+                {colors: colors, 
+                updateColors: this.updateColors}))
+            ), 
+            React.createElement("div", {className: "flex-auto", style: gridStyle}, 
+              matrix.map(this.renderRow)
+            )
+          )
+        ), 
+        React.createElement(SuperModal, {
+          header: modalHeader, 
+          onDismiss: this.closeModal, 
+          style: modalStyle, 
+          isOpen: modalIsOpen}, 
+          React.createElement(ColorPreview, React.__spread({},  modalColor))
+        ), 
+        React.createElement("div", {className: "flex flex-center py1"}, 
+          React.createElement("div", {className: "flex-auto"}), 
+          React.createElement("p", {className: "h5 m0 px2"}, 
+            "Colors from", 
+            React.createElement("a", {href: "//clrs.cc"}, "mrmrs/colors")
+          ), 
+          React.createElement("div", {className: "px2"}, 
+            React.createElement("button", {className: "button button-small button-light-gray", 
+              style: toggleButtonStyle, 
+              onClick: this.props.toggleApp}, 
+              "View Demo App"
+            )
+          )
+        )
+      )
+    )
+
+  }
+
+});
+
 
 
 },{"../../..":"/Users/jackson/Repos/colorable/index.js","./color-list.jsx":"/Users/jackson/Repos/colorable/docs/src/components/color-list.jsx","./color-preview.jsx":"/Users/jackson/Repos/colorable/docs/src/components/color-preview.jsx","./matrix-row.jsx":"/Users/jackson/Repos/colorable/docs/src/components/matrix-row.jsx","./modal.jsx":"/Users/jackson/Repos/colorable/docs/src/components/modal.jsx","./super-modal.jsx":"/Users/jackson/Repos/colorable/docs/src/components/super-modal.jsx","./toolbar.jsx":"/Users/jackson/Repos/colorable/docs/src/components/toolbar.jsx","lodash":"/Users/jackson/Repos/colorable/node_modules/lodash/index.js","query-string":"/Users/jackson/Repos/colorable/node_modules/query-string/query-string.js","react":"/Users/jackson/Repos/colorable/node_modules/react/react.js"}],"/Users/jackson/Repos/colorable/docs/src/components/modal.jsx":[function(require,module,exports){
-var React=require("react");module.exports=React.createClass({displayName:"exports",getDefaultProps:function(){return{flush:!1}},close:function(e){this.props.onDismiss(e)},render:function(){var e=this.props.isOpen,t=this.props.header,a={display:e?"":"none"},s={minWidth:"16rem",maxWidth:"48rem",margin:"auto",boxShadow:"0 4px 4px rgba(0,0,0,.1)"},r=this.props.flush?"":"p2";return React.createElement("div",{className:"fixed top-0 right-0 bottom-0 left-0 z4 flex flex-center p2 overflow-auto bg-darken-4",style:a},React.createElement("div",{className:"absolute top-0 right-0 bottom-0 left-0",onClick:this.close}),React.createElement("div",{className:"relative dark-gray bg-white rounded",style:s},React.createElement("div",{className:"flex flex-center border-bottom"},React.createElement("div",{className:"bold p2 flex-auto"},t),React.createElement("button",{className:"h3 button-muted black",onClick:this.close,title:"Dismiss modal overlay"},"×")),React.createElement("div",{className:r},this.props.children)))}});
+/** @jsx React.DOM */
+
+var React = require('react');
+
+/*
+ * To do:
+ * - Esc keyboard shortcut
+ * - transition/animation
+ */
+
+module.exports = React.createClass({displayName: "exports",
+
+  getDefaultProps: function() {
+    return {
+      flush: false
+    }
+  },
+
+  close: function(e) {
+    this.props.onDismiss(e);
+  },
+
+  render: function() {
+    var isOpen = this.props.isOpen;
+    var header = this.props.header;
+    var containerStyle = {
+      display: isOpen ? '' : 'none',
+    };
+    var modalStyle = {
+      minWidth: '16rem',
+      maxWidth: '48rem',
+      margin: 'auto',
+      boxShadow: '0 4px 4px rgba(0,0,0,.1)',
+    };
+    var bodyClass = this.props.flush ? '' : 'p2';
+    return (
+      React.createElement("div", {className: "fixed top-0 right-0 bottom-0 left-0 z4 flex flex-center p2 overflow-auto bg-darken-4", 
+        style: containerStyle}, 
+        React.createElement("div", {className: "absolute top-0 right-0 bottom-0 left-0", 
+          onClick: this.close}), 
+        React.createElement("div", {className: "relative dark-gray bg-white rounded", style: modalStyle}, 
+          React.createElement("div", {className: "flex flex-center border-bottom"}, 
+            React.createElement("div", {className: "bold p2 flex-auto"}, header), 
+            React.createElement("button", {className: "h3 button-muted black", 
+              onClick: this.close, 
+              title: "Dismiss modal overlay"}, 
+              "×"
+            )
+          ), 
+          React.createElement("div", {className: bodyClass}, 
+            this.props.children
+          )
+        )
+      )
+    )
+  }
+
+});
+
 
 
 },{"react":"/Users/jackson/Repos/colorable/node_modules/react/react.js"}],"/Users/jackson/Repos/colorable/docs/src/components/readme.jsx":[function(require,module,exports){
-var React=require("react");module.exports=React.createClass({displayName:"exports",render:function(){var e=this.props.readme,t={position:this.props.isApp?"fixed":""};return React.createElement("div",{className:"container px2",style:t},React.createElement("div",{className:"right mt2 ml2 mb2"},React.createElement("a",{href:"https://twitter.com/intent/tweet?text=Test color palettes for readable color combinations &url=http://jxnblk.com/colorable&via=jxnblk",className:"button button-light-gray"},"Tweet")),React.createElement("div",{dangerouslySetInnerHTML:{__html:e}}))}});
+/** @jsx React.DOM */
+
+var React = require('react');
+
+module.exports = React.createClass({displayName: "exports",
+
+  render: function() {
+    var html = this.props.readme;
+    var style = {
+      position: this.props.isApp ? 'fixed' : ''
+    };
+    return (
+      React.createElement("div", {className: "container px2", style: style}, 
+        React.createElement("div", {className: "right mt2 ml2 mb2"}, 
+          React.createElement("a", {href: "https://twitter.com/intent/tweet?text=Test color palettes for readable color combinations &url=http://jxnblk.com/colorable&via=jxnblk", 
+            className: "button button-light-gray"}, 
+            "Tweet"
+          )
+        ), 
+        React.createElement("div", {dangerouslySetInnerHTML: {__html: html}})
+      )
+    )
+  }
+
+});
+
 
 
 },{"react":"/Users/jackson/Repos/colorable/node_modules/react/react.js"}],"/Users/jackson/Repos/colorable/docs/src/components/super-modal.jsx":[function(require,module,exports){
-var React=require("react");module.exports=React.createClass({displayName:"exports",getDefaultProps:function(){return{flush:!1,style:{}}},close:function(e){this.props.onDismiss(e)},render:function(){var e=this.props.isOpen,t=this.props.header,s=this.props.style;s.display=e?"":"none",s.cursor="pointer";var a={minWidth:"16rem",maxWidth:"48rem",margin:"auto"},l="fixed top-0 right-0 bottom-0 left-0 z4 flex flex-center overflow-auto popin ";return l+=this.props.flush?"":"p2",React.createElement("div",{className:l,onClick:this.close,style:s},React.createElement("div",{className:"absolute top-0 right-0 left-0 p2"},React.createElement("div",{className:"flex flex-center"},React.createElement("div",{className:"bold flex-auto"},t),React.createElement("button",{className:"h3 button-muted",onClick:this.close,title:"Dismiss modal overlay"},"×"))),React.createElement("div",{className:"relative mx-auto",style:a},this.props.children))}});
+/** @jsx React.DOM */
+
+var React = require('react');
+
+module.exports = React.createClass({displayName: "exports",
+
+  getDefaultProps: function() {
+    return {
+      flush: false,
+      style: {}
+    }
+  },
+
+  close: function(e) {
+    this.props.onDismiss(e);
+  },
+
+  render: function() {
+    var isOpen = this.props.isOpen;
+    var header = this.props.header;
+    var containerStyle = this.props.style;
+    containerStyle.display = isOpen ? '' : 'none';
+    containerStyle.cursor = 'pointer';
+    var modalStyle = {
+      minWidth: '16rem',
+      maxWidth: '48rem',
+      margin: 'auto',
+    };
+    var containerClass = 'fixed top-0 right-0 bottom-0 left-0 z4 flex flex-center overflow-auto popin ';
+    containerClass += this.props.flush ? '' : 'p2';
+    return (
+      React.createElement("div", {className: containerClass, 
+        onClick: this.close, 
+        style: containerStyle}, 
+        React.createElement("div", {className: "absolute top-0 right-0 left-0 p2"}, 
+          React.createElement("div", {className: "flex flex-center"}, 
+            React.createElement("div", {className: "bold flex-auto"}, header), 
+            React.createElement("button", {className: "h3 button-muted", 
+              onClick: this.close, 
+              title: "Dismiss modal overlay"}, 
+              "×"
+            )
+          )
+        ), 
+        React.createElement("div", {className: "relative mx-auto", style: modalStyle}, 
+          this.props.children
+        )
+      )
+    )
+  }
+
+});
+
 
 
 },{"react":"/Users/jackson/Repos/colorable/node_modules/react/react.js"}],"/Users/jackson/Repos/colorable/docs/src/components/threshold-toggle.jsx":[function(require,module,exports){
-var React=require("react");module.exports=React.createClass({displayName:"exports",handleChange:function(e){var t=e.target.value;this.props.updateThreshold(t)},render:function(){var e=this,t=[{text:"None",value:0},{text:"AA Large",value:3},{text:"AA",value:4.5},{text:"AAA",value:7}],a=function(a,l){var r=a.value==e.props.threshold,n="button button-small button-blue-outline ";return n+=0==l?"rounded-left ":l==t.length-1?"rounded-right ":"not-rounded ",n+=r?"is-active":"",React.createElement("label",null,React.createElement("input",{type:"radio",value:a.value,checked:r,onChange:e.handleChange,className:"hide"}),React.createElement("span",{className:n},a.text))},l="flex flex-center ";return l+=this.props.className,React.createElement("form",{className:l},React.createElement("label",{className:"h5 bold mr1 sm-show"},"Threshold"),t.map(a))}});
+/** @jsx React.DOM */
+
+var React = require('react');
+
+module.exports = React.createClass({displayName: "exports",
+
+  handleChange: function(e) {
+    var value = e.target.value;
+    this.props.updateThreshold(value);
+  },
+
+  render: function() {
+    var self = this;
+    var buttons = [
+      { text: 'None', value: 0 },
+      { text: 'AA Large', value: 3 },
+      { text: 'AA', value: 4.5 },
+      { text: 'AAA', value: 7 },
+    ];
+    var renderButton = function(button, i) {
+      var checked = (button.value == self.props.threshold);
+      var buttonClass = 'button button-small button-blue-outline ';
+      if (i == 0) {
+        buttonClass += 'rounded-left ';
+      } else if (i == buttons.length - 1) {
+        buttonClass += 'rounded-right ';
+      } else {
+        buttonClass += 'not-rounded ';
+      }
+      buttonClass += checked ? 'is-active' : '';
+      return (
+        React.createElement("label", null, 
+          React.createElement("input", {type: "radio", 
+            value: button.value, 
+            checked: checked, 
+            onChange: self.handleChange, 
+            className: "hide"}), 
+          React.createElement("span", {className: buttonClass}, 
+            button.text
+          )
+        )
+      );
+    };
+    var formClass = 'flex flex-center ';
+    formClass += this.props.className;
+    return (
+      React.createElement("form", {className: formClass}, 
+        React.createElement("label", {className: "h5 bold mr1 sm-show"}, "Threshold"), 
+        buttons.map(renderButton)
+      )
+    )
+  }
+
+});
 
 
 },{"react":"/Users/jackson/Repos/colorable/node_modules/react/react.js"}],"/Users/jackson/Repos/colorable/docs/src/components/toolbar.jsx":[function(require,module,exports){
-var React=require("react"),ThresholdToggle=require("./threshold-toggle.jsx");module.exports=React.createClass({displayName:"exports",render:function(){var e=this.props.isApp,t={top:e?"":"-3.5rem",transition:"top .2s ease-out"};return React.createElement("div",{className:"fixed top-0 left-0 right-0 z2 flex flex-center flex-wrap white bg-dark-gray",style:t},React.createElement("a",{href:"#!",className:"button py2 button-nav-light white",onClick:this.props.toggleApp},"Colorable"),React.createElement("div",{className:"flex-auto"}),React.createElement("div",{className:"sm-show"},React.createElement(ThresholdToggle,React.__spread({},this.props,{updateThreshold:this.props.updateThreshold,className:"p1"}))),React.createElement("div",{className:"py1"},React.createElement("button",{className:"h3 button py1 button-muted white",title:"Exit app mode",onClick:this.props.toggleApp},"×")))}});
+/** @jsx React.DOM */
+
+var React = require('react');
+
+var ThresholdToggle = require('./threshold-toggle.jsx');
+
+module.exports = React.createClass({displayName: "exports",
+
+  render: function() {
+    var isApp = this.props.isApp;
+    var toolbarStyle = {
+      top: isApp ? '' : '-3.5rem',
+      transition: 'top .2s ease-out',
+    };
+    return (
+      React.createElement("div", {className: "fixed top-0 left-0 right-0 z2 flex flex-center flex-wrap white bg-dark-gray", style: toolbarStyle}, 
+        React.createElement("a", {href: "#!", className: "button py2 button-nav-light white", onClick: this.props.toggleApp}, "Colorable"), 
+        React.createElement("div", {className: "flex-auto"}), 
+        React.createElement("div", {className: "sm-show"}, 
+          React.createElement(ThresholdToggle, React.__spread({},  this.props, 
+            {updateThreshold: this.props.updateThreshold, 
+            className: "p1"}))
+        ), 
+        React.createElement("div", {className: "py1"}, 
+          React.createElement("button", {className: "h3 button py1 button-muted white", 
+            title: "Exit app mode", 
+            onClick: this.props.toggleApp}, 
+            "×"
+          )
+        )
+      )
+    )
+  }
+
+});
+
 
 
 },{"./threshold-toggle.jsx":"/Users/jackson/Repos/colorable/docs/src/components/threshold-toggle.jsx","react":"/Users/jackson/Repos/colorable/node_modules/react/react.js"}],"/Users/jackson/Repos/colorable/docs/src/data.js":[function(require,module,exports){
-var path=require("path"),marked=require("marked"),colors=require("colors.css/js/colors"),data=require("../../package.json"),readme='# Colorable\n\nColor combination contrast tester\n\nTakes a set color palette and shows contrast values for every possible combination.\nThis is useful for finding safe color combinations with predefined colors\nand includes pass/fail scores for the\n[WCAG accessibility guidelines](http://www.w3.org/TR/WCAG20/#visual-audio-contrast).\n\n## Getting Started\n\n```bash\nnpm install --save colorable\n```\n\n## Usage\n\nPass an array of color strings or an object with color strings as values. \n\n```js\nvar colorable = require(\'colorable\');\nvar colors = {\n  red: \'red\',\n  green: \'green\',\n  blue: \'blue\'\n};\nvar options = {\n  compact: true,\n  threshold: 0 \n};\nvar result = colorable(colors, options);\n```\n\nReturns an array of colors with combinations for all other colors and their\n[WCAG contrast](http://www.w3.org/TR/WCAG20/#visual-audio-contrast)\nvalues.\n\n```json\n[\n  {\n    "hex": "#FF0000",\n    "name": "red",\n    "combinations": [\n      {\n        "hex": "#008000",\n        "name": "green",\n        "contrast": 1.28483997166146,\n        "accessibility": {\n          "aa": false,\n          "aaLarge": false,\n          "aaa": false,\n          "aaaLarge": false\n        }\n      },\n      {\n        "hex": "#0000FF",\n        "name": "blue",\n        "contrast": 2.148936170212766,\n        "accessibility": {\n          "aa": false,\n          "aaLarge": false,\n          "aaa": false,\n          "aaaLarge": false\n        }\n      }\n    ]\n  },\n  ...\n]\n```\n\n### Accessibility object\n\nEach key is a boolean value indicating if the color contrast meets the following criteria:\n- `aa` - greater than 4.5 (for normal sized text)\n- `aaLarge` - greater than 3 ([for bold text or text larger than 24px](http://www.w3.org/TR/WCAG20/#larger-scaledef))\n- `aaa` - greater than 7 \n- `aaaLarge` - greater than 4.5 \n\n---\n\n## Options\n\n### `compact`\n\n_Type: Boolean (default: `false`)_\n\nIf set to `true`, the result will be a smaller object that only includes hex value color strings, a name for each color (if an object is passed to the function), contrast, and accessibility values.\nWhen set to `false`, the result also includes the entire [harthur/color](https://www.npmjs.com/package/color) object for each color, which includes other properties and methods for color manipulation.\n\n### `threshold`\n\n_Type: Number (default: `0`)_\n\nWhen set, the colorable function only returns combinations that have a contrast above this value. This is useful for only seeing combinations that pass a minimum contrast level.\n\n### `uniq`\n\n_Type: Boolean (default: true)_\n\nWhen set to `true`, the array of colors is passed through lodash.uniq to remove duplicates.\n\n\n---\n\nMIT License\n\n';data.readme=marked(readme),data.colors=[],Object.keys(colors).forEach(function(n){data.colors.push(colors[n])}),module.exports=data;
+(function (__dirname){
+
+var fs = require('fs');
+var path = require('path');
+var marked = require('marked');
+var colors = require('colors.css/js/colors');
+
+var data = require('../../package.json');
+var readme = fs.readFileSync(path.join(__dirname, '../../README.md'), 'utf8');
+data.readme = marked(readme);
+
+data.colors = [];
+
+Object.keys(colors).forEach(function(key) {
+  data.colors.push(colors[key]);
+});
+
+module.exports = data;
 
 
-},{"../../package.json":"/Users/jackson/Repos/colorable/package.json","colors.css/js/colors":"/Users/jackson/Repos/colorable/node_modules/colors.css/js/colors.js","marked":"/Users/jackson/Repos/colorable/node_modules/marked/lib/marked.js","path":"/Users/jackson/Repos/colorable/node_modules/browserify/node_modules/path-browserify/index.js"}],"/Users/jackson/Repos/colorable/index.js":[function(require,module,exports){
-var _=require("lodash"),Color=require("color"),minimums={aa:4.5,aaLarge:3,aaa:7,aaaLarge:4.5};module.exports=function(a,r){var n=[],o=[],r=r||{};if(_.defaults(r,{threshold:0,compact:!1,uniq:!0}),Array.isArray(a))r.uniq&&(a=_.uniq(a)),a.forEach(function(a){n.push(Color(a))});else{if("object"!=typeof a)return console.error("Must provide an array or object"),!1;_.forIn(a,function(a,r){var o=Color(a);o.name=r,n.push(o)}),r.uniq&&(n=_.uniq(n))}return n.forEach(function(a){var e=r.compact?{}:_.clone(a);e.hex=a.hexString(),a.name&&(e.name=a.name),e.combinations=[],n.forEach(function(n){if(a===n)return!1;var o=r.compact?{}:_.clone(n);o.hex=n.hexString(),n.name&&(o.name=n.name),o.contrast=a.contrast(n),o.accessibility={aa:o.contrast>=minimums.aa,aaLarge:o.contrast>=minimums.aaLarge,aaa:o.contrast>=minimums.aaa,aaaLarge:o.contrast>=minimums.aaaLarge},o.contrast>r.threshold&&e.combinations.push(o)}),o.push(e)}),o};
+
+}).call(this,"/docs/src")
+},{"../../package.json":"/Users/jackson/Repos/colorable/package.json","colors.css/js/colors":"/Users/jackson/Repos/colorable/node_modules/colors.css/js/colors.js","fs":"/Users/jackson/Repos/colorable/node_modules/browserify/lib/_empty.js","marked":"/Users/jackson/Repos/colorable/node_modules/marked/lib/marked.js","path":"/Users/jackson/Repos/colorable/node_modules/browserify/node_modules/path-browserify/index.js"}],"/Users/jackson/Repos/colorable/index.js":[function(require,module,exports){
+
+var _ = require('lodash');
+var Color = require('color');
+
+var minimums = {
+  aa: 4.5,
+  aaLarge: 3,
+  aaa: 7,
+  aaaLarge: 4.5
+};
+
+module.exports = function(colors, options) {
+
+  var arr = [];
+  var results = [];
+  var combinations = [];
+
+  var options = options || {};
+
+  _.defaults(options, {
+    threshold: 0,
+    compact: false,
+    uniq: true
+  });
 
 
-},{"color":"/Users/jackson/Repos/colorable/node_modules/color/color.js","lodash":"/Users/jackson/Repos/colorable/node_modules/lodash/index.js"}],"/Users/jackson/Repos/colorable/node_modules/browserify/node_modules/path-browserify/index.js":[function(require,module,exports){
+  if (!Array.isArray(colors)) {
+    if (typeof colors === 'object') {
+      _.forIn(colors, function(val, key) {
+        var color = Color(val);
+        color.name = key;
+        arr.push(color);
+      });
+      if (options.uniq) {
+        arr = _.uniq(arr);
+      }
+    } else {
+      console.error('Must provide an array or object');
+      return false;
+    }
+  } else {
+    if (options.uniq) {
+      colors = _.uniq(colors);
+    }
+    colors.forEach(function(color) {
+      arr.push(Color(color));
+    });
+  }
+
+  arr.forEach(function(color) {
+    var result = options.compact ? {} : _.clone(color);
+    result.hex = color.hexString();
+    if (color.name) { result.name = color.name; }
+    result.combinations = [];
+    arr.forEach(function(bg) {
+      if (color === bg) { return false; }
+      var combination = options.compact ? {} : _.clone(bg);
+      combination.hex = bg.hexString();
+      if (bg.name) { combination.name = bg.name; }
+      combination.contrast = color.contrast(bg);
+      combination.accessibility = {
+        aa: combination.contrast >= minimums.aa,
+        aaLarge: combination.contrast >= minimums.aaLarge,
+        aaa: combination.contrast >= minimums.aaa,
+        aaaLarge: combination.contrast >= minimums.aaaLarge,
+      };
+      if (combination.contrast > options.threshold) {
+        result.combinations.push(combination);
+      }
+    });
+    results.push(result);
+  });
+
+  return results;
+
+};
+
+
+
+},{"color":"/Users/jackson/Repos/colorable/node_modules/color/color.js","lodash":"/Users/jackson/Repos/colorable/node_modules/lodash/index.js"}],"/Users/jackson/Repos/colorable/node_modules/browserify/lib/_empty.js":[function(require,module,exports){
+
+},{}],"/Users/jackson/Repos/colorable/node_modules/browserify/node_modules/path-browserify/index.js":[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -32380,14 +33345,8 @@ module.exports={
   "description": "Color combination contrast tester",
   "main": "index.js",
   "scripts": {
-    "browserify": "browserify docs/src/app.js -o docs/app.min.js",
-    "watchify": "watchify docs/src/app.js -o docs/app.min.js",
-    "watchify:text": "watchify docs/src/text-app.js -o docs/text/app.min.js",
-    "build:js": "NODE_ENV=production browserify docs/src/app.js -o docs/app.min.js",
-    "build:html": "node docs/src/build",
-    "watch:html": "watch 'npm run build:html' ./docs/src",
-    "server": "http-server -p 8000",
-    "start": "parallelshell 'npm run watchify' 'npm run watchify:text' 'npm run watch:html' 'npm run server'"
+    "test": "node test",
+    "start": "node docs/build"
   },
   "author": "Brent Jackson",
   "license": "MIT",
@@ -32418,7 +33377,6 @@ module.exports={
     "reactify": "^1.0.0",
     "superagent": "^0.21.0",
     "uglify": "^0.1.1",
-    "uglifyify": "^3.0.1",
     "vinyl-transform": "^1.0.0",
     "watch": "^0.14.0",
     "watchify": "^2.3.0"
@@ -32443,10 +33401,21 @@ module.exports={
   "homepage": "https://github.com/jxnblk/colorable",
   "browserify": {
     "transform": [
-      "reactify",
-      "brfs",
-      "uglifyify"
+      "reactify"
     ]
+  },
+  "scripts": {
+    "browserify": "browserify docs/src/app.js -o docs/app.js",
+    "watchify": "watchify docs/src/app.js -o docs/app.js",
+    "watchify:text": "watchify docs/src/text-app.js -o docs/text/app.js | uglify > docs/text/app.min.js",
+    "uglify": "uglify docs/app.js -o docs/app.min.js",
+    "watch:uglify": "watch 'npm run uglify' ./docs",
+    "uglify:text": "uglify docs/text/app.js -o docs/text/app.min.js",
+    "build:js": "NODE_ENV=production browserify docs/src/app.js -o docs/app.js",
+    "build:html": "node docs/src/build",
+    "watch:html": "watch 'npm run build:html' ./docs/src",
+    "server": "http-server -p 8000",
+    "start": "parallelshell 'npm run watchify' 'npm run watchify:text' 'npm run watch:uglify' 'npm run watch:html' 'npm run server'"
   }
 }
 
