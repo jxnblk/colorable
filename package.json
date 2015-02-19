@@ -48,7 +48,6 @@
     "watchify": "^2.3.0"
   },
   "directories": {
-    "doc": "docs",
     "test": "test"
   },
   "repository": {
