@@ -84,7 +84,7 @@ module.exports = React.createClass({
               setBackground={this.setBackground}
               />
           </div>
-          <Footer {...this.props} />
+          <Footer {...this.props} linkColor={foreground} />
         </div>
       </div>
     )
