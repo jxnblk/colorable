@@ -14,7 +14,7 @@ var data = require('./data');
 
 // Main Index
 data.app = React.renderToString(App(data));
-data.script = 'docs/app.min.js';
+data.script = 'demos/app.min.js';
 var html = template(data);
 fs.writeFileSync(path.join(__dirname, '../../index.html'), html);
 

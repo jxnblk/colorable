@@ -9,7 +9,7 @@ and includes pass/fail scores for the
 
 ## Demo
 
-[Foreground/Background](//jxnblk.com/colorable/docs/text)
+[Foreground/Background](//jxnblk.com/colorable/demos/text)
 
 ## Getting Started
 

@@ -4,12 +4,12 @@
   "description": "Color combination contrast tester",
   "main": "index.js",
   "scripts": {
-    "browserify": "browserify docs/src/app.js -o docs/app.min.js",
-    "watchify": "watchify docs/src/app.js -o docs/app.min.js",
-    "watchify:text": "watchify docs/src/text-app.js -o docs/text/app.min.js",
-    "build:js": "NODE_ENV=production browserify docs/src/app.js -o docs/app.min.js",
-    "build:html": "node docs/src/build",
-    "watch:html": "watch 'npm run build:html' ./docs/src",
+    "browserify": "browserify demos/src/app.js -o demos/app.min.js",
+    "watchify": "watchify demos/src/app.js -o demos/app.min.js",
+    "watchify:text": "watchify demos/src/text-app.js -o demos/text/app.min.js",
+    "build:js": "NODE_ENV=production browserify demos/src/app.js -o demos/app.min.js",
+    "build:html": "node demos/src/build",
+    "watch:html": "watch 'npm run build:html' ./demos/src",
     "server": "http-server -p 8000",
     "start": "parallelshell 'npm run watchify' 'npm run watchify:text' 'npm run watch:html' 'npm run server'"
   },

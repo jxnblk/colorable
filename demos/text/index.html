@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>colorable</title>
+  <meta name="author" content="Brent Jackson">
+  <meta name="description" content="Color combination contrast tester">
+  
+    <meta name="keywords" content="color, contrast, wcag, accessibility, ">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://d2v52k3cl9vedd.cloudfront.net/bassdock/0.1.0/bassdock.min.css">
+  <style>
+    .lh1 { line-height: 1 }
+    .black { color: #111 }
+    .field-transparent {
+      color: inherit;
+      background-color: transparent;
+      border: none;
+      opacity: 0.75;
+    }
+    .field-transparent:focus {
+      outline: none;
+      opacity: 1;
+    }
+    .button-muted { 
+      color: inherit;
+      background-color: transparent;
+      opacity: 0.5;
+    }
+    .button-muted:hover {
+      opacity: 1;
+    }
+    .button-muted:focus {
+      opacity: 1;
+      outline: none;
+      border: 1px solid;
+    }
+    /* Edit in Bassdock/Blk etc */
+    .range-light {
+      color: inherit;
+    }
+    .range-light::-webkit-slider-runnable-track {
+      background-color: rgba(0,0,0,.25);
+    }
+    @-webkit-keyframes popin {
+      from { opacity: 0; -webkit-transform: scale(.875); }
+        to { opacity: 1; -webkit-transform: scale(1); }
+    }
+    @keyframes popin {
+      from { opacity: 0; transform: scale(.875); }
+        to { opacity: 1; transform: scale(1); }
+    }
+    .popin {
+      -webkit-animation: popin .125s ease-out forwards;
+      animation: popin .125s ease-out forwards;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <div style="color:#AACCFF;background-color:#222233;min-height:100vh;" data-reactid=".1vdpdpa6i9s" data-react-checksum="-586076945"><div style="max-width:56rem;margin-left:auto;margin-right:auto;" data-reactid=".1vdpdpa6i9s.0"><div class="flex flex-center px2 py3" style="min-height:70vh;box-sizing:border-box;" data-reactid=".1vdpdpa6i9s.0.0"><div class="mb2" style="color:#AACCFF;background-color:#222233;" data-reactid=".1vdpdpa6i9s.0.0.0"><div class="flex flex-center flex-wrap mxn2" data-reactid=".1vdpdpa6i9s.0.0.0.0"><h1 class="h00 h00-responsive m0 flex-auto px2" data-reactid=".1vdpdpa6i9s.0.0.0.0.0">AAA</h1><div class="h2 bold px2" data-reactid=".1vdpdpa6i9s.0.0.0.0.1">9.51</div></div><h2 class="h1 mt0" data-reactid=".1vdpdpa6i9s.0.0.0.1">Contrast</h2><p class="" data-reactid=".1vdpdpa6i9s.0.0.0.2">Contrast is the difference in luminance or color that makes an object (or its representation in an image or display) distinguishable. In visual perception of the real world, contrast is determined by the difference in the color and brightness of the object and other objects within the same field of view. Because the human visual system is more sensitive to contrast than absolute luminance, we can perceive the world similarly regardless of the huge changes in illumination over the day or from place to place. The maximum contrast of an image is the contrast ratio or dynamic range.</p></div></div><div class="px2 py3" style="min-height:30vh;box-sizing:border-box;" data-reactid=".1vdpdpa6i9s.0.1"><div class="sm-flex flex-center mxn2" style="color:#fff;" data-reactid=".1vdpdpa6i9s.0.1.0"><div class="sm-col-6 px2" data-reactid=".1vdpdpa6i9s.0.1.0.0"><label class="h5 bold" data-reactid=".1vdpdpa6i9s.0.1.0.0.0">Foreground</label><input type="text" value="#AACCFF" class="block full-width field-dark" data-reactid=".1vdpdpa6i9s.0.1.0.0.1"><form class="flex flex-center" data-reactid=".1vdpdpa6i9s.0.1.0.0.2"><div class="px1" data-reactid=".1vdpdpa6i9s.0.1.0.0.2.0"><label class="h5 bold lh1 block" data-reactid=".1vdpdpa6i9s.0.1.0.0.2.0.0">Hue</label><input type="range" class="full-width m0 range-light" value="216" min="0" max="360" data-reactid=".1vdpdpa6i9s.0.1.0.0.2.0.1"></div><div class="px1" data-reactid=".1vdpdpa6i9s.0.1.0.0.2.1"><label class="h5 bold lh1 block" data-reactid=".1vdpdpa6i9s.0.1.0.0.2.1.0">Saturation</label><input type="range" class="full-width m0 range-light" value="100" min="0" max="100" data-reactid=".1vdpdpa6i9s.0.1.0.0.2.1.1"></div><div class="px1" data-reactid=".1vdpdpa6i9s.0.1.0.0.2.2"><label class="h5 bold lh1 block" data-reactid=".1vdpdpa6i9s.0.1.0.0.2.2.0">Lightness</label><input type="range" class="full-width m0 range-light" value="83" min="0" max="100" data-reactid=".1vdpdpa6i9s.0.1.0.0.2.2.1"></div></form></div><div class="sm-col-6 px2" data-reactid=".1vdpdpa6i9s.0.1.0.1"><label class="h5 bold" data-reactid=".1vdpdpa6i9s.0.1.0.1.0">Background</label><input type="text" value="#222233" class="block full-width field-dark" data-reactid=".1vdpdpa6i9s.0.1.0.1.1"><form class="flex flex-center" data-reactid=".1vdpdpa6i9s.0.1.0.1.2"><div class="px1" data-reactid=".1vdpdpa6i9s.0.1.0.1.2.0"><label class="h5 bold lh1 block" data-reactid=".1vdpdpa6i9s.0.1.0.1.2.0.0">Hue</label><input type="range" class="full-width m0 range-light" value="240" min="0" max="360" data-reactid=".1vdpdpa6i9s.0.1.0.1.2.0.1"></div><div class="px1" data-reactid=".1vdpdpa6i9s.0.1.0.1.2.1"><label class="h5 bold lh1 block" data-reactid=".1vdpdpa6i9s.0.1.0.1.2.1.0">Saturation</label><input type="range" class="full-width m0 range-light" value="20" min="0" max="100" data-reactid=".1vdpdpa6i9s.0.1.0.1.2.1.1"></div><div class="px1" data-reactid=".1vdpdpa6i9s.0.1.0.1.2.2"><label class="h5 bold lh1 block" data-reactid=".1vdpdpa6i9s.0.1.0.1.2.2.0">Lightness</label><input type="range" class="full-width m0 range-light" value="17" min="0" max="100" data-reactid=".1vdpdpa6i9s.0.1.0.1.2.2.1"></div></form></div></div></div><footer class="container px2 mt4" data-reactid=".1vdpdpa6i9s.0.2"><div class="flex flex-center flex-wrap py3" data-reactid=".1vdpdpa6i9s.0.2.0"><h4 class="m0" data-reactid=".1vdpdpa6i9s.0.2.0.0"><a href="//jxnblk.com/colorable" class="blue" data-reactid=".1vdpdpa6i9s.0.2.0.0.0">colorable</a><span class="h5 regular" data-reactid=".1vdpdpa6i9s.0.2.0.0.1"><span data-reactid=".1vdpdpa6i9s.0.2.0.0.1.0"> v</span><span data-reactid=".1vdpdpa6i9s.0.2.0.0.1.1">1.0.5</span></span></h4><a href="//npmjs.com/package/colorable" class="button" data-reactid=".1vdpdpa6i9s.0.2.0.1">NPM</a><a href="https://github.com/jxnblk/colorable" class="button" data-reactid=".1vdpdpa6i9s.0.2.0.2">Github</a><div class="flex-auto" data-reactid=".1vdpdpa6i9s.0.2.0.3"></div><p class="h5 m0" data-reactid=".1vdpdpa6i9s.0.2.0.4"><span data-reactid=".1vdpdpa6i9s.0.2.0.4.0">Made by </span><a href="//jxnblk.com" data-reactid=".1vdpdpa6i9s.0.2.0.4.1">Jxnblk</a></p></div></footer></div></div>
+</div>
+
+<!--
+<footer class="container px2 mt4">
+  <div class="flex flex-center flex-wrap py3 border-top">
+    <h4 class="m0">
+      colorable
+      <span class="h5">v1.0.5</span>
+    </h4>
+    <a href="//npmjs.com/package/colorable" class="button">NPM</a>
+    <a href="https://github.com/jxnblk/colorable" class="button">Github</a>
+    <div class="flex-auto"></div>
+    <p class="h5 m0">
+      Made by <a href="//jxnblk.com">Jxnblk</a>
+    </p>
+  </div>
+</footer>
+-->
+
+<script src="app.min.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-4603832-6', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
