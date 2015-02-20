@@ -16,7 +16,11 @@ module.exports = React.createClass({
   render: function() {
     var foreground = this.props.foreground;
     var background = this.props.background;
-    var light = Color(background).light();
+    try {
+      var light = Color(background).light();
+    } catch(e) {
+      var light = true;
+    }
     var style = {
       color: light ? '#111' : '#fff'
     };
