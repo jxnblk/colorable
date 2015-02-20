@@ -1,4 +1,3 @@
-/** @jsx React.DOM */
 
 var React = require('react');
 var qs = require('query-string');

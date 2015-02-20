@@ -1,10 +1,8 @@
-/** @jsx React.DOM */
 
 var React = require('react');
 var Color = require('color');
 var _ = require('lodash');
 var request = require('superagent');
-//var cssstats = require('cssstats');
 var postcss = require('postcss');
 
 module.exports = React.createClass({

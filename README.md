@@ -7,6 +7,10 @@ This is useful for finding safe color combinations with predefined colors
 and includes pass/fail scores for the
 [WCAG accessibility guidelines](http://www.w3.org/TR/WCAG20/#visual-audio-contrast).
 
+## Demo
+
+[Foreground/Background](//jxnblk.com/colorable/docs/text)
+
 ## Getting Started
 
 ```bash
