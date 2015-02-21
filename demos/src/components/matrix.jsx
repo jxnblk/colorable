@@ -109,8 +109,13 @@ module.exports = React.createClass({
       marginLeft: isApp ? '0' : '-6rem',
       transition: 'margin .2s ease-out'
     };
-    var toggleButtonStyle = {
+    var toggleOverlayStyle = {
       display: isApp ? 'none' : 'block',
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
     };
     var bottomBarStyle = {
       display: isApp ? '' : 'none'
@@ -137,6 +142,10 @@ module.exports = React.createClass({
               {matrix.map(this.renderRow)}
             </div>
           </div>
+          <a href="#"
+            style={toggleOverlayStyle}
+            title="View demo"
+            onClick={this.props.toggleApp}/>
         </div>
         <SuperModal
           header={modalHeader}
@@ -151,13 +160,6 @@ module.exports = React.createClass({
             Colors from
             <a href="//clrs.cc">mrmrs/colors</a>
           </p>
-          <div className="px2">
-            <button className="button button-small button-light-gray"
-              style={toggleButtonStyle}
-              onClick={this.props.toggleApp}>
-              View Demo App
-            </button>
-          </div>
         </div>
       </div>
     )
