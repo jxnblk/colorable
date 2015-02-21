@@ -2,7 +2,7 @@
 var React = require('react');
 var Color = require('color');
 
-var HslForm = require('./hsl-form.jsx');
+var HslSliders = require('react-hsl-sliders');
 
 module.exports = React.createClass({
 
@@ -62,9 +62,11 @@ module.exports = React.createClass({
           </div>
         </div>
         <div className="flex-auto" style={disclosureStyle}>
-          <HslForm color={color}
+          <HslSliders
+            value={color}
             tabIndex="-1"
-            updateColor={this.props.updateColor} />
+            hideValues={true}
+            onChange={this.props.updateColor} />
         </div>
       </div>
     )

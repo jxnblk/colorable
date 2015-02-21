@@ -1,7 +1,7 @@
 
 var React = require('react');
 var Color = require('color');
-var HslForm = require('./hsl-form.jsx');
+var HslSliders = require('react-hsl-sliders');
 
 module.exports = React.createClass({
 
@@ -34,8 +34,9 @@ module.exports = React.createClass({
             value={foreground}
             onChange={this.handleForegroundChange}
             className={inputClass} />
-          <HslForm color={foreground}
-            updateColor={this.props.setForeground} />
+          <HslSliders
+            value={foreground}
+            onChange={this.props.setForeground} />
         </div>
         <div className="sm-col-6 px2">
           <label className="h5 bold">Background</label>
@@ -43,8 +44,9 @@ module.exports = React.createClass({
             value={background}
             onChange={this.handleBackgroundChange}
             className={inputClass} />
-          <HslForm color={background}
-            updateColor={this.props.setBackground} />
+          <HslSliders
+            value={background}
+            onChange={this.props.setBackground} />
         </div>
       </div>
     )
