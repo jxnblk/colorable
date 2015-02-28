@@ -29,22 +29,26 @@ module.exports = React.createClass({
     return (
       <div className="sm-flex flex-center mxn2" style={style}>
         <div className="sm-col-6 px2">
-          <label className="h5 bold">Foreground</label>
+          <label htmlFor="foreground-hex-input" className="h5 bold">Foreground</label>
           <input type="text"
+            id="foreground-hex-input"
             value={foreground}
             onChange={this.handleForegroundChange}
             className={inputClass} />
           <HslSliders
+            id="foreground-hsl-sliders"
             value={foreground}
             onChange={this.props.setForeground} />
         </div>
         <div className="sm-col-6 px2">
-          <label className="h5 bold">Background</label>
+          <label htmlFor="background-hex-input" className="h5 bold">Background</label>
           <input type="text"
+            id="background-hex-input"
             value={background}
             onChange={this.handleBackgroundChange}
             className={inputClass} />
           <HslSliders
+            id="background-hsl-sliders"
             value={background}
             onChange={this.props.setBackground} />
         </div>

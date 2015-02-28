@@ -39,7 +39,7 @@
     "postcss": "^4.0.3",
     "query-string": "^1.0.0",
     "react": "^0.12.2",
-    "react-hsl-sliders": "^1.0.4",
+    "react-hsl-sliders": "^1.0.5",
     "reactify": "^1.0.0",
     "superagent": "^0.21.0",
     "uglify": "^0.1.1",

@@ -45,9 +45,11 @@ module.exports = React.createClass({
     var isEditing = this.props.isApp ? this.state.isEditing : false;
     var ref = 'color-' + i;
     var id = color;
+    var itemId = 'color-item-' + i;
     return (
-      <li ref={ref} id={id}>
+      <li ref={ref} key={ref} id={id}>
         <ColorListItem color={color}
+          id={itemId}
           isEditing={isEditing}
           removeColor={removeColor}
           updateColor={updateColor}

@@ -6,6 +6,12 @@ var HslSliders = require('react-hsl-sliders');
 
 module.exports = React.createClass({
 
+  getDefaultProps: function() {
+    return {
+      id: '',
+    }
+  },
+
   handleChange: function(e) {
     var hex = e.target.value;
     this.props.updateColor(hex);
@@ -45,7 +51,9 @@ module.exports = React.createClass({
       <div className="flex flex-column px1"
         style={style}>
         <div className="flex-auto flex flex-center">
+          <label htmlFor={this.props.id + '-hex'} className="hide">{this.props.itemId}</label>
           <input type="text"
+            id={this.props.id + '-hex'}
             className="h5 bold block full-width m0 field-transparent"
             style={inputStyle}
             value={color}
@@ -63,6 +71,7 @@ module.exports = React.createClass({
         </div>
         <div className="flex-auto" style={disclosureStyle}>
           <HslSliders
+            id={this.props.id + '-hsl'}
             value={color}
             tabIndex="-1"
             hideValues={true}
