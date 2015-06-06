@@ -1,9 +1,9 @@
 
-var React = require('react');
+var React = require('react')
 
 var Header = React.createClass({
 
-  render: function() {
+  render: function () {
     return (
       <header className="py2">
         <h1>{this.props.title}</h1>
@@ -12,7 +12,7 @@ var Header = React.createClass({
     )
   }
 
-});
+})
 
-module.exports = Header;
+module.exports = Header
 

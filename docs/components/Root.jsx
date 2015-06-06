@@ -1,11 +1,10 @@
 
 var React = require('react')
 var Head = require('./Head.jsx')
-//var Body = require('./Body.jsx')
-var Header = require('./Header.jsx');
-var Footer = require('./Footer.jsx');
-var Router = require('react-router');
-var RouteHandler = Router.RouteHandler;
+var Header = require('./Header.jsx')
+var Footer = require('./Footer.jsx')
+var Router = require('react-router')
+var RouteHandler = Router.RouteHandler
 
 var Root = React.createClass({
 
@@ -20,11 +19,11 @@ var Root = React.createClass({
           <Header {...this.props} />
           <RouteHandler {...this.props} />
           <Footer {...this.props} />
-          <script id="initial-props"
-            type="application/json"
+          <script id='initial-props'
+            type='application/json'
             dangerouslySetInnerHTML={initialProps} />
-          <script src="bundle.js" />
-          <script src="js/ga.js" />
+          <script src={this.props.baseUrl + 'bundle.js'} />
+          <script src={this.props.baseUrl + 'docs/ga.js'} />
         </body>
       </html>
     )

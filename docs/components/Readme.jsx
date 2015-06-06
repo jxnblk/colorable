@@ -1,9 +1,9 @@
 
-var React = require('react');
+var React = require('react')
 
 module.exports = React.createClass({
 
-  render: function() {
+  render: function () {
     return (
       <div className="container px2">
         <div className="right mt2 ml2 mb2">
@@ -17,5 +17,5 @@ module.exports = React.createClass({
     )
   }
 
-});
+})
 

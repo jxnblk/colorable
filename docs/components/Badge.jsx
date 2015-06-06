@@ -1,18 +1,18 @@
 
-var React = require('react');
+var React = require('react')
 
-module.exports = React.createClass({
+var Badge = React.createClass({
 
 
-  render: function() {
+  render: function () {
     if (!this.props.combo.accessibility) {
-      return false;
+      return false
     }
-    var level = this.props.combo.accessibility;
+    var level = this.props.combo.accessibility
     var style = {
       color: this.props.combo.hex,
       backgroundColor: this.props.hex
-    };
+    }
 
     if (level.aaa) {
       return (<div className="h6 bold inline-block px1 rounded" style={style}>AAA</div>)
@@ -25,5 +25,7 @@ module.exports = React.createClass({
     }
   }
 
-});
+})
+
+module.exports = Badge
 

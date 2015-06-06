@@ -1,12 +1,12 @@
 
-var React = require('react');
-var Chip = require('./chip.jsx');
+var React = require('react')
+var Chip = require('./Chip.jsx')
 
-module.exports = React.createClass({
+var MatrixRow = React.createClass({
 
   renderChip: function(combo) {
-    var props = this.props;
-    props.combo = combo;
+    var props = this.props
+    props.combo = combo
     return (
       <Chip {...props} />
     )
@@ -15,7 +15,7 @@ module.exports = React.createClass({
   render: function() {
     var style = {
       height: '5rem'
-    };
+    }
     return (
       <div className="flex flex-stretch" style={style}>
         {this.props.combinations.map(this.renderChip)}
@@ -23,5 +23,7 @@ module.exports = React.createClass({
     )
   }
 
-});
+})
+
+module.exports = MatrixRow
 

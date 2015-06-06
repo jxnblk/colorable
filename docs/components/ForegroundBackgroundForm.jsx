@@ -1,31 +1,31 @@
 
-var React = require('react');
-var Color = require('color');
-var HslSliders = require('react-hsl-sliders');
+var React = require('react')
+var Color = require('color')
+var HslSliders = require('react-hsl-sliders')
 
-module.exports = React.createClass({
+var ForegroundBackgroundForm = React.createClass({
 
-  handleForegroundChange: function(e) {
-    this.props.setForeground(e.target.value);
+  handleForegroundChange: function (e) {
+    this.props.setForeground(e.target.value)
   },
 
-  handleBackgroundChange: function(e) {
-    this.props.setBackground(e.target.value);
+  handleBackgroundChange: function (e) {
+    this.props.setBackground(e.target.value)
   },
 
-  render: function() {
-    var foreground = this.props.foreground;
-    var background = this.props.background;
+  render: function () {
+    var foreground = this.props.foreground
+    var background = this.props.background
     try {
-      var light = Color(background).light();
+      var light = Color(background).light()
     } catch(e) {
-      var light = true;
+      var light = true
     }
     var style = {
       color: light ? '#111' : '#fff'
-    };
-    var inputClass = 'block full-width ';
-    inputClass += light ? 'field-light' : 'field-dark';
+    }
+    var inputClass = 'block full-width '
+    inputClass += light ? 'field-light' : 'field-dark'
     return (
       <div className="sm-flex flex-center mxn2" style={style}>
         <div className="sm-col-6 px2">
@@ -56,5 +56,7 @@ module.exports = React.createClass({
     )
   }
 
-});
+})
+
+module.exports = ForegroundBackgroundForm
 

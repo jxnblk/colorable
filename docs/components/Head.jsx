@@ -1,9 +1,9 @@
 
-var React = require('react');
+var React = require('react')
 
 var Head = React.createClass({
 
-  render: function() {
+  render: function () {
     return (
       <head>
         <meta charSet="utf-8" />
@@ -16,7 +16,7 @@ var Head = React.createClass({
     )
   }
 
-});
+})
 
-module.exports = Head;
+module.exports = Head
 

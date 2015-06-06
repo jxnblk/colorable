@@ -1,15 +1,11 @@
 
-var React = require('react');
-//var qs = require('query-string');
-//var Matrix = require('./matrix.jsx');
-var Readme = require('./Readme.jsx');
-//var Footer = require('./footer.jsx');
+var React = require('react')
+var Readme = require('./Readme.jsx')
 
 module.exports = React.createClass({
 
-  componentDidMount: function() {
+  componentDidMount: function () {
     if (window) {
-      //var params = qs.parse(window.location.search);
     }
   },
 
@@ -21,5 +17,5 @@ module.exports = React.createClass({
     )
   }
 
-});
+})
 

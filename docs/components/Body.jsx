@@ -1,13 +1,13 @@
 
-var React = require('react');
-var Header = require('./Header.jsx');
-var Footer = require('./Footer.jsx');
-var Router = require('react-router');
-var RouteHandler = Router.RouteHandler;
+var React = require('react')
+var Header = require('./Header.jsx')
+var Footer = require('./Footer.jsx')
+var Router = require('react-router')
+var RouteHandler = Router.RouteHandler
 
 var Body = React.createClass({
 
-  render: function() {
+  render: function () {
     return (
       <body className="container px2">
         <Header {...this.props} />
@@ -17,7 +17,7 @@ var Body = React.createClass({
     )
   }
 
-});
+})
 
-module.exports = Body;
+module.exports = Body
 
