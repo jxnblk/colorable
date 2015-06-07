@@ -1,7 +1,7 @@
 
 var React = require('react')
-var qs = require('query-string')
-var _debounce = require('lodash').debounce
+//var qs = require('query-string')
+//var _debounce = require('lodash').debounce
 var colorable = require('../..')
 var SuperModal = require('./SuperModal.jsx')
 var MatrixRow = require('./MatrixRow.jsx')
@@ -15,7 +15,7 @@ var MatrixDemo = React.createClass({
     var params = {}
     console.log('query', this.props.query);
     if (typeof window !== 'undefined') {
-      params = qs.parse(window.location.search)
+      //params = qs.parse(window.location.search)
       //params = this.props.query
     }
     if (params.colors) {
@@ -31,15 +31,15 @@ var MatrixDemo = React.createClass({
     }
   },
 
-  pushState: _debounce(function() {
-    if (!window) return false
-    var colorString = this.state.colors.join('.')
-    var params = {
-      colors: colorString,
-    }
-    var query = '?' + qs.stringify(params)
-    window.history.pushState(params, 'Colorable', query)
-  }, 200),
+  //pushState: _debounce(function() {
+  //  if (!window) return false
+  //  var colorString = this.state.colors.join('.')
+  //  var params = {
+  //    colors: colorString,
+  //  }
+  //  var query = '?' + qs.stringify(params)
+  //  window.history.pushState(params, 'Colorable', query)
+  //}, 200),
 
   updateColors: function(colors) {
     this.setState({ colors: colors })
@@ -69,7 +69,7 @@ var MatrixDemo = React.createClass({
   },
 
   componentDidUpdate: function() {
-    this.pushState()
+    //this.pushState()
   },
 
   renderRow: function(color, i) {
@@ -91,7 +91,7 @@ var MatrixDemo = React.createClass({
         minHeight: '100vh',
         boxSizing: 'border-box',
         overflowX: 'auto',
-        webkitOverflowScrolling: 'touch'
+        WebkitOverflowScrolling: 'touch'
       },
       matrix: {
       },
