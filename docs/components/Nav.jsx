@@ -30,15 +30,15 @@ var Nav = React.createClass({
           className='btn py2 red'>
           Colorable
         </Link>
-        <Link to='/colorable/demos'
+        <Link to='/colorable/demos/'
           className='btn py2 red'>
           Demos
         </Link>
-        <Link to='/colorable/demos/text'
+        <Link to='/colorable/demos/text/'
           className='btn py2 sm-show red'>
           Text Demo
         </Link>
-        <Link to='/colorable/demos/matrix'
+        <Link to='/colorable/demos/matrix/'
           className='btn py2 sm-show red'>
           Matrix Demo
         </Link>

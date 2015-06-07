@@ -13,9 +13,9 @@ var MatrixDemo = require('./components/MatrixDemo.jsx')
 var Routes = (
   <Route handler={Root} path='/colorable/'>
     <DefaultRoute handler={Index} />
-    <Route path='demos' handler={Demos} />
-    <Route path='demos/text' handler={TextDemo} />
-    <Route path='demos/matrix' handler={MatrixDemo} />
+    <Route path='demos/' handler={Demos} />
+    <Route path='demos/text/' handler={TextDemo} />
+    <Route path='demos/matrix/' handler={MatrixDemo} />
     <Redirect from='/colorable/demos/' to='/colorable/demos' />
     <Redirect from='/colorable/demos/text/' to='/colorable/demos/text' />
     <Redirect from='/colorable/demos/matrix/' to='/colorable/demos/matrix' />
