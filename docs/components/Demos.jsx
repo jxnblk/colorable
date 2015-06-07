@@ -39,7 +39,7 @@ var Demos = React.createClass({
               {links.map(this.renderLink)}
             </ul>
           </div>
-          <div className='px2 py4'>
+          <div className='right-align px2 py4'>
             <Ad />
           </div>
         </div>
