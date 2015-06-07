@@ -11,11 +11,12 @@ var TextDemo = require('./components/TextDemo.jsx')
 var MatrixDemo = require('./components/MatrixDemo.jsx')
 
 var Routes = (
-  <Route handler={Root} path='/'>
+  <Route handler={Root} path='/colorable/'>
     <DefaultRoute handler={Index} />
     <Route path='demos' handler={Demos} />
     <Route path='demos/text' handler={TextDemo} />
     <Route path='demos/matrix' handler={MatrixDemo} />
+    {/*
     <Route path='/colorable/' name='home' handler={Index}>
       <Route path='demos' name='demos' handler={Demos} />
       <Route path='demos/text' name='text' handler={TextDemo} />
@@ -24,6 +25,7 @@ var Routes = (
     <Redirect from='/colorable/demos/' to='/demos' />
     <Redirect from='/colorable/demos/text/' to='/demos/text' />
     <Redirect from='/colorable/demos/matrix/' to='/demos/matrix' />
+    */}
   </Route>
 )
 
