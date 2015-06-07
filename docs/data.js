@@ -42,8 +42,8 @@ module.exports = {
   }),
   readme: readme,
   colors: colors,
-  baseUrl: '/',
-  // baseUrl: '/colorable/',
+  //baseUrl: '/',
+  baseUrl: '/colorable/',
   routes: [
     '/',
     '/demos',
