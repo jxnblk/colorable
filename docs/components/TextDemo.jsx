@@ -89,7 +89,9 @@ module.exports = React.createClass({
             <div
               style={styles.ad}
               className='flex-none px3'>
+              {/*
               <Ad />
+                */}
             </div>
           </div>
           <div className="px2 py3"

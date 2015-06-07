@@ -40,7 +40,9 @@ var Demos = React.createClass({
             </ul>
           </div>
           <div className='px2 py4'>
+            {/*
             <Ad />
+              */}
           </div>
         </div>
       </div>
