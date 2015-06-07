@@ -30,7 +30,7 @@ var Demos = React.createClass({
 
     return (
       <div
-        className='container px2 py3'
+        className='container px3 py3'
         style={styles.container}>
         <div className='sm-flex mxn2'>
           <div className='flex-auto px2'>
@@ -39,7 +39,7 @@ var Demos = React.createClass({
               {links.map(this.renderLink)}
             </ul>
           </div>
-          <div className='right-align px2 py4'>
+          <div className='px2 py4'>
             <Ad />
           </div>
         </div>

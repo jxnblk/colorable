@@ -88,7 +88,7 @@ module.exports = React.createClass({
             </div>
             <div
               style={styles.ad}
-              className='flex-none px3'>
+              className='flex-none right-align px3'>
               <Ad />
             </div>
           </div>
