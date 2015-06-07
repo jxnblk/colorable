@@ -7,7 +7,8 @@
     "clean": "rm -r demos & rm bundle.js & rm index.html",
     "copy": "cp -r colorable/* . && rm -r colorable",
     "webpack": "webpack --progress --colors",
-    "prod": "webpack -p --progress --colors",
+    "webpack-p": "webpack -p --progress --colors",
+    "prod": "npm run clean && npm run webpack-p && npm run copy",
     "dev": "webpack-dev-server --progress --colors",
     "start": "npm run dev"
   },

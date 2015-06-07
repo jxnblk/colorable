@@ -24,11 +24,11 @@ var Nav = React.createClass({
           Matrix Demo
         </a>
 
-        <Link to='/'
+        <Link to='/colorable'
           className='btn py2 red'>
           Colorable
         </Link>
-        <Link to='/demos'
+        <Link to='/colorable/demos'
           className='btn py2 red'>
           Demos
         </Link>
