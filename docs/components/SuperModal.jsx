@@ -51,7 +51,7 @@ var SuperModal = React.createClass({
       <div className=''
         onClick={this.close}
         style={styles.container}>
-        <div className="p2">
+        <div className="p2" style={styles.header}>
           <div className="flex flex-center">
             <div className="bold flex-auto">{header}</div>
             <button className="h3 btn muted"
