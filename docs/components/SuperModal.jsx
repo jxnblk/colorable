@@ -44,24 +44,24 @@ var SuperModal = React.createClass({
       }
     }
 
-    var containerClass = 'flex flex-center popin '
-    containerClass += this.props.flush ? '' : 'p2'
+    //var containerClass = 'flex flex-center popin '
+    //containerClass += this.props.flush ? '' : 'p2'
 
     return (
-      <div className={containerClass}
+      <div className=''
         onClick={this.close}
         style={styles.container}>
-        <div>
-          <div className="p2">
-            <div className="flex flex-center">
-              <div className="bold flex-auto">{header}</div>
-              <button className="h3 btn muted"
-                onClick={this.close}
-                title="Dismiss modal overlay">
-                &times;
-              </button>
-            </div>
+        <div className="p2">
+          <div className="flex flex-center">
+            <div className="bold flex-auto">{header}</div>
+            <button className="h3 btn muted"
+              onClick={this.close}
+              title="Dismiss modal overlay">
+              &times;
+            </button>
           </div>
+        </div>
+        <div className='flex flex-center'>
           <div style={styles.body}>
             {this.props.children}
           </div>
