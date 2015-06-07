@@ -23764,7 +23764,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	
 	var React = __webpack_require__(1)
-	var Link = __webpack_require__(157).Link
+	//var Link = require('react-router').Link
 
 	var Nav = React.createClass({displayName: "Nav",
 
@@ -23775,7 +23775,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          className: "btn py2"}, 
 	          "Colorable"
 	        ), 
-	        React.createElement(Link, {to: this.props.baseUrl + 'demos', 
+	        React.createElement("a", {href: this.props.baseUrl + 'demos', 
 	          className: "btn py2"}, 
 	          "Demos"
 	        ), 

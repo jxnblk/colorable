@@ -1,6 +1,6 @@
 
 var React = require('react')
-var Link = require('react-router').Link
+//var Link = require('react-router').Link
 
 var Nav = React.createClass({
 
@@ -11,10 +11,10 @@ var Nav = React.createClass({
           className='btn py2'>
           Colorable
         </a>
-        <Link to={this.props.baseUrl + 'demos'}
+        <a href={this.props.baseUrl + 'demos'}
           className='btn py2'>
           Demos
-        </Link>
+        </a>
         <a href={this.props.baseUrl + 'demos/text'}
           className='btn py2 sm-show'>
           Text Demo
