@@ -22,8 +22,8 @@ var Demos = React.createClass({
       }
     }
     var links = [
-      { href: '/demos/text', label: 'Text Demo' },
-      { href: '/demos/matrix', label: 'Matrix Demo' },
+      { href: '/colorable/demos/text', label: 'Text Demo' },
+      { href: '/colorable/demos/matrix', label: 'Matrix Demo' },
       { href: 'http://basscss.com/docs/reference/color-combinations', label: 'Basscss Color Combos' },
       { href: 'http://clrs.cc/a11y', label: 'clrs.cc/a11y' },
     ]
