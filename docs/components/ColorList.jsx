@@ -34,7 +34,7 @@ var ColorList = React.createClass({
     var id = color
     var itemId = 'color-item-' + i
     return (
-      <li ref={ref} key={ref} id={id}>
+      <li ref={ref} key={ref}>
         <ColorListItem color={color}
           id={itemId}
           isEditing={true}
