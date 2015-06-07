@@ -4,6 +4,8 @@
   "description": "Color palette combination contrast tester",
   "main": "index.js",
   "scripts": {
+    "clean": "rm -r demos & rm bundle.js & rm index.html",
+    "copy": "cp -r colorable/* . && rm -r colorable",
     "webpack": "webpack --progress --colors",
     "prod": "webpack -p --progress --colors",
     "dev": "webpack-dev-server --progress --colors",
