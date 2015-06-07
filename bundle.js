@@ -23586,13 +23586,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    React.createElement(Route, {path: "demos", handler: Demos}), 
 	    React.createElement(Route, {path: "demos/text", handler: TextDemo}), 
 	    React.createElement(Route, {path: "demos/matrix", handler: MatrixDemo}), 
-	    /*
-	    <Route path='/colorable/' name='home' handler={Index}>
-	      <Route path='demos' name='demos' handler={Demos} />
-	      <Route path='demos/text' name='text' handler={TextDemo} />
-	      <Route path='demos/matrix' name='matrix' handler={MatrixDemo} />
-	    </Route>
-	    */
 	    React.createElement(Redirect, {from: "/colorable/demos/", to: "/colorable/demos"}), 
 	    React.createElement(Redirect, {from: "/colorable/demos/text/", to: "/colorable/demos/text"}), 
 	    React.createElement(Redirect, {from: "/colorable/demos/matrix/", to: "/colorable/demos/matrix"})
@@ -23706,15 +23699,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	          "Matrix Demo"
 	        ), 
 
+	        React.createElement(Link, {to: "/", 
+	          className: "btn py2 red"}, 
+	          "Colorable"
+	        ), 
+	        React.createElement(Link, {to: "/demos", 
+	          className: "btn py2 red"}, 
+	          "Demos"
+	        ), 
+
 	        /*
-	        <Link to='/'
-	          className='btn py2 red'>
-	          Colorable
-	        </Link>
-	        <Link to='/demos'
-	          className='btn py2 red'>
-	          Demos
-	        </Link>
 	        <Link to='/demos/text'
 	          className='btn py2 sm-show red'>
 	          Text Demo
