@@ -61,7 +61,7 @@ var SuperModal = React.createClass({
             </button>
           </div>
         </div>
-        <div className='flex flex-center'>
+        <div className='flex flex-center' style={{ height: '100%' }}>
           <div style={styles.body}>
             {this.props.children}
           </div>
