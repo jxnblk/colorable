@@ -1,5 +1,6 @@
 
 var React = require('react')
+var Header = require('./Header.jsx')
 var Readme = require('./Readme.jsx')
 
 module.exports = React.createClass({
@@ -12,6 +13,7 @@ module.exports = React.createClass({
   render: function() {
     return (
       <main>
+        <Header {...this.props} />
         <Readme {...this.props} />
       </main>
     )

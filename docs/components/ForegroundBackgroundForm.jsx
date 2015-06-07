@@ -21,20 +21,25 @@ var ForegroundBackgroundForm = React.createClass({
     } catch(e) {
       var light = true
     }
-    var style = {
-      color: light ? '#111' : '#fff'
+    var styles = {
+      container: {
+        color: light ? '#111' : '#fff'
+      },
+      input: {
+        color: 'inherit'
+      }
     }
-    var inputClass = 'block full-width '
-    inputClass += light ? 'field-light' : 'field-dark'
     return (
-      <div className="sm-flex flex-center mxn2" style={style}>
+      <div className="sm-flex flex-center mxn2"
+        style={styles.container}>
         <div className="sm-col-6 px2">
           <label htmlFor="foreground-hex-input" className="h5 bold">Foreground</label>
           <input type="text"
             id="foreground-hex-input"
             value={foreground}
             onChange={this.handleForegroundChange}
-            className={inputClass} />
+            style={styles.input}
+            className='block col-12 field bg-darken-1' />
           <HslSliders
             id="foreground-hsl-sliders"
             value={foreground}
@@ -46,7 +51,8 @@ var ForegroundBackgroundForm = React.createClass({
             id="background-hex-input"
             value={background}
             onChange={this.handleBackgroundChange}
-            className={inputClass} />
+            style={styles.input}
+            className='block col-12 field bg-darken-1' />
           <HslSliders
             id="background-hsl-sliders"
             value={background}

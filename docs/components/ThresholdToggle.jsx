@@ -1,5 +1,6 @@
 
 var React = require('react')
+var cx = require('classnames')
 
 var ThresholdToggle = React.createClass({
 
@@ -19,23 +20,20 @@ var ThresholdToggle = React.createClass({
 
     var renderButton = function(button, i) {
       var checked = (button.value == self.props.threshold)
-      var buttonClass = 'button button-small button-outline '
-      if (i == 0) {
-        buttonClass += 'rounded-left '
-      } else if (i == buttons.length - 1) {
-        buttonClass += 'rounded-right '
-      } else {
-        buttonClass += 'not-rounded '
-      }
-      buttonClass += checked ? 'is-active' : ''
       return (
-        <label>
+        <label key={i}>
           <input type="radio"
             value={button.value}
             checked={checked}
             onChange={self.handleChange}
             className="hide"/>
-          <span className={buttonClass}>
+          <span className={cx('btn', {
+            'rounded-left': (i === 0),
+            'rounded-right': (i === buttons.length - 1),
+            'not-rounded': (i !== 0 && i !== buttons.length - 1),
+            'white bg-blue': checked,
+            'btn-outline blue': !checked,
+          })}>
             {button.text}
           </span>
         </label>

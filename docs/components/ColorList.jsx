@@ -75,7 +75,7 @@ var ColorList = React.createClass({
           {colors.map(this.renderItem)}
         </ul>
         <div className="p1 white bg-black">
-          <button className=""
+          <button className='btn'
             onClick={this.addColor}>
             Add Color
           </button>

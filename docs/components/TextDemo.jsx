@@ -7,6 +7,7 @@ var colorable = require('../..')
 var ColorPreview = require('./ColorPreview.jsx')
 var ForegroundBackgroundForm = require('./ForegroundBackgroundForm.jsx')
 var Footer = require('./Footer.jsx')
+var Ad = require('./Ad.jsx')
 
 module.exports = React.createClass({
 
@@ -59,7 +60,7 @@ module.exports = React.createClass({
         minHeight: '100vh'
       },
       inner: {
-        maxWidth: '56rem',
+        //maxWidth: '64rem',
         marginLeft: 'auto',
         marginRight: 'auto'
       },
@@ -67,17 +68,30 @@ module.exports = React.createClass({
         minHeight: '70vh',
         boxSizing: 'border-box'
       },
+      ad: {
+        minWidth: 320
+      },
       controls: {
+        maxWidth: '64rem',
         minHeight: '30vh',
+        marginRight: 'auto',
+        marginLeft: 'auto',
         boxSizing: 'border-box',
       }
     }
     return (
       <div style={styles.container}>
         <div style={styles.inner}>
-          <div className="flex flex-center px2 py3"
+          <div className="lg-flex flex-center py3"
             style={styles.preview}>
-            <ColorPreview {...color} />
+            <div className='px4'>
+              <ColorPreview {...color} />
+            </div>
+            <div
+              style={styles.ad}
+              className='flex-none px3'>
+              <Ad />
+            </div>
           </div>
           <div className="px2 py3"
             style={styles.controls}>

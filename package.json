@@ -1,7 +1,7 @@
 {
   "name": "colorable",
   "version": "1.0.5",
-  "description": "Color combination contrast tester",
+  "description": "Color palette combination contrast tester",
   "main": "index.js",
   "scripts": {
     "webpack": "webpack --progress --colors",
@@ -15,7 +15,8 @@
     "lodash": "^3.1.0"
   },
   "devDependencies": {
-    "basscss": "^6.1.6",
+    "basscss": "^7.0.0-beta.2",
+    "classnames": "^2.1.2",
     "colors.css": "^2.3.0",
     "cssnext": "^1.6.0",
     "json-loader": "^0.5.2",
@@ -24,6 +25,7 @@
     "node-libs-browser": "^0.5.2",
     "query-string": "^2.3.0",
     "react": "^0.13.3",
+    "react-hsl-sliders": "^2.0.0",
     "react-router": "^0.13.3",
     "static-site-generator-webpack-plugin": "^1.0.0",
     "webpack": "^1.9.10",

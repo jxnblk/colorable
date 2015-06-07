@@ -4,11 +4,9 @@ var Chip = require('./Chip.jsx')
 
 var MatrixRow = React.createClass({
 
-  renderChip: function(combo) {
-    var props = this.props
-    props.combo = combo
+  renderChip: function(combo, i) {
     return (
-      <Chip {...props} />
+      <Chip key={i} {...this.props} combo={combo} />
     )
   },
 

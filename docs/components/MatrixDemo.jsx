@@ -13,8 +13,10 @@ var MatrixDemo = React.createClass({
 
   getInitialState: function() {
     var params = {}
+    console.log('query', this.props.query);
     if (typeof window !== 'undefined') {
-      params = qs.parse(window.location.search)
+      //params = qs.parse(window.location.search)
+      params = this.props.query
     }
     if (params.colors) {
       var colors = params.colors.split('.')
@@ -70,9 +72,11 @@ var MatrixDemo = React.createClass({
     this.pushState()
   },
 
-  renderRow: function(color) {
+  renderRow: function(color, i) {
     return (
-      <MatrixRow {...color} openModal={this.openModal} />
+      <MatrixRow key={i}
+        {...color}
+        openModal={this.openModal} />
     )
   },
 
@@ -84,21 +88,13 @@ var MatrixDemo = React.createClass({
     var modalColor = this.state.modalColor
     var styles = {
       stage: {
-        //overflowY: 'auto',
         minHeight: '100vh',
-        //position: 'fixed',
-        //transition: 'height .3s ease-out',
         boxSizing: 'border-box'
       },
       matrix: {
         overflowX: 'auto',
-        //marginTop: '3.25rem',
-        //transition: 'margin .2s ease-out'
       },
       list: {
-        //marginTop: isApp ? '3.25rem' : '',
-        //marginLeft: isApp ? '0' : '-6rem',
-        //transition: 'margin .2s ease-out'
       },
       modal: {
         color: this.state.modalColor ? this.state.modalColor.hex : '#111',
@@ -110,10 +106,10 @@ var MatrixDemo = React.createClass({
 
     return (
       <div className="mb4">
-        <Toolbar {...this.props}
-          threshold={threshold}
-          updateThreshold={this.updateThreshold}
-          handleChange={this.updateColors} />
+          <Toolbar {...this.props}
+            threshold={threshold}
+            updateThreshold={this.updateThreshold}
+            handleChange={this.updateColors} />
         <div className="white bg-black" style={styles.stage}>
           <div className="flex">
             <div className="flex-none" style={styles.list}>

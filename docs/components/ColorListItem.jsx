@@ -55,12 +55,12 @@ var ColorListItem = React.createClass({
           </label>
           <input type="text"
             id={this.props.id + '-hex'}
-            className="h5 bold block full-width m0"
+            className="h5 bold block col-12 m0"
             style={styles.input}
             value={color}
             onChange={this.handleChange} />
           <div>
-            <button className="h3 button-transparent button-small muted"
+            <button className="h3 btn muted"
               style={styles.button}
               title="Remove Color"
               tabIndex="-1"

@@ -1,6 +1,7 @@
 
 var React = require('react')
 var Head = require('./Head.jsx')
+var Nav = require('./Nav.jsx')
 var Header = require('./Header.jsx')
 var Footer = require('./Footer.jsx')
 var Router = require('react-router')
@@ -16,7 +17,7 @@ var Root = React.createClass({
       <html>
         <Head {...this.props} />
         <body>
-          <Header {...this.props} />
+          <Nav {...this.props} />
           <RouteHandler {...this.props} />
           <Footer {...this.props} />
           <script id='initial-props'
