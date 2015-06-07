@@ -5,6 +5,7 @@ var Routes = require('./Routes.jsx')
 
 if (typeof document !== 'undefined') {
   var initialProps = JSON.parse(document.querySelector('#initial-props').innerHTML)
+  console.log(Router.HistoryLocation)
   Router.run(Routes, Router.HistoryLocation, function (Handler, state) {
     //initialProps.params = state.params
     React.render(React.createElement(Handler, initialProps), document)
