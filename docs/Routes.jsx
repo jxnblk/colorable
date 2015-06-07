@@ -10,11 +10,11 @@ var TextDemo = require('./components/TextDemo.jsx')
 var MatrixDemo = require('./components/MatrixDemo.jsx')
 
 var Routes = (
-  <Route handler={Root} path='/colorable/'>
+  <Route handler={Root} path='/'>
     <DefaultRoute handler={Index} />
-    <Route path='demos' handler={Demos} />
-    <Route path='demos/text' handler={TextDemo} />
-    <Route path='demos/matrix' handler={MatrixDemo} />
+    <Route path='/demos' handler={Demos} />
+    <Route path='/demos/text' handler={TextDemo} />
+    <Route path='/demos/matrix' handler={MatrixDemo} />
   </Route>
 )
 

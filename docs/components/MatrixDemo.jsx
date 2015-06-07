@@ -15,8 +15,8 @@ var MatrixDemo = React.createClass({
     var params = {}
     console.log('query', this.props.query);
     if (typeof window !== 'undefined') {
-      //params = qs.parse(window.location.search)
-      params = this.props.query
+      params = qs.parse(window.location.search)
+      //params = this.props.query
     }
     if (params.colors) {
       var colors = params.colors.split('.')
