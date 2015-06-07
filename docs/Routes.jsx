@@ -21,9 +21,9 @@ var Routes = (
       <Route path='demos/text' name='text' handler={TextDemo} />
       <Route path='demos/matrix' name='matrix' handler={MatrixDemo} />
     </Route>
-    <Redirect from='/colorable/demos/' to='/demos' />
-    <Redirect from='/colorable/demos/text/' to='/demos/text' />
-    <Redirect from='/colorable/demos/matrix/' to='/demos/matrix' />
+    <Redirect from='/colorable/demos/' to='/colorable/demos' />
+    <Redirect from='/colorable/demos/text/' to='/colorable/demos/text' />
+    <Redirect from='/colorable/demos/matrix/' to='/colorable/demos/matrix' />
   </Route>
 )
 
