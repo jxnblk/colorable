@@ -12,6 +12,7 @@ var Head = React.createClass({
         <meta name="author" content={this.props.author} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <style dangerouslySetInnerHTML={{ __html: this.props.css }} />
+        <base href="/colorable" />
       </head>
     )
   }
