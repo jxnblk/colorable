@@ -45,10 +45,10 @@ module.exports = {
   // baseUrl: '/',
   baseUrl: '/colorable/',
   routes: [
-    '/',
-    '/demos',
-    '/demos/text',
-    '/demos/matrix',
+    '',
+    'demos',
+    'demos/text',
+    'demos/matrix',
   ],
   twitter: {
     text: 'Test color palettes for readable color combinations',
