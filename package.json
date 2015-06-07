@@ -1,17 +1,16 @@
 {
   "name": "colorable",
   "version": "1.0.5",
-  "description": "Color combination contrast tester",
+  "description": "Color palette combination contrast tester",
   "main": "index.js",
   "scripts": {
-    "browserify": "browserify demos/src/app.js -o demos/app.min.js",
-    "watchify": "watchify demos/src/app.js -o demos/app.min.js",
-    "watchify:text": "watchify demos/src/text-app.js -o demos/text/app.min.js",
-    "build:js": "NODE_ENV=production browserify demos/src/app.js -o demos/app.min.js",
-    "build:html": "node demos/src/build",
-    "watch:html": "watch 'npm run build:html' ./demos/src",
-    "server": "http-server -p 8000",
-    "start": "parallelshell 'npm run watchify' 'npm run watchify:text' 'npm run watch:html' 'npm run server'"
+    "clean": "rm -r demos & rm bundle.js & rm index.html",
+    "copy": "cp -r colorable/* . && rm -r colorable",
+    "webpack": "webpack --progress --colors",
+    "webpack-p": "webpack -p --progress --colors",
+    "prod": "npm run clean && npm run webpack-p && npm run copy",
+    "dev": "webpack-dev-server --progress --colors",
+    "start": "npm run dev"
   },
   "author": "Brent Jackson",
   "license": "MIT",
@@ -20,31 +19,21 @@
     "lodash": "^3.1.0"
   },
   "devDependencies": {
-    "brfs": "^1.3.0",
-    "browserify": "^8.1.3",
-    "colors.css": "^2.0.4",
-    "envify": "^3.2.0",
-    "gulp": "^3.8.10",
-    "gulp-rename": "^1.2.0",
-    "gulp-uglify": "^1.1.0",
-    "gulp-webserver": "^0.9.0",
-    "http-server": "^0.7.4",
-    "lodash": "^3.1.0",
+    "basscss": "^7.0.0-beta.2",
+    "classnames": "^2.1.2",
+    "colors.css": "^2.3.0",
+    "cssnext": "^1.6.0",
+    "json-loader": "^0.5.2",
+    "jsx-loader": "^0.13.2",
     "marked": "^0.3.3",
-    "marked-example": "^1.0.4",
-    "node-jsx": "^0.12.4",
-    "parallelshell": "^1.0.4",
-    "postcss": "^4.0.3",
-    "query-string": "^1.0.0",
-    "react": "^0.12.2",
-    "react-hsl-sliders": "^1.0.5",
-    "reactify": "^1.0.0",
-    "superagent": "^0.21.0",
-    "uglify": "^0.1.1",
-    "uglifyify": "^3.0.1",
-    "vinyl-transform": "^1.0.0",
-    "watch": "^0.14.0",
-    "watchify": "^2.3.0"
+    "node-libs-browser": "^0.5.2",
+    "query-string": "^2.3.0",
+    "react": "^0.13.3",
+    "react-hsl-sliders": "^2.0.0",
+    "react-router": "^0.13.3",
+    "static-site-generator-webpack-plugin": "^1.0.0",
+    "webpack": "^1.9.10",
+    "webpack-dev-server": "^1.9.0"
   },
   "directories": {
     "test": "test"
@@ -62,12 +51,5 @@
   "bugs": {
     "url": "https://github.com/jxnblk/colorable/issues"
   },
-  "homepage": "https://github.com/jxnblk/colorable",
-  "browserify": {
-    "transform": [
-      "reactify",
-      "brfs",
-      "uglifyify"
-    ]
-  }
+  "homepage": "https://github.com/jxnblk/colorable"
 }
