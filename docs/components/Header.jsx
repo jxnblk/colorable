@@ -14,9 +14,7 @@ var Header = React.createClass({
             <p className='h3 m0'>{this.props.description}</p>
           </div>
           <div className='px2 py3'>
-            {/*
             <Ad />
-              */}
           </div>
         </div>
         <TweetButton {...this.props} />
