@@ -8,7 +8,7 @@ module.exports = {
 
   output: {
     filename: 'bundle.js',
-    path: __dirname + '/colorable',
+    path: __dirname,
     //publicPath: '/colorable/',
     libraryTarget: 'umd'
   },
