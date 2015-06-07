@@ -16,7 +16,11 @@ var Routes = (
     <Route path='demos' handler={Demos} />
     <Route path='demos/text' handler={TextDemo} />
     <Route path='demos/matrix' handler={MatrixDemo} />
-    <Redirect from='/colorable/' to='/' />
+    <Route path='/colorable/' handler={Index}>
+      <Route path='demos' handler={Demos} />
+      <Route path='demos/text' handler={TextDemo} />
+      <Route path='demos/matrix' handler={MatrixDemo} />
+    </Route>
   </Route>
 )
 
