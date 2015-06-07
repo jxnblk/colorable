@@ -7,6 +7,7 @@ var Nav = React.createClass({
   render: function () {
     return (
       <nav className='sm-flex border-bottom'>
+        {/*
         <a href={this.props.baseUrl} 
           className='btn py2'>
           Colorable
@@ -23,6 +24,7 @@ var Nav = React.createClass({
           className='btn py2 sm-show'>
           Matrix Demo
         </a>
+        */}
 
         <Link to='/colorable/'
           className='btn py2 red'>
@@ -32,17 +34,14 @@ var Nav = React.createClass({
           className='btn py2 red'>
           Demos
         </Link>
-
-        {/*
-        <Link to='/demos/text'
+        <Link to='/colorable/demos/text'
           className='btn py2 sm-show red'>
           Text Demo
         </Link>
-        <Link to='/demos/matrix'
+        <Link to='/colorable/demos/matrix'
           className='btn py2 sm-show red'>
           Matrix Demo
         </Link>
-        */}
         <div className='flex-auto sm-show' />
         <a href='https://npmjs.com/package/colorable'
           className='btn py2'>
