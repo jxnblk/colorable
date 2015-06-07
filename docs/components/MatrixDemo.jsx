@@ -89,10 +89,11 @@ var MatrixDemo = React.createClass({
     var styles = {
       stage: {
         minHeight: '100vh',
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
+        overflowX: 'auto',
+        webkitOverflowScrolling: 'touch'
       },
       matrix: {
-        overflowX: 'auto',
       },
       list: {
       },
@@ -106,10 +107,6 @@ var MatrixDemo = React.createClass({
 
     return (
       <div className="mb4">
-          <Toolbar {...this.props}
-            threshold={threshold}
-            updateThreshold={this.updateThreshold}
-            handleChange={this.updateColors} />
         <div className="white bg-black" style={styles.stage}>
           <div className="flex">
             <div className="flex-none" style={styles.list}>

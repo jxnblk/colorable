@@ -1,6 +1,5 @@
 
 var React = require('react')
-
 var ColorListItem = require('./ColorListItem.jsx')
 
 var ColorList = React.createClass({
@@ -75,7 +74,7 @@ var ColorList = React.createClass({
           {colors.map(this.renderItem)}
         </ul>
         <div className="p1 white bg-black">
-          <button className='btn'
+          <button className='btn block col-12'
             onClick={this.addColor}>
             Add Color
           </button>

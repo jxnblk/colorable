@@ -28,20 +28,20 @@ var ColorListItem = React.createClass({
     }
     var styles = {
       container: {
-        height: '5rem',
+        height: '6rem',
         color: light ? '#111' : 'white',
         backgroundColor: color,
       },
       disclosure: {
       },
       input: {
-        height: '1.75rem',
+        //height: '1.75rem',
         color: 'inherit',
         backgroundColor: 'transparent',
         border: 'none'
       },
       button: {
-        height: '1.75rem'
+        //height: '1.75rem'
       }
     }
 
