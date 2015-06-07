@@ -3,6 +3,7 @@ var React = require('react')
 var Router = require('react-router')
 var Route = Router.Route
 var DefaultRoute = Router.DefaultRoute
+var Redirect = Router.Redirect
 var Root = require('./components/Root.jsx')
 var Index = require('./components/Index.jsx')
 var Demos = require('./components/Demos.jsx')
@@ -15,6 +16,7 @@ var Routes = (
     <Route path='demos' handler={Demos} />
     <Route path='demos/text' handler={TextDemo} />
     <Route path='demos/matrix' handler={MatrixDemo} />
+    <Redirect from='/colorable' to='/' />
   </Route>
 )
 
