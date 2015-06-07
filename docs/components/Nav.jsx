@@ -1,28 +1,28 @@
 
 var React = require('react')
-//var Link = require('react-router').Link
+var Link = require('react-router').Link
 
 var Nav = React.createClass({
 
   render: function () {
     return (
       <nav className='sm-flex border-bottom'>
-        <a href={this.props.baseUrl} 
+        <Link to={this.props.baseUrl} 
           className='btn py2'>
           Colorable
-        </a>
-        <a href={this.props.baseUrl + 'demos'}
+        </Link>
+        <Link to={this.props.baseUrl + 'demos'}
           className='btn py2'>
           Demos
-        </a>
-        <a href={this.props.baseUrl + 'demos/text'}
+        </Link>
+        <Link to={this.props.baseUrl + 'demos/text'}
           className='btn py2 sm-show'>
           Text Demo
-        </a>
-        <a href={this.props.baseUrl + 'demos/matrix'}
+        </Link>
+        <Link to={this.props.baseUrl + 'demos/matrix'}
           className='btn py2 sm-show'>
           Matrix Demo
-        </a>
+        </Link>
         <div className='flex-auto sm-show' />
         <a href='https://npmjs.com/package/colorable'
           className='btn py2'>
