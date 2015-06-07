@@ -23591,9 +23591,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      React.createElement(Route, {path: "demos/text", name: "text", handler: TextDemo}), 
 	      React.createElement(Route, {path: "demos/matrix", name: "matrix", handler: MatrixDemo})
 	    ), 
-	    React.createElement(Redirect, {from: "/colorable/demos/", to: "demos"}), 
-	    React.createElement(Redirect, {from: "/colorable/demos/text/", to: "text"}), 
-	    React.createElement(Redirect, {from: "/colorable/demos/matrix/", to: "matrix"})
+	    React.createElement(Redirect, {from: "/colorable/demos/", to: "/demos"}), 
+	    React.createElement(Redirect, {from: "/colorable/demos/text/", to: "/demos/text"}), 
+	    React.createElement(Redirect, {from: "/colorable/demos/matrix/", to: "/demos/matrix"})
 	  )
 	)
 
