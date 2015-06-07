@@ -27,19 +27,21 @@ var Nav = React.createClass({
         */}
 
         <Link to='/colorable/'
-          className='btn py2 red'>
+          className='btn py2'>
           Colorable
         </Link>
         <Link to='/colorable/demos/'
-          className='btn py2 red'>
+          className='btn py2'>
           Demos
         </Link>
         <Link to='/colorable/demos/text/'
-          className='btn py2 sm-show red'>
+          activeClassName=''
+          className='btn py2 sm-show'>
           Text Demo
         </Link>
         <Link to='/colorable/demos/matrix/'
-          className='btn py2 sm-show red'>
+          activeClassName=''
+          className='btn py2 sm-show'>
           Matrix Demo
         </Link>
         <div className='flex-auto sm-show' />
