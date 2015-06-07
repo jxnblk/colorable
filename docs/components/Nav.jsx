@@ -7,19 +7,37 @@ var Nav = React.createClass({
   render: function () {
     return (
       <nav className='sm-flex border-bottom'>
-        <Link to={this.props.baseUrl} 
+        {/*
+        <a href={this.props.baseUrl} 
+          className='btn py2'>
+          Colorable
+        </a>
+        <a href={this.props.baseUrl + 'demos'}
+          className='btn py2'>
+          Demos
+        </a>
+        <a href={this.props.baseUrl + 'demos/text'}
+          className='btn py2 sm-show'>
+          Text Demo
+        </a>
+        <a href={this.props.baseUrl + 'demos/matrix'}
+          className='btn py2 sm-show'>
+          Matrix Demo
+        </a>
+        */}
+        <Link to='/'
           className='btn py2'>
           Colorable
         </Link>
-        <Link to={this.props.baseUrl + 'demos'}
+        <Link to='/demos'
           className='btn py2'>
           Demos
         </Link>
-        <Link to={this.props.baseUrl + 'demos/text'}
+        <Link to='/demos/text'
           className='btn py2 sm-show'>
           Text Demo
         </Link>
-        <Link to={this.props.baseUrl + 'demos/matrix'}
+        <Link to='/demos/matrix'
           className='btn py2 sm-show'>
           Matrix Demo
         </Link>
