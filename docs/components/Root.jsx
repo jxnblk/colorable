@@ -23,7 +23,8 @@ var Root = React.createClass({
             type='application/json'
             dangerouslySetInnerHTML={initialProps} />
           <script src={this.props.baseUrl + 'bundle.js'} />
-          <script src={this.props.baseUrl + 'docs/ga.js'} />
+          <script async src={this.props.baseUrl + 'docs/twitter.js'} />
+          <script async src={this.props.baseUrl + 'docs/ga.js'} />
         </body>
       </html>
     )
