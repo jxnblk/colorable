@@ -1,6 +1,5 @@
 
 var React = require('react')
-var Badge = require('./Badge.jsx')
 var HeadingBadge = require('./HeadingBadge.jsx')
 
 var ColorPreview = React.createClass({

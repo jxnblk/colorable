@@ -6,7 +6,6 @@ var colorable = require('../..')
 
 var ColorPreview = require('./ColorPreview.jsx')
 var ForegroundBackgroundForm = require('./ForegroundBackgroundForm.jsx')
-var Footer = require('./Footer.jsx')
 var Ad = require('./Ad.jsx')
 
 module.exports = React.createClass({
