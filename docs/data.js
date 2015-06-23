@@ -15,6 +15,7 @@ var colors = Object.keys(clrs).map(function (key) {
 
 module.exports = {
   title: 'Colorable',
+  href: '/colorable',
   description: pkg.description,
   version: pkg.version,
   css: cssnext([
