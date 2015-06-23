@@ -22,7 +22,7 @@ var Footer = React.createClass({
               GitHub
             </a>
             <div className='flex-auto' />
-            <a href='https://jxnblk.com'
+            <a href='http://jxnblk.com'
               className='btn'>
               Made by Jxnblk
             </a>
