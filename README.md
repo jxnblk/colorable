@@ -1,3 +1,4 @@
+# Colorable
 
 Take a set color palette and get contrast values for every possible combination – 
 useful for finding safe color combinations with predefined colors
@@ -7,7 +8,7 @@ and includes pass/fail scores for the
 ## Getting Started
 
 ```bash
-npm i colorable
+npm i --save colorable
 ```
 
 ## Usage
@@ -15,17 +16,15 @@ npm i colorable
 Pass an array of color strings or an object with color strings as values. 
 
 ```js
-var colorable = require('colorable');
+var colorable = require('colorable')
+
 var colors = {
   red: 'red',
   green: 'green',
   blue: 'blue'
-};
-var options = {
-  compact: true,
-  threshold: 0 
-};
-var result = colorable(colors, options);
+}
+
+var result = colorable(colors, { compact: true, threshold: 0 })
 ```
 
 Returns an array of colors with combinations for all other colors and their
