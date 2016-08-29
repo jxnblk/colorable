@@ -1,20 +1,14 @@
 # Colorable
 
-Color combination contrast tester
-
-Takes a set color palette and shows contrast values for every possible combination.
-This is useful for finding safe color combinations with predefined colors
+Take a set color palette and get contrast values for every possible combination – 
+useful for finding safe color combinations with predefined colors
 and includes pass/fail scores for the
 [WCAG accessibility guidelines](http://www.w3.org/TR/WCAG20/#visual-audio-contrast).
-
-## Demo
-
-[Foreground/Background](//jxnblk.com/colorable/demos/text)
 
 ## Getting Started
 
 ```bash
-npm install --save colorable
+npm i --save colorable
 ```
 
 ## Usage
@@ -22,17 +16,15 @@ npm install --save colorable
 Pass an array of color strings or an object with color strings as values. 
 
 ```js
-var colorable = require('colorable');
+var colorable = require('colorable')
+
 var colors = {
   red: 'red',
   green: 'green',
   blue: 'blue'
-};
-var options = {
-  compact: true,
-  threshold: 0 
-};
-var result = colorable(colors, options);
+}
+
+var result = colorable(colors, { compact: true, threshold: 0 })
 ```
 
 Returns an array of colors with combinations for all other colors and their

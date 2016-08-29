@@ -1,0 +1,57 @@
+
+pre {
+  padding: var(--space-2);
+  background-color: var(--darken-1);
+}
+
+.prose p:first-child {
+  font-size: var(--h3);
+}
+
+#carbonads {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 1.25;
+  text-align: left;
+  /*
+  padding: .75em;
+  */
+}
+
+#carbonads a,
+#carbonads a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+#carbonads span { display: block }
+
+#carbonads > span::before,
+#carbonads > span::after {
+  content: '';
+  display: table;
+}
+#carbonads > span::after {
+  clear: both;
+}
+
+.carbon-img {
+  float: left;
+  margin-right: .5em;
+}
+
+.carbon-img > img { display: block }
+.carbon-text { overflow: hidden }
+
+.carbon-poweredby {
+  float: left;
+  margin-top: .25em;
+  opacity: 0.5;
+}
+
+@media (min-width: 40em) {
+  #carbonads {
+    max-width: 320px;
+  }
+}
+
