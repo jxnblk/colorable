@@ -96,6 +96,9 @@ _Type: Boolean (default: true)_
 
 When set to `true`, the array of colors is passed through lodash.uniq to remove duplicates.
 
+## Related
+
+- [colorable-dominant](https://github.com/Kikobeats/colorable-dominant) – Create ARIA-compliant color themes based on a predominant color palette.
 
 ---
 
