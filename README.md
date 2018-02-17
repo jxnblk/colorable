@@ -99,5 +99,6 @@ When set to `true`, the array of colors is passed through lodash.uniq to remove 
 
 ---
 
-MIT License
+### License
+Colorable is published under the **MIT** License
 
