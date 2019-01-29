@@ -9,7 +9,7 @@ var Nav = React.createClass({
       <nav className='sm-flex border-bottom'>
         <a href={this.props.baseUrl} 
           className='btn py2'>
-          Colorable
+          <img src="docs/assets/colorable-logo.svg" width="100" className="img-fluid" alt="Colorable Logo"/>
         </a>
         <a href={this.props.baseUrl + 'demos'}
           className='btn py2'>
