@@ -28,7 +28,7 @@
     "marked": "^0.3.3",
     "node-libs-browser": "^0.5.2",
     "query-string": "^2.3.0",
-    "react": "^0.13.3",
+    "react": "^15.6.2",
     "react-hsl-sliders": "^2.0.0",
     "react-router": "^0.13.3",
     "static-site-generator-webpack-plugin": "^1.0.0",
