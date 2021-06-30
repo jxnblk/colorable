@@ -5,8 +5,9 @@ var SuperModal = require('./SuperModal.jsx')
 var MatrixRow = require('./MatrixRow.jsx')
 var ColorList = require('./ColorList.jsx')
 var ColorPreview = require('./ColorPreview.jsx')
+var createReactClass = require('create-react-class')
 
-var MatrixDemo = React.createClass({
+var MatrixDemo = createReactClass({
 
   getInitialState: function() {
     console.log('query', this.props.query);

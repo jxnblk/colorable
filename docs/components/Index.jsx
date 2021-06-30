@@ -1,9 +1,10 @@
 
 var React = require('react')
+var createReactClass = require('create-react-class')
 var Header = require('./Header.jsx')
 var Readme = require('./Readme.jsx')
 
-module.exports = React.createClass({
+module.exports = createReactClass({
 
   componentDidMount: function () {
     if (window) {

@@ -1,8 +1,9 @@
 
 var React = require('react')
 var ColorListItem = require('./ColorListItem.jsx')
+var createReactClass = require('create-react-class')
 
-var ColorList = React.createClass({
+var ColorList = createReactClass({
 
   getInitialState: function() {
     return {

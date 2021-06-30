@@ -2,8 +2,9 @@
 var React = require('react')
 var Ad = require('./Ad.jsx')
 var TweetButton = require('./TweetButton.jsx')
+var createReactClass = require('create-react-class')
 
-var Header = React.createClass({
+var Header = createReactClass({
 
   render: function () {
     return (

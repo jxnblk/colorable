@@ -1,8 +1,9 @@
 
 var React = require('react')
+var createReactClass = require('create-react-class')
 var Badge = require('./Badge.jsx')
 
-var Chip = React.createClass({
+var Chip = createReactClass({
 
   openModal: function() {
     this.props.openModal(this.props)

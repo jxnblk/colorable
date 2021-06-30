@@ -1,8 +1,9 @@
 
 var React = require('react')
 var Ad = require('./Ad.jsx')
+var createReactClass = require('create-react-class')
 
-var Demos = React.createClass({
+var Demos = createReactClass({
 
   renderLink: function(item, i) {
     return (

@@ -1,7 +1,8 @@
 
 var React = require('react')
+var createReactClass = require('create-react-class')
 
-var TweetButton = React.createClass({
+var TweetButton = createReactClass({
 
   render: function () {
     //var script = {

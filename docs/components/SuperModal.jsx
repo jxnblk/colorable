@@ -1,8 +1,9 @@
 
 var React = require('react')
+var createReactClass = require('create-react-class')
 var _assign = require('lodash').assign
 
-var SuperModal = React.createClass({
+var SuperModal = createReactClass({
 
   getDefaultProps: function() {
     return {

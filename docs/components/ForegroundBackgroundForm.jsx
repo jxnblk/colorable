@@ -1,9 +1,13 @@
 
 var React = require('react')
+var createReactClass = require('create-react-class')
+
+React.createClass = createReactClass // Lest we have to patch react-hsl-sliders too
+
 var Color = require('color')
 var HslSliders = require('react-hsl-sliders')
 
-var ForegroundBackgroundForm = React.createClass({
+var ForegroundBackgroundForm = createReactClass({
 
   handleForegroundChange: function (e) {
     this.props.setForeground(e.target.value)

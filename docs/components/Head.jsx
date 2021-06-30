@@ -1,7 +1,8 @@
 
 var React = require('react')
+var createReactClass = require('create-react-class')
 
-var Head = React.createClass({
+var Head = createReactClass({
 
   render: function () {
     return (

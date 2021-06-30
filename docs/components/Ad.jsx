@@ -1,7 +1,8 @@
 
 var React = require('react')
+var createReactClass = require('create-react-class')
 
-var Ad = React.createClass({
+var Ad = createReactClass({
 
   render: function() {
     return (

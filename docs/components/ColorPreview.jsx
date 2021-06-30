@@ -1,8 +1,9 @@
 
 var React = require('react')
+var createReactClass = require('create-react-class')
 var HeadingBadge = require('./HeadingBadge.jsx')
 
-var ColorPreview = React.createClass({
+var ColorPreview = createReactClass({
 
   getDefaultProps: function () {
     return {

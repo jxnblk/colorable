@@ -1,8 +1,9 @@
 
 var React = require('react')
+var createReactClass = require('create-react-class')
 var cx = require('classnames')
 
-var ThresholdToggle = React.createClass({
+var ThresholdToggle = createReactClass({
 
   handleChange: function(e) {
     var value = e.target.value

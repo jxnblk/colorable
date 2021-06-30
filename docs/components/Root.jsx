@@ -5,8 +5,9 @@ var Nav = require('./Nav.jsx')
 var Footer = require('./Footer.jsx')
 var Router = require('react-router')
 var RouteHandler = Router.RouteHandler
+var createReactClass = require('create-react-class')
 
-var Root = React.createClass({
+var Root = createReactClass({
 
   render: function() {
     var initialProps = {

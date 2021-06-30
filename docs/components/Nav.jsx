@@ -1,8 +1,9 @@
 
 var React = require('react')
+var createReactClass = require('create-react-class')
 var Link = require('react-router').Link
 
-var Nav = React.createClass({
+var Nav = createReactClass({
 
   render: function () {
     return (
