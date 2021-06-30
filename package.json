@@ -26,7 +26,7 @@
   "license": "MIT",
   "dependencies": {
     "color": "^0.7.3",
-    "lodash": "^3.1.0"
+    "lodash": "^4.17.5"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
@@ -42,7 +42,7 @@
     "jsx-loader": "^0.13.2",
     "marked": "^0.3.3",
     "mini-css-extract-plugin": "^2.0.0",
-    "node-libs-browser": "^0.5.2",
+    "node-libs-browser": "^0.7.0",
     "postcss": "^8.3.5",
     "postcss-css-variables": "^0.18.0",
     "postcss-import": "^14.0.2",
