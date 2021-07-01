@@ -22,7 +22,7 @@ const  postcssOptions = {
 
 module.exports = {
 
-  entry: './docs/entry.js',
+  entry: './docs/entry.jsx',
 
   output: {
     filename: 'bundle.js',
