@@ -26,8 +26,10 @@ module.exports = {
 
   output: {
     filename: 'bundle.js',
+
+    // Lay out files and URLs like GitHub Pages does:
     path: __dirname,
-    //publicPath: '/colorable/',
+    publicPath: '/colorable/',
     libraryTarget: 'umd',   // So that we can consume bundle.js
                             // directly from this here
                             // webpack.config.js; see above

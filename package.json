@@ -14,13 +14,13 @@
     }
   },
   "scripts": {
-    "clean": "rm -r demos & rm bundle.js & rm index.html",
-    "copy": "cp -r colorable/* . && rm -r colorable",
+    "clean": "rm -rf demos bundle.js index.html docs.css",
     "webpack": "webpack --mode=development --progress",
     "webpack-p": "webpack --mode=production --progress",
-    "prod": "npm run clean && npm run webpack-p && npm run copy",
-    "dev": "webpack serve --mode=development",
-    "start": "npm run dev"
+    "prod": "npm run clean && npm run webpack-p",
+    "devwatch": "chokidar 'docs/**/*.js*' 'docs/**/*.*ss' -i '**/.#*' --initial -c 'webpack --mode=development'",
+    "devserver": "node docs/devserver.js",
+    "start": "npm-run-all -c -p devserver devwatch"
   },
   "author": "Brent Jackson",
   "license": "MIT",
@@ -35,15 +35,18 @@
     "basscss": "^7.0.0-beta.2",
     "basscss-color-input-range": "^1.0.2",
     "basscss-input-range": "^3.0.0",
+    "chokidar-cli": "^2.1.0",
     "classnames": "^2.1.2",
     "colors.css": "^2.3.0",
     "create-react-class": "^15.7.0",
     "eval": "^0.1.6",
+    "finalhandler": "^1.1.2",
     "json-loader": "^0.5.2",
     "jsx-loader": "^0.13.2",
     "marked": "^0.3.3",
     "mini-css-extract-plugin": "^2.0.0",
     "node-libs-browser": "^0.7.0",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.3.5",
     "postcss-css-variables": "^0.18.0",
     "postcss-import": "^14.0.2",
@@ -56,9 +59,9 @@
     "react-hsl-sliders": "^2.0.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
+    "serve-static": "^1.14.1",
     "webpack": "^5.41.1",
-    "webpack-cli": "^4.7.2",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-cli": "^4.7.2"
   },
   "directories": {
     "test": "test"
