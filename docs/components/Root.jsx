@@ -12,7 +12,6 @@ module.exports = (props) => {
           <Nav {...props} />
           {props.children}
           <Footer {...props} />
-          <script src={props.baseUrl + 'bundle.js'} />
         </body>
       </html>
     )
