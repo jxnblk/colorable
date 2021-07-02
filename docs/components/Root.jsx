@@ -1,11 +1,9 @@
+import React from 'react'
+import Head from './Head.jsx'
+import Nav from './Nav.jsx'
+import Footer from './Footer.jsx'
 
-var React = require('react')
-var Head = require('./Head.jsx')
-var Nav = require('./Nav.jsx')
-var Footer = require('./Footer.jsx')
-
-module.exports = (props) => {
-    return (
+export default (props) => 
       <html>
         <Head {...props} />
         <body>
@@ -14,6 +12,4 @@ module.exports = (props) => {
           <Footer {...props} />
         </body>
       </html>
-    )
-  }
 

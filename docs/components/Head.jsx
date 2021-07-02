@@ -1,7 +1,7 @@
-const React = require('react')
-require('../styles.css')
+import React from 'react'
+import '../styles.css'
 
-module.exports = ({ title, description, author, location }) => {
+export default ({ title, description, author, location }) => {
   const dotdots = location.replace(/^.*colorable\//, "").replace(/[^\/]+/g, "..")
   return <head>
         <meta charSet="utf-8" />
