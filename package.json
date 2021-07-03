@@ -3,6 +3,11 @@
   "version": "1.0.5",
   "description": "Color palette combination contrast tester",
   "main": "index.js",
+  "eslintConfig": {
+    "rules": {
+      "import/no-anonymous-default-export": 0
+    }
+  },
   "scripts": {
     "clean": "rm -r demos & rm bundle.js & rm index.html",
     "copy": "cp -r colorable/* . && rm -r colorable",
