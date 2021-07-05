@@ -5,9 +5,6 @@ var createReactClass = require('create-react-class')
 var TweetButton = createReactClass({
 
   render: function () {
-    //var script = {
-    //  __html: this.props.twitter.script
-    //}
     var text = this.props.twitter.text
     return (
       <div className='inline-block'>
@@ -18,6 +15,7 @@ var TweetButton = createReactClass({
           data-size='large'>
           Tweet
         </a>
+        <script dangerouslySetInnerHTML={{ __html: this.props.twitter.script }} />
       </div>
     )
   }
