@@ -4,8 +4,9 @@ var Header = require('./Header.jsx')
 var Footer = require('./Footer.jsx')
 var Router = require('react-router')
 var RouteHandler = Router.RouteHandler
+var createReactClass = require('create-react-class')
 
-var Body = React.createClass({
+var Body = createReactClass({
 
   render: function () {
     return (

@@ -1,9 +1,11 @@
 
 var React = require('react')
-var Color = require('color')
-var HslSliders = require('react-hsl-sliders')
+var createReactClass = require('create-react-class')
 
-var ForegroundBackgroundForm = React.createClass({
+var Color = require('color')
+var HslSliders = require('./HslSliders.jsx').default
+
+var ForegroundBackgroundForm = createReactClass({
 
   handleForegroundChange: function (e) {
     this.props.setForeground(e.target.value)
@@ -40,10 +42,12 @@ var ForegroundBackgroundForm = React.createClass({
             onChange={this.handleForegroundChange}
             style={styles.input}
             className='block col-12 field bg-darken-1' />
+          <div id="hsl-sliders">
           <HslSliders
             id="foreground-hsl-sliders"
             value={foreground}
             onChange={this.props.setForeground} />
+          </div>
         </div>
         <div className="sm-col-6 px2">
           <label htmlFor="background-hex-input" className="h5 bold">Background</label>

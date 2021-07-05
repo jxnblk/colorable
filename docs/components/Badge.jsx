@@ -1,7 +1,8 @@
 
 var React = require('react')
+var createReactClass = require('create-react-class')
 
-var Badge = React.createClass({
+var Badge = createReactClass({
 
 
   render: function () {

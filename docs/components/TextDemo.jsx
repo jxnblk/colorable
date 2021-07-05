@@ -7,8 +7,9 @@ var colorable = require('../..')
 var ColorPreview = require('./ColorPreview.jsx')
 var ForegroundBackgroundForm = require('./ForegroundBackgroundForm.jsx')
 var Ad = require('./Ad.jsx')
+var createReactClass = require('create-react-class')
 
-module.exports = React.createClass({
+module.exports = createReactClass({
 
   getInitialState: function() {
     return {

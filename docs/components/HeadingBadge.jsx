@@ -1,7 +1,8 @@
 
 var React = require('react')
+var createReactClass = require('create-react-class')
 
-var HeadingBadge = React.createClass({
+var HeadingBadge = createReactClass({
 
   render: function () {
     if (!this.props.combo.accessibility) {

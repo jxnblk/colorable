@@ -1,7 +1,8 @@
 
 var React = require('react')
+var createReactClass = require('create-react-class')
 
-var Readme = React.createClass({
+var Readme = createReactClass({
 
   render: function () {
     return (

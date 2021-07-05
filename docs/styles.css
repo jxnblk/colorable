@@ -1,3 +1,15 @@
+@import "basscss";
+@import "basscss-input-range";
+@import "basscss-color-input-range";
+
+:root {
+    --bold-font-weight: 500;
+    --heading-font-weight: 500;
+    --button-font-weight: 500;
+    --button-font-seize: var(--h5);
+    --h4: 1.125rem;
+    --h3: 1.5rem;
+}
 
 pre {
   padding: var(--space-2);

@@ -1,8 +1,9 @@
 
 var React = require('react')
+var createReactClass = require('create-react-class')
 var Chip = require('./Chip.jsx')
 
-var MatrixRow = React.createClass({
+var MatrixRow = createReactClass({
 
   renderChip: function(combo, i) {
     return (

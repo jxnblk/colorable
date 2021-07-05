@@ -1,8 +1,9 @@
 
 var React = require('react')
 var ColorListItem = require('./ColorListItem.jsx')
+var createReactClass = require('create-react-class')
 
-var ColorList = React.createClass({
+var ColorList = createReactClass({
 
   getInitialState: function() {
     return {
@@ -31,7 +32,6 @@ var ColorList = React.createClass({
       self.props.updateColors(colors)
     }
     var ref = 'color-' + i
-    var id = color
     var itemId = 'color-item-' + i
     return (
       <li ref={ref} key={ref}>
