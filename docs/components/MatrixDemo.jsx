@@ -7,15 +7,18 @@ var ColorList = require('./ColorList.jsx')
 var ColorPreview = require('./ColorPreview.jsx')
 var createReactClass = require('create-react-class')
 
+var clrs = require('colors.css')
+var initialColors = Object.keys(clrs).map(function (key) {
+  return clrs[key]
+})
+
 var MatrixDemo = createReactClass({
 
   getInitialState: function() {
     console.log('query', this.props.query);
-    const colors = this.props.colors
-
     return {
-      colors,
-      matrix: colorable(colors),
+      colors: initialColors,
+      matrix: colorable(initialColors),
       threshold: 0,
       modalColor: false,
     }
