@@ -7,8 +7,17 @@
  * outside the scope of colorable itself).
  */
 
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 var StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
 var data = require('./docs/data');
+
+const  postcssOptions = {
+    plugins: [
+        'postcss-import',
+        'postcss-css-variables',
+        'postcss-preset-env'
+    ],
+};
 
 module.exports = {
 
@@ -26,12 +35,17 @@ module.exports = {
   module: {
     rules: [
       { test: /\.jsx$/, exclude: /node_modules/, use: 'babel-loader' },
+      { test: /\.css$/, exclude: /node_modules/, use: [
+        MiniCssExtractPlugin.loader,
+        'css-loader',
+        { loader: 'postcss-loader', options: { postcssOptions } }
+      ]}
     ]
   },
 
   plugins: [
+    new MiniCssExtractPlugin({ filename: "docs.css" }),
     new StaticSiteGeneratorPlugin('bundle.js', data.routes, data)
   ]
 
 };
-
