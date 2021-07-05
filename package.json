@@ -38,6 +38,7 @@
     "classnames": "^2.1.2",
     "colors.css": "^2.3.0",
     "create-react-class": "^15.7.0",
+    "eval": "^0.1.6",
     "json-loader": "^0.5.2",
     "jsx-loader": "^0.13.2",
     "marked": "^0.3.3",
@@ -53,7 +54,6 @@
     "react": "^17.0.2",
     "react-hsl-sliders": "^2.0.0",
     "react-router": "^5.2.0",
-    "static-site-generator-webpack-plugin": "^1.0.0",
     "webpack": "^5.41.1",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"

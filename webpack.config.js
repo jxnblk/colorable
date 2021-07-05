@@ -7,9 +7,10 @@
  * outside the scope of colorable itself).
  */
 
+const path = require('path')
+const { AdditionalAssetsPlugin } = require('./docs/additional-assets-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-var StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
-var data = require('./docs/data');
+const data = require('./docs/data')
 
 const  postcssOptions = {
     plugins: [
@@ -27,7 +28,9 @@ module.exports = {
     filename: 'bundle.js',
     path: __dirname,
     //publicPath: '/colorable/',
-    libraryTarget: 'umd',
+    libraryTarget: 'umd',   // So that we can consume bundle.js
+                            // directly from this here
+                            // webpack.config.js; see above
     globalObject: 'this'    // There are chunks of `self` in UMD
                             // by default for some reason
   },
@@ -45,7 +48,30 @@ module.exports = {
 
   plugins: [
     new MiniCssExtractPlugin({ filename: "docs.css" }),
-    new StaticSiteGeneratorPlugin('bundle.js', data.routes, data)
+    new AdditionalAssetsPlugin(renderStaticPages)
   ]
+}
 
-};
+
+/**
+ * (Ab)use special-purpose code in docs/entry.jsx to preprocess
+ * the github.io documentation w/ server-side rendering
+ */
+async function renderStaticPages () {
+  const entryFunc = 
+        this.getDefaultExport("bundle.js"), // The one that
+                                            // docs/entry.jsx exports
+        staticPages = {}
+  if (typeof entryFunc !== 'function') {
+    throw new Error(`Default export from ./docs/entry.jsx must be a function that returns HTML`);
+    // This is achieved by setting libraryTarget: 'umd', above
+  }
+
+  await Promise.all(data.routes.map(async function(location) {
+    const relUrl = location.replace(/^\/colorable/, ''),
+          staticPath = path.join(relUrl, '/index.html')
+    staticPages[staticPath] = await entryFunc({location, ...data})
+  }))
+
+  return staticPages
+}
