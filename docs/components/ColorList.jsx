@@ -31,7 +31,6 @@ var ColorList = React.createClass({
       self.props.updateColors(colors)
     }
     var ref = 'color-' + i
-    var id = color
     var itemId = 'color-item-' + i
     return (
       <li ref={ref} key={ref}>
