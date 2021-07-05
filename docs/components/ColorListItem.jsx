@@ -4,7 +4,7 @@ var createReactClass = require('create-react-class')
 var PropTypes = require('prop-types')
 var Color = require('color')
 
-var HslSliders = require('react-hsl-sliders')
+var HslSliders = require('./HslSliders.jsx').default
 
 var ColorListItem = createReactClass({
 

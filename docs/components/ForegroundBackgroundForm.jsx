@@ -2,10 +2,8 @@
 var React = require('react')
 var createReactClass = require('create-react-class')
 
-React.createClass = createReactClass // Lest we have to patch react-hsl-sliders too
-
 var Color = require('color')
-var HslSliders = require('react-hsl-sliders')
+var HslSliders = require('./HslSliders.jsx').default
 
 var ForegroundBackgroundForm = createReactClass({
 
@@ -44,10 +42,12 @@ var ForegroundBackgroundForm = createReactClass({
             onChange={this.handleForegroundChange}
             style={styles.input}
             className='block col-12 field bg-darken-1' />
+          <div id="hsl-sliders">
           <HslSliders
             id="foreground-hsl-sliders"
             value={foreground}
             onChange={this.props.setForeground} />
+          </div>
         </div>
         <div className="sm-col-6 px2">
           <label htmlFor="background-hex-input" className="h5 bold">Background</label>
